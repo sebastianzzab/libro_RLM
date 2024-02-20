@@ -1,0 +1,866 @@
+{
+    "sources": [
+        {
+            "URL": "http://yihui.org/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "edition": "2nd",
+            "id": "xie2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1498716963",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Dynamic documents with R and knitr",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Webster",
+                    "given": "Allen L"
+                }
+            ],
+            "collection-number": "519.5 W391e Ej. 1",
+            "id": "webster2000estadistica",
+            "issued": {
+                "date-parts": [
+                    [
+                        2000
+                    ]
+                ]
+            },
+            "publisher": "McGraw-Hill,",
+            "title": "Estadı́stica aplicada a los negocios y la economı́a",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Canavos",
+                    "given": "George C"
+                },
+                {
+                    "family": "Medal",
+                    "given": "Edmundo Gerardo Urbina"
+                }
+            ],
+            "id": "canavos1987probabilidad",
+            "issued": {
+                "date-parts": [
+                    [
+                        1987
+                    ]
+                ]
+            },
+            "publisher": "McGraw Hill México",
+            "title": "Probabilidad y estadı́stica",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Montgomery",
+                    "given": "Douglas C"
+                },
+                {
+                    "family": "Peck",
+                    "given": "Elizabeth A"
+                },
+                {
+                    "family": "Vining",
+                    "given": "G Geoffrey"
+                },
+                {
+                    "family": "González Pozo",
+                    "given": "Virgilio"
+                }
+            ],
+            "id": "montgomery2002introduccion",
+            "issued": {
+                "date-parts": [
+                    [
+                        2002
+                    ]
+                ]
+            },
+            "publisher": "México Patria Cultural",
+            "title": "Introducción al análisis de regresión lineal",
+            "type": "article-journal"
+        },
+        {
+            "author": [
+                {
+                    "family": "Walpole",
+                    "given": "Ronald E"
+                },
+                {
+                    "family": "Myers",
+                    "given": "Raymond H"
+                },
+                {
+                    "family": "Myers",
+                    "given": "Sharon L"
+                }
+            ],
+            "id": "walpole1999probabilidad",
+            "issued": {
+                "date-parts": [
+                    [
+                        1999
+                    ]
+                ]
+            },
+            "publisher": "Pearson educación",
+            "title": "Probabilidad y estadı́stica para ingenieros",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Wackerly",
+                    "given": "Dennis D"
+                },
+                {
+                    "family": "Mendenhall III",
+                    "given": "William"
+                },
+                {
+                    "family": "Scheaffer",
+                    "given": "Richard L"
+                },
+                {
+                    "family": "Yescas Milanés",
+                    "given": "Jorge"
+                },
+                {
+                    "literal": "others"
+                }
+            ],
+            "id": "wackerly2002estadistica",
+            "issued": {
+                "date-parts": [
+                    [
+                        2002
+                    ]
+                ]
+            },
+            "title": "Estadı́stica matemática con aplicaciones",
+            "type": "book"
+        },
+        {
+            "URL": "https://www.R-project.org/",
+            "author": [
+                {
+                    "literal": "R Core Team"
+                }
+            ],
+            "id": "R-base",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "publisher": "R Foundation for Statistical Computing",
+            "publisher-place": "Vienna, Austria",
+            "title": "R: A language and environment for statistical computing",
+            "title-short": "R",
+            "type": "book"
+        },
+        {
+            "URL": "https://github.com/rstudio/bookdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "R-bookdown",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 0.37",
+            "title": "Bookdown: Authoring books and technical documents with r markdown",
+            "title-short": "Bookdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://broom.tidymodels.org/",
+            "author": [
+                {
+                    "family": "Robinson",
+                    "given": "David"
+                },
+                {
+                    "family": "Hayes",
+                    "given": "Alex"
+                },
+                {
+                    "family": "Couch",
+                    "given": "Simon"
+                }
+            ],
+            "id": "R-broom",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 1.0.5",
+            "title": "Broom: Convert statistical objects into tidy tibbles",
+            "title-short": "Broom",
+            "type": "book"
+        },
+        {
+            "URL": "https://r-forge.r-project.org/projects/car/",
+            "author": [
+                {
+                    "family": "Fox",
+                    "given": "John"
+                },
+                {
+                    "family": "Weisberg",
+                    "given": "Sanford"
+                },
+                {
+                    "family": "Price",
+                    "given": "Brad"
+                }
+            ],
+            "id": "R-car",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 3.1-2",
+            "title": "Car: Companion to applied regression",
+            "title-short": "Car",
+            "type": "book"
+        },
+        {
+            "URL": "http://haozhu233.github.io/kableExtra/",
+            "author": [
+                {
+                    "family": "Zhu",
+                    "given": "Hao"
+                }
+            ],
+            "id": "R-kableExtra",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024
+                    ]
+                ]
+            },
+            "note": "R package version 1.4.0",
+            "title": "kableExtra: Construct complex table with kable and pipe syntax",
+            "title-short": "kableExtra",
+            "type": "book"
+        },
+        {
+            "URL": "https://yihui.org/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "R-knitr",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 1.45",
+            "title": "Knitr: A general-purpose package for dynamic report generation in r",
+            "title-short": "Knitr",
+            "type": "book"
+        },
+        {
+            "URL": "https://plotly-r.com",
+            "author": [
+                {
+                    "family": "Sievert",
+                    "given": "Carson"
+                },
+                {
+                    "family": "Parmer",
+                    "given": "Chris"
+                },
+                {
+                    "family": "Hocking",
+                    "given": "Toby"
+                },
+                {
+                    "family": "Chamberlain",
+                    "given": "Scott"
+                },
+                {
+                    "family": "Ram",
+                    "given": "Karthik"
+                },
+                {
+                    "family": "Corvellec",
+                    "given": "Marianne"
+                },
+                {
+                    "family": "Despouy",
+                    "given": "Pedro"
+                }
+            ],
+            "id": "R-plotly",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024
+                    ]
+                ]
+            },
+            "note": "R package version 4.10.4",
+            "title": "Plotly: Create interactive web graphics via plotly.js",
+            "title-short": "Plotly",
+            "type": "book"
+        },
+        {
+            "URL": "https://github.com/dmurdoch/rgl",
+            "author": [
+                {
+                    "family": "Adler",
+                    "given": "Daniel"
+                },
+                {
+                    "family": "Murdoch",
+                    "given": "Duncan"
+                }
+            ],
+            "id": "R-rgl",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 1.2.8",
+            "title": "Rgl: 3D visualization using OpenGL",
+            "title-short": "Rgl",
+            "type": "book"
+        },
+        {
+            "URL": "https://github.com/rstudio/rmarkdown",
+            "author": [
+                {
+                    "family": "Allaire",
+                    "given": "JJ"
+                },
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Dervieux",
+                    "given": "Christophe"
+                },
+                {
+                    "family": "McPherson",
+                    "given": "Jonathan"
+                },
+                {
+                    "family": "Luraschi",
+                    "given": "Javier"
+                },
+                {
+                    "family": "Ushey",
+                    "given": "Kevin"
+                },
+                {
+                    "family": "Atkins",
+                    "given": "Aron"
+                },
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                },
+                {
+                    "family": "Cheng",
+                    "given": "Joe"
+                },
+                {
+                    "family": "Chang",
+                    "given": "Winston"
+                },
+                {
+                    "family": "Iannone",
+                    "given": "Richard"
+                }
+            ],
+            "id": "R-rmarkdown",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 2.25",
+            "title": "Rmarkdown: Dynamic documents for r",
+            "title-short": "Rmarkdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://shiny.posit.co/",
+            "author": [
+                {
+                    "family": "Chang",
+                    "given": "Winston"
+                },
+                {
+                    "family": "Cheng",
+                    "given": "Joe"
+                },
+                {
+                    "family": "Allaire",
+                    "given": "JJ"
+                },
+                {
+                    "family": "Sievert",
+                    "given": "Carson"
+                },
+                {
+                    "family": "Schloerke",
+                    "given": "Barret"
+                },
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Allen",
+                    "given": "Jeff"
+                },
+                {
+                    "family": "McPherson",
+                    "given": "Jonathan"
+                },
+                {
+                    "family": "Dipert",
+                    "given": "Alan"
+                },
+                {
+                    "family": "Borges",
+                    "given": "Barbara"
+                }
+            ],
+            "id": "R-shiny",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 1.8.0",
+            "title": "Shiny: Web application framework for r",
+            "title-short": "Shiny",
+            "type": "book"
+        },
+        {
+            "URL": "https://tidyverse.tidyverse.org",
+            "author": [
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                }
+            ],
+            "id": "R-tidyverse",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 2.0.0",
+            "title": "Tidyverse: Easily install and load the tidyverse",
+            "title-short": "Tidyverse",
+            "type": "book"
+        },
+        {
+            "ISBN": "978-1138700109",
+            "URL": "https://bookdown.org/yihui/bookdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "bookdown2016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Bookdown: Authoring books and technical documents with R markdown",
+            "title-short": "Bookdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://socialsciences.mcmaster.ca/jfox/Books/Companion/",
+            "author": [
+                {
+                    "family": "Fox",
+                    "given": "John"
+                },
+                {
+                    "family": "Weisberg",
+                    "given": "Sanford"
+                }
+            ],
+            "edition": "Third",
+            "id": "car2019",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "publisher": "Sage",
+            "publisher-place": "Thousand Oaks CA",
+            "title": "An R companion to applied regression",
+            "type": "book"
+        },
+        {
+            "URL": "https://yihui.org/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "edition": "2nd",
+            "id": "knitr2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1498716963",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Dynamic documents with R and knitr",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "container-title": "Implementing reproducible computational research",
+            "editor": [
+                {
+                    "family": "Stodden",
+                    "given": "Victoria"
+                },
+                {
+                    "family": "Leisch",
+                    "given": "Friedrich"
+                },
+                {
+                    "family": "Peng",
+                    "given": "Roger D."
+                }
+            ],
+            "id": "knitr2014",
+            "issued": {
+                "date-parts": [
+                    [
+                        2014
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1466561595",
+            "publisher": "Chapman; Hall/CRC",
+            "title": "Knitr: A comprehensive tool for reproducible research in R",
+            "title-short": "Knitr",
+            "type": "chapter"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/doc/Rnews/",
+            "author": [
+                {
+                    "family": "Zeileis",
+                    "given": "Achim"
+                },
+                {
+                    "family": "Hothorn",
+                    "given": "Torsten"
+                }
+            ],
+            "container-title": "R News",
+            "id": "lmtest2002",
+            "issue": "3",
+            "issued": {
+                "date-parts": [
+                    [
+                        2002
+                    ]
+                ]
+            },
+            "page": "7-10",
+            "title": "Diagnostic checking in regression relationships",
+            "type": "article-journal",
+            "volume": "2"
+        },
+        {
+            "ISBN": "9781138331457",
+            "URL": "https://plotly-r.com",
+            "author": [
+                {
+                    "family": "Sievert",
+                    "given": "Carson"
+                }
+            ],
+            "id": "plotly2020",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "publisher": "Chapman; Hall/CRC",
+            "title": "Interactive web-based data visualization with r, plotly, and shiny",
+            "type": "book"
+        },
+        {
+            "ISBN": "9781138359338",
+            "URL": "https://bookdown.org/yihui/rmarkdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Allaire",
+                    "given": "J. J."
+                },
+                {
+                    "family": "Grolemund",
+                    "given": "Garrett"
+                }
+            ],
+            "id": "rmarkdown2018",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "R markdown: The definitive guide",
+            "title-short": "R markdown",
+            "type": "book"
+        },
+        {
+            "ISBN": "9780367563837",
+            "URL": "https://bookdown.org/yihui/rmarkdown-cookbook",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Dervieux",
+                    "given": "Christophe"
+                },
+                {
+                    "family": "Riederer",
+                    "given": "Emily"
+                }
+            ],
+            "id": "rmarkdown2020",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "R markdown cookbook",
+            "type": "book"
+        },
+        {
+            "DOI": "10.18637/jss.v008.i11",
+            "author": [
+                {
+                    "family": "Ligges",
+                    "given": "Uwe"
+                },
+                {
+                    "family": "Mächler",
+                    "given": "Martin"
+                }
+            ],
+            "container-title": "Journal of Statistical Software",
+            "id": "scatterplot3d2003",
+            "issue": "11",
+            "issued": {
+                "date-parts": [
+                    [
+                        2003
+                    ]
+                ]
+            },
+            "page": "1-20",
+            "title": "Scatterplot3d - an r package for visualizing multivariate data",
+            "type": "article-journal",
+            "volume": "8"
+        },
+        {
+            "DOI": "10.21105/joss.01686",
+            "author": [
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                },
+                {
+                    "family": "Averick",
+                    "given": "Mara"
+                },
+                {
+                    "family": "Bryan",
+                    "given": "Jennifer"
+                },
+                {
+                    "family": "Chang",
+                    "given": "Winston"
+                },
+                {
+                    "family": "McGowan",
+                    "given": "Lucy D’Agostino"
+                },
+                {
+                    "family": "Françoi",
+                    "given": "Romain"
+                },
+                {
+                    "family": "Grolemun",
+                    "given": "Garrett"
+                },
+                {
+                    "family": "Haye",
+                    "given": "Alex"
+                },
+                {
+                    "family": "Henr",
+                    "given": "Lionel"
+                },
+                {
+                    "family": "Heste",
+                    "given": "Jim"
+                },
+                {
+                    "family": "Kuh",
+                    "given": "Max"
+                },
+                {
+                    "family": "Pederse",
+                    "given": "Thomas Lin"
+                },
+                {
+                    "family": "Mille",
+                    "given": "Evan"
+                },
+                {
+                    "family": "Bach",
+                    "given": "Stephan Milton"
+                },
+                {
+                    "family": "Müll",
+                    "given": "Kirill"
+                },
+                {
+                    "given": "Jeroen Oo"
+                },
+                {
+                    "given": "David Robins"
+                },
+                {
+                    "given": "Dana Paige Seid"
+                },
+                {
+                    "given": "Vitalie Spi"
+                },
+                {
+                    "given": "Kohske Takahas"
+                },
+                {
+                    "given": "Davis Vaugh"
+                },
+                {
+                    "given": "Claus Wil"
+                },
+                {
+                    "given": "Kara W"
+                },
+                {
+                    "given": "Hiroaki Yutani"
+                }
+            ],
+            "container-title": "Journal of Open Source Software",
+            "id": "tidyverse2019",
+            "issue": "43",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "page": "1686",
+            "title": "Welcome to the tidyverse",
+            "type": "article-journal",
+            "volume": "4"
+        }
+    ],
+    "project_biblios": [
+        "book.bib",
+        "packages.bib"
+    ]
+}
