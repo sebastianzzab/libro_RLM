@@ -258,6 +258,59 @@
             "type": "book"
         },
         {
+            "URL": "https://ggplot2.tidyverse.org",
+            "author": [
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                },
+                {
+                    "family": "Chang",
+                    "given": "Winston"
+                },
+                {
+                    "family": "Henry",
+                    "given": "Lionel"
+                },
+                {
+                    "family": "Pedersen",
+                    "given": "Thomas Lin"
+                },
+                {
+                    "family": "Takahashi",
+                    "given": "Kohske"
+                },
+                {
+                    "family": "Wilke",
+                    "given": "Claus"
+                },
+                {
+                    "family": "Woo",
+                    "given": "Kara"
+                },
+                {
+                    "family": "Yutani",
+                    "given": "Hiroaki"
+                },
+                {
+                    "family": "Dunnington",
+                    "given": "Dewey"
+                }
+            ],
+            "id": "R-ggplot2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 3.4.4",
+            "title": "ggplot2: Create elegant data visualisations using the grammar of graphics",
+            "title-short": "ggplot2",
+            "type": "book"
+        },
+        {
             "URL": "http://haozhu233.github.io/kableExtra/",
             "author": [
                 {
@@ -431,63 +484,6 @@
             "type": "book"
         },
         {
-            "URL": "https://shiny.posit.co/",
-            "author": [
-                {
-                    "family": "Chang",
-                    "given": "Winston"
-                },
-                {
-                    "family": "Cheng",
-                    "given": "Joe"
-                },
-                {
-                    "family": "Allaire",
-                    "given": "JJ"
-                },
-                {
-                    "family": "Sievert",
-                    "given": "Carson"
-                },
-                {
-                    "family": "Schloerke",
-                    "given": "Barret"
-                },
-                {
-                    "family": "Xie",
-                    "given": "Yihui"
-                },
-                {
-                    "family": "Allen",
-                    "given": "Jeff"
-                },
-                {
-                    "family": "McPherson",
-                    "given": "Jonathan"
-                },
-                {
-                    "family": "Dipert",
-                    "given": "Alan"
-                },
-                {
-                    "family": "Borges",
-                    "given": "Barbara"
-                }
-            ],
-            "id": "R-shiny",
-            "issued": {
-                "date-parts": [
-                    [
-                        2023
-                    ]
-                ]
-            },
-            "note": "R package version 1.8.0",
-            "title": "Shiny: Web application framework for r",
-            "title-short": "Shiny",
-            "type": "book"
-        },
-        {
             "URL": "https://tidyverse.tidyverse.org",
             "author": [
                 {
@@ -555,6 +551,28 @@
             "publisher": "Sage",
             "publisher-place": "Thousand Oaks CA",
             "title": "An R companion to applied regression",
+            "type": "book"
+        },
+        {
+            "ISBN": "978-3-319-24277-4",
+            "URL": "https://ggplot2.tidyverse.org",
+            "author": [
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                }
+            ],
+            "id": "ggplot22016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "publisher": "Springer-Verlag New York",
+            "title": "ggplot2: Elegant graphics for data analysis",
+            "title-short": "ggplot2",
             "type": "book"
         },
         {
@@ -776,71 +794,80 @@
                     "given": "Lucy D’Agostino"
                 },
                 {
-                    "family": "Françoi",
+                    "family": "François",
                     "given": "Romain"
                 },
                 {
-                    "family": "Grolemun",
+                    "family": "Grolemund",
                     "given": "Garrett"
                 },
                 {
-                    "family": "Haye",
+                    "family": "Hayes",
                     "given": "Alex"
                 },
                 {
-                    "family": "Henr",
+                    "family": "Henry",
                     "given": "Lionel"
                 },
                 {
-                    "family": "Heste",
+                    "family": "Hester",
                     "given": "Jim"
                 },
                 {
-                    "family": "Kuh",
+                    "family": "Kuhn",
                     "given": "Max"
                 },
                 {
-                    "family": "Pederse",
+                    "family": "Pedersen",
                     "given": "Thomas Lin"
                 },
                 {
-                    "family": "Mille",
+                    "family": "Miller",
                     "given": "Evan"
                 },
                 {
-                    "family": "Bach",
+                    "family": "Bache",
                     "given": "Stephan Milton"
                 },
                 {
-                    "family": "Müll",
+                    "family": "Müller",
                     "given": "Kirill"
                 },
                 {
-                    "given": "Jeroen Oo"
+                    "family": "Ooms",
+                    "given": "Jeroen"
                 },
                 {
-                    "given": "David Robins"
+                    "family": "Robinson",
+                    "given": "David"
                 },
                 {
-                    "given": "Dana Paige Seid"
+                    "family": "Seidel",
+                    "given": "Dana Paige"
                 },
                 {
-                    "given": "Vitalie Spi"
+                    "family": "Spinu",
+                    "given": "Vitalie"
                 },
                 {
-                    "given": "Kohske Takahas"
+                    "family": "Takahashi",
+                    "given": "Kohske"
                 },
                 {
-                    "given": "Davis Vaugh"
+                    "family": "Vaughan",
+                    "given": "Davis"
                 },
                 {
-                    "given": "Claus Wil"
+                    "family": "Wilke",
+                    "given": "Claus"
                 },
                 {
-                    "given": "Kara W"
+                    "family": "Woo",
+                    "given": "Kara"
                 },
                 {
-                    "given": "Hiroaki Yutani"
+                    "family": "Yutani",
+                    "given": "Hiroaki"
                 }
             ],
             "container-title": "Journal of Open Source Software",

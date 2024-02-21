@@ -38,3 +38,7 @@ estimación-de-los-intervalos-de-confianza-en-la-regresión-lineal-múltiple
 intervalos-de-confianza-para-los-parámetros.
 intervalo-de-confianza-para-la-respuesta-media-eyx0.
 intervalo-de-confianza-para-haty_0-observación-futura.
+tab:unnamed-chunk-8
+tab:unnamed-chunk-9
+tab:unnamed-chunk-12
+tab:unnamed-chunk-13

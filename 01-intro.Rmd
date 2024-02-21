@@ -1,7 +1,5 @@
 # Modelos de regresión lineal múltiple
 
-## Introducción {#intro}
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
 	echo=TRUE,
@@ -11,6 +9,8 @@ knitr::opts_chunk$set(
 	cache=TRUE
 )
 ```
+
+## Introducción {#intro}
 
 Muchas aplicaciones del análisis de regresión involucran situaciones donde se tiene más de una variable de regresión. Un modelo de regresión que contiene más de una variable independiente recibe el nombre de Modelo de Regresión Múltiple.
 
@@ -60,7 +60,9 @@ $$
 Se acostumbra presentar los datos de una regresión múltiple en una tabla tal, como sigue:
 
 $$
+\begin{equation}
 
+\end{equation}
 $$
 
 Cada observación $(x_{i1}, x_{i2}x_{i3},...x_{ik}, y_{i})$ satisface el modelo, es decir:
@@ -76,7 +78,8 @@ $$
 \begin{equation}
 y_{i}=\beta_{0}+\sum_{j=1}^{k}\beta_{j}x_{ij} + \varepsilon_{i}\hspace{0.9cm} i=1,2,...,n 
 \end{equation}
-$$ donde: $y_i$ es la i-esima observación de ;a respuesta para un conjunto de valores $x_{i1},x_{i2},..,x_{ik}$ de las variables de predicción, $\varepsilon_{i}$ es el error aleatorio no observable asociado con $y_{i}$ y $\beta_{0},\beta_{1},\beta_{2},...,\beta_{k}$ son $p = k + 1$ parámetros lineales desconocidos.
+$$ 
+donde: $y_i$ es la i-esima observación de ;a respuesta para un conjunto de valores $x_{i1},x_{i2},..,x_{ik}$ de las variables de predicción, $\varepsilon_{i}$ es el error aleatorio no observable asociado con $y_{i}$ y $\beta_{0},\beta_{1},\beta_{2},...,\beta_{k}$ son $p = k + 1$ parámetros lineales desconocidos.
 
 Si supone el caso de la teoría basada en el modelo normal, las observaciones son variables aleatorias independientes, normalmente distribuidas con:
 
@@ -97,34 +100,42 @@ $$
 \begin{equation}
 L=\sum_{i=1}^{n}\varepsilon_{i}^2
 \end{equation}
-$$ donde $\varepsilon_{i}=y_{i}-\beta_{0}-\sum_{i=1}^{k}\beta_{j}x_{ij}$
+$$ donde 
+$\varepsilon_{i}=y_{i}-\beta_{0}-\sum_{i=1}^{k}\beta_{j}x_{ij}$
 
 $$
-L= \sum_{i=1}^n(y_i-\beta_{0}-\sum_{j}x_{ij})^2
-$$ Derivando L con respecto a $\beta_{0},\beta_{1},\beta_{2},...,\beta_{k}$ ,se tiene
+L= \sum_{i=1}^n(y_i-\beta_{0}-\sum_{j}x_{ij})^2 //
+
+$$ 
+Derivando L con respecto a $\beta_{0},\beta_{1},\beta_{2},...,\beta_{k}$ ,se tiene
 
 $$
-\frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})
-$$ y
-
-$$
+\frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij}) \\
+y \\
 \frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})x_{ij} \hspace{5.0cm} j =1,2,..,k
-$$ Al igualar a cero a estas estimaciones de mínimos cuadrados, se obtiene:
+$$ 
+Al igualar a cero a estas estimaciones de mínimos cuadrados, se obtiene:
 
 $$
--2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})=0
-$$ $$
+-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})=0 \\
 \frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})x_{ij}=0 \hspace{5.0cm} j =1,2,..,k
-$$ Después de simplificar las ecuaciones anteriores, se obtienen las ecuaciones normlaes de mínimos cuadrados ordinarios.
+$$ 
+
+Después de simplificar las ecuaciones anteriores, se obtienen las ecuaciones normales de mínimos cuadrados ordinarios.
 
 $$
-n\hat{\beta_{0}} + \hat{\beta_{1}}\sum_{i=i}^nx_{i1}   + \hat{\beta_{2}}\sum_{i=i}^nx_{i2} +...+ \hat{\beta_{k}}\sum_{i=i}^nx_{ik} = \sum_{i=1}^ny_i
-$$ $$
-\hat{\beta_{0}}\sum_{i=i}^nx_{i1}  + \hat{\beta_{1}}\sum_{i=i}^nx_{i1}^2   + \hat{\beta_{2}}\sum_{i=i}^nx_{i1}x_{i2} +...+ \hat{\beta_{k}}\sum_{i=i}^nx_{i1}x_{ik}= \sum_{i=1}^nx_{i1}y_i
-$$ $$
+\begin{equation}
+n\hat{\beta_{0}} + \hat{\beta_{1}}\sum_{i=i}^nx_{i1}   + \hat{\beta_{2}}\sum_{i=i}^nx_{i2} +...+ \hat{\beta_{k}}\sum_{i=i}^nx_{ik} = \sum_{i=1}^ny_i \\
+\hat{\beta_{0}}\sum_{i=i}^nx_{i1}  + \hat{\beta_{1}}\sum_{i=i}^nx_{i1}^2   + \hat{\beta_{2}}\sum_{i=i}^nx_{i1}x_{i2} +...+ \hat{\beta_{k}}\sum_{i=i}^nx_{i1}x_{ik}= \sum_{i=1}^nx_{i1}y_i 
+\end{equation}
+$$ 
+$$
 \vdots  \vdots   \vdots  \vdots  \vdots 
-$$ $$
+$$ 
+$$
+\begin{equation}
 \hat{\beta_{0}}\sum_{i=i}^nx_{ik}  + \hat{\beta_{1}}\sum_{i=i}^nx_{ik}x_{i1}   + \hat{\beta_{2}}\sum_{i=i}^nx_{ik}x_{i2} +...+ \hat{\beta_{k}}\sum_{i=i}^nx_{ik}^2= \sum_{i=1}^nx_{i1}y_i
+\end{equation}
 $$
 
 Nótese que existen $p = k +1$ ecuaciones normales, una para cada coeficiente de regresion desconocido. La solución de las ecuaciones normales son los estimadores mínimos cuadrados de los coeficientes de regresion $\hat{\beta_{0}},\hat{\beta_{1}},...,\hat{\beta_{k}}$. La solución de las ecuaciones normales puede obtenerse con cualquier método apropiado para la solución de sistemas de ecuaciones lineales.
@@ -175,8 +186,6 @@ plot_ly(x=publicidad, y=ingreso_nacional, z=pasajeros, type="scatter3d", color=p
   layout(scene = list(xaxis = list(title = 'Publicidad (en miles de dolares)'),
                       yaxis = list(title = 'Ingreso nacional (en billones de dolares)'),
                       zaxis = list(title = 'Pasajeros (en miles)')))
-
-
 ```
 
 Otro gráfico de dispersión en 3d se puede construir usando el paquete `rgl`. A continuación está el código para obtener el diagrama de dispersión.
@@ -198,9 +207,9 @@ Pasajeros \sim N(\mu_{i},\sigma^{2}),\\
 \mu_{i} = \beta_{0} + \beta_{1}Publicidad_{i} + \beta_{2}Ingreso_{i},\\
 \sigma^{2} = constante
 \end{equation}
-$$ 
+$$
 
-Así se crea el modelo de regresión múltiple ajustado con código:
+Así se crea el modelo de regresión múltiple ajustado en R:
 
 ```{r creacion-modelo-regresion}
 library(broom)
@@ -244,6 +253,9 @@ num_observaciones <- nrow(datos)
 # Sumatoria de la columna de la variable dependiente (Y)
 sum_y <- sum(datos$Pasajeros)
 
+# Sumatoria de la columna de la variable dependiente al cuadrado (Y)
+sum_y_squared <- sum(datos$Pasajeros^2)
+
 # Sumatoria de la columna de la primera variable independiente (X1: Publicidad)
 sum_x1 <- sum(datos$Publicidad)
 
@@ -268,6 +280,7 @@ sum_x2_y <- sum(datos$`Ingreso Nacional` * datos$Pasajeros)
 # Imprimir los resultados
 cat("Numero total de observaciones:", num_observaciones, "\n")
 cat("Sumatoria de la columna de Y:", sum_y, "\n")
+cat("Sumatoria de la columna de Y al cuadrado:", sum_y_squared, "\n")
 cat("Sumatoria de la columna de X1:", sum_x1, "\n")
 cat("Sumatoria de la columna de X2:", sum_x2, "\n")
 cat("Sumatoria de la columna de X1^2:", sum_x1_squared, "\n")
@@ -282,7 +295,7 @@ $$
 n\hat{\beta_{0}} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1} + \hat{\beta_{i2}}\sum_{i=1}^nx_{i2} = \sum_{i=1}^ny_{i} \\
 \hat{\beta_{0}}\sum_{i=1}^nx_{i1} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1}^2 + \hat{\beta_{i2}}\sum_{i=1}^nx_{i1}x_{i2} = \sum_{i=1}^nx_{i1}y_{i} \\
 \hat{\beta_{0}}\sum_{i=1}^nx_{i2} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1}x_{i2} + \hat{\beta_{i2}}\sum_{i=1}^nx_{i2}^2 = \sum_{i=1}^nx_{i2}y_{i}
-$$ 
+$$
 
 Al sustituir las sumatorias calculadas en las ecuaciones normales, se tiene que:
 
@@ -290,16 +303,14 @@ $$
 15\hat{\beta_{0}} + 187\hat{\beta_{1}}  + 40.29\hat{\beta_{i2}} = 278 \\
 187\hat{\beta_{0}} + 2469\hat{\beta_{1}} + 525.38\hat{\beta_{i2}} = 3590  \\
 40.29\hat{\beta_{0}} + 525.38\hat{\beta_{1}} + 113.3387\hat{\beta_{i2}} = 766.02
-$$ 
-La solución de este conjunto de ecuaciones es:
+$$ La solución de este conjunto de ecuaciones es:
 
 $$
 \hat{\beta_{0}}= 8.015345 \\
 \hat{\beta_{1}}= 1.107798 \\
 \hat{\beta_{2}}= -1.225824 \\
 (\#eq:coefs-beta-valores-estimados)
-$$
-Lo cual se hace con R de la siguiente manera:
+$$ Lo cual se hace con R de la siguiente manera:
 
 ```{r resolucion-ecuaciones-normales}
 # Definir la matriz de coeficientes (lado izquierdo del sistema)
@@ -316,6 +327,7 @@ coefs_beta <- solve(A, B)
 cat("Coeficientes estimados (beta0, beta1, beta2):", coefs_beta, "\n")
 
 ```
+
 Por lo tanto, la ecuación de regresión ajustada es:
 
 $$
@@ -324,8 +336,7 @@ $$
 \end{equation}
 $$
 
-Como se puede observar de ambas maneras se llega al mismo resultado (ya que internamente la función `lm()` realiza eso). 
-Finalmente, esta ecuación puede emplearse para predecir el numero de pasajeros para pares de valores de las variables de regresion, publicidad e ingreso nacional.
+Como se puede observar de ambas maneras se llega al mismo resultado (ya que internamente la función `lm()` realiza eso). Finalmente, esta ecuación puede emplearse para predecir el numero de pasajeros para pares de valores de las variables de regresion, publicidad e ingreso nacional.
 
 ## Enfoque matricial para un modelo de regresión lineal múltiple {#Enfoque-matricial}
 
@@ -333,13 +344,13 @@ Al ajustar un modelo de regresión lineal múltiple es mucho mas conveniente exp
 
 Dada una muestra aleatoria de observaciones $Y_{1},Y_{2},...,Y_{n}$ en los puntos de observación $x_{11},x_{12},...,x_{1k},x_{21},x_{22},...,x_{2k},...,x_{n1},x_{n2},...,x_{nk}$, respectivamente, con base en el modelo lineal general, se tienen las n ecuaciones siguientes:
 
-\$\$ \begin{equation}
-
+$$ \begin{equation}
 Y_{1}=\beta _{0} + \beta _{1}X _{11} + \beta _{2}X _{12} + ... + + \beta _{k}X _{1k} + \varepsilon_{1} \\
 Y_{2}=\beta _{0} + \beta _{1}X _{21} + \beta _{2}X _{22} + ... + + \beta _{k}X _{2k} + \varepsilon_{2} \\
 \vdots \\
 Y_{n}=\beta _{0} + \beta _{1}X _{n1} + \beta _{2}X _{n2} + ... + + \beta _{k}X _{nk} + \varepsilon_{n}
-\end{equation} \$\$
+\end{equation} 
+$$
 
 Como resultado, el modelo lineal múltiple también puede expresarse en forma matricial como:
 
@@ -348,7 +359,7 @@ $$
 Y = \boldsymbol{X\beta+\varepsilon}
 \end{equation}
 (\#eq:el-modelo-de-regresión-múltiple-matricial)
-$$ 
+$$
 
 donde:
 
@@ -510,30 +521,25 @@ $$
 \frac{
 \partial \sum_{i=1}^n\varepsilon_{i}^2}{\partial x} \Bigg|_{\hat{\beta}}= \boldsymbol{X'Y+X'X\hat{\beta}+\hat{\beta}'X'X=-2X'Y+2X'X\hat{\beta}=0}
 \end{equation} 
-$$ 
-Simplificando, se tiene:
+$$ Simplificando, se tiene:
 
 $$
 \begin{equation}
 \boldsymbol{X'X\hat{\beta}=X'Y}
 \end{equation}
-$$ 
-Estas ecuaciones son llamadas **ecuaciones normales mínimos cuadrados**. Para resolver dichas ecuaciones se premultiplicando ambos lados por la inversa de la matriz $\boldsymbol{X'X}$ por lo tanto la expresión matricial para obtener los estimadores mínimos cuadrados $\hat{\beta_{0}}$ y $\hat{\beta_{1}}$, viene dada por:
+$$ Estas ecuaciones son llamadas **ecuaciones normales mínimos cuadrados**. Para resolver dichas ecuaciones se premultiplicando ambos lados por la inversa de la matriz $\boldsymbol{X'X}$ por lo tanto la expresión matricial para obtener los estimadores mínimos cuadrados $\hat{\beta_{0}}$ y $\hat{\beta_{1}}$, viene dada por:
 
 $$
 \begin{equation}
 \boldsymbol{(X'X)^{-1}(X'X)\hat{\beta}=(X'X)^{-1}X'Y}
 \end{equation}
-$$ 
-$$
+$$ $$
 \begin{equation}
 \boldsymbol{\hat{\beta}=(X'X)^{-1}X'Y}
 \end{equation}
-$$ 
-La forma matricial de este modelo es: $\boldsymbol{\hat{Y}=X\hat{\beta}}$
+$$ La forma matricial de este modelo es: $\boldsymbol{\hat{Y}=X\hat{\beta}}$
 
-Este vector de valores estimados se puede escribir así: 
-$$
+Este vector de valores estimados se puede escribir así: $$
 \begin{equation}
 \boldsymbol{\hat{Y}=X(X'X)^{-1}X'Y}
 \end{equation}
@@ -544,8 +550,7 @@ $$
 \boldsymbol{\hat{Y}=HY}
 (\#eq:predicciones-matriz-proyeccion)
 \end{equation}
-$$
-La matriz $\boldsymbol{H=X(X'X)^{-1}X'}$ es llamada usualmente matriz "sombrero" de orden n x n
+$$ La matriz $\boldsymbol{H=X(X'X)^{-1}X'}$ es llamada usualmente matriz "sombrero" de orden n x n
 
 Las diferencias entre los valores observados $y_{i}$ y los valores estimados $\hat{y_{i}}$ son los residuales $e_{i}=y_{i}-\hat{y_{i}}$. Los residuales pueden escribirse matricialmente así:
 
@@ -566,14 +571,11 @@ $$
 \boldsymbol{(I-H)Y}
 $$
 
-
-En el ejemplo anterior se ilustro el ajuste del modelo de regresión múltiple.
-$$
+En el ejemplo anterior se ilustro el ajuste del modelo de regresión múltiple. $$
 \begin{equation}
 y=\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+\varepsilon
 \end{equation}
-$$
-Donde $y$ es el numero de pasajeros observado que escogen viajar por Hop Scotch, $x_{1}$ es el gasto en publicidad y $x_{2}$ es el ingreso nacional. Ahora se utilizara el enfoque matricial para ajustar el modelo de regresión anterior a este conjunto de datos. La matriz $\boldsymbol{X}$ y el vector $\boldsymbol{Y}$ para este modelo son:
+$$ Donde $y$ es el numero de pasajeros observado que escogen viajar por Hop Scotch, $x_{1}$ es el gasto en publicidad y $x_{2}$ es el ingreso nacional. Ahora se utilizara el enfoque matricial para ajustar el modelo de regresión anterior a este conjunto de datos. La matriz $\boldsymbol{X}$ y el vector $\boldsymbol{Y}$ para este modelo son:
 
 $$
 \begin{equation}
@@ -593,8 +595,7 @@ $$
 \end{bmatrix}_{15x1}
 (\#eq:matrices-regresion-multiple)
 \end{equation}
-$$
-La matriz $\boldsymbol{X'X}$ es
+$$ La matriz $\boldsymbol{X'X}$ es
 
 $$
 \begin{equation}
@@ -615,8 +616,7 @@ $$
  40.29  &  525.38 & 113.3387
 \end{bmatrix}
 \end{equation}
-$$
-En R se hace de la siguiente manera:
+$$ En R se hace de la siguiente manera:
 
 ```{r}
 identidad <-  rep(1,15)
@@ -654,6 +654,7 @@ $$
 x_transpuesta_y <- t(x) %*% pasajeros
 x_transpuesta_y
 ```
+
 Los estimadores mínimos cuadrados se obtienen a partir de la ecuación:
 
 $$
@@ -661,7 +662,8 @@ $$
 \boldsymbol{\hat{\beta}=(X'X)^{-1}X'Y}
 (\#eq:estimacion-coeficientes-ecuaciones-normales)
 \end{equation}
-$$
+$$ 
+Entonces,
 $$
 \begin{equation}
 \begin{bmatrix}
@@ -695,10 +697,78 @@ $$
 $$
 
 ```{r}
-solve(x_transpuesta_x) %*% x_transpuesta_y
+inv_x_transpuesta_x <- solve(x_transpuesta_x)
+inv_x_transpuesta_x
+matriz_estimaciones_beta <- solve(x_transpuesta_x) %*% x_transpuesta_y
+matriz_estimaciones_beta
+```
+
+Por consiguiente, el modelo de regresión ajustado con los coeficientes de
+regresión:
+
+$$
+\begin{equation}
+\hat{Y} = 8.0153 + 1.1078x_{1} - 1.2258x_{2}
+\end{equation}
+$$
+
+La siguiente tabla muestra las observaciones de la variable dependiente y con
+sus correspondientes valores estimados y residuales para este modelo:
+
+```{r}
+residuos <- rstandard(modelo)
+valor_ajustado <- fitted(modelo)
+datos_t <- data.frame(observaciones,pasajeros,valor_ajustado,residuos)
+knitr::kable(datos_t,booktabs = TRUE, align = "c") %>%
+  kable_styling()  %>%
+  kable_classic_2("hover")
+```
+A continuación se muestra el gráfico de los residuos vs los valores ajustados, el cual es ideal para observar si a simple vista se cumple o no el principio de homocedasticidad
+
+```{r}
+library(ggplot2)
+ggplot(augment(modelo), aes(x = .fitted, y = .resid)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  labs(title = "Residuos vs. Valores Ajustados",
+       x = "Valores Ajustados",
+       y = "Residuos")
 
 ```
 
+
+
+```{r}
+library(ggplot2)
+ggplot(augment(modelo), aes(sample = .resid)) +
+  stat_qq() +
+  geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "red") +
+  labs(title = "Gráfico Q-Q de Residuos")
+```
+
+```{r}
+library(ggplot2)
+
+# Supongamos que la variable ajustada se llama "ajustados"
+datos$ajustados <- predict(modelo)
+
+# Gráfico de observados vs ajustados
+ggplot(datos, aes(x = pasajeros, y = ajustados)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  labs(title = "Valores Observados vs Ajustados",
+       x = "Valores Observados",
+       y = "Valores Ajustados")
+
+```
+
+
+```{r}
+library(car)  # Necesario para la función influencePlot
+
+influencePlot(modelo, id.n = 3, main = "Gráfico de Influencia")
+
+```
 
 
 ## Propiedades de los estimadores mínimos cuadrados
@@ -715,7 +785,7 @@ E(\boldsymbol{\hat{\beta}}) = E\boldsymbol{[(X'X)^{-1}X'Y]} \\
 = E\boldsymbol{[\beta] + (X'X)^{-1}X'E[\varepsilon]} \\
 E(\boldsymbol{\hat{\beta}})= \boldsymbol{\beta}
 \end{equation}
-$$ 
+$$
 
 Puesto que $E[\boldsymbol{\varepsilon]}=0$. Por lo tanto $\boldsymbol{\hat{\beta}}$ se expresan en términos de los elementos de la inversa de la matriz X'X. La inversa de X´X multiplicada por la constante $\sigma^{2}$ representa la matriz de varianza-covarianza de los coeficientes de regresión $\boldsymbol{\hat{\beta}}$. Los elementos de la diagonal principal de $\sigma^{2}(X'X)^{-1}$ son las varianzas de $\hat{\beta_{o}},\hat{\beta_{1}},...,\hat{\beta_{k}}$ mientras que los elementos que están fuera de la diagonal principal son las covarianzas.
 
@@ -748,13 +818,9 @@ $$
 
 $$
 =E[(\boldsymbol{\hat{\beta}}-\boldsymbol{\beta})(\boldsymbol{\hat{\beta}}-\boldsymbol{\beta})']
-$$ 
-donde: 
-$$
+$$ donde: $$
 \boldsymbol{\hat{\beta}-\beta=(X'X)^{-1}X'Y-\beta}
-$$
-$$\boldsymbol{=(X'X)^{-1}X'(X\beta+\varepsilon)-\beta}$$ 
-$$\boldsymbol{=(X'X)^{-1}X'X\beta + (X'X)^{-1}X'                   \varepsilon-\beta}$$ $$\boldsymbol{=I\beta+(X'X)^{-1}X'\varepsilon-\beta}$$ $$=\boldsymbol{(X'X)^{-1}X'\varepsilon}$$ Por lo tanto:
+$$ $$\boldsymbol{=(X'X)^{-1}X'(X\beta+\varepsilon)-\beta}$$ $$\boldsymbol{=(X'X)^{-1}X'X\beta + (X'X)^{-1}X'                   \varepsilon-\beta}$$ $$\boldsymbol{=I\beta+(X'X)^{-1}X'\varepsilon-\beta}$$ $$=\boldsymbol{(X'X)^{-1}X'\varepsilon}$$ Por lo tanto:
 
 $$\sum=Var(\boldsymbol{\hat{\beta}})= E[[\boldsymbol{(X'X)^{-1}X'\varepsilon}][\boldsymbol{(X'X)^{-1}X'\varepsilon}]']$$ $$\boldsymbol{(X'X)^{-1}X'E[\varepsilon\varepsilon']X(X'X)^{-1}}$$ $$=\boldsymbol{(X'X)^{-1}X'\sigma^{2}IX(X'X)^{-1}}$$ $$\sigma^{2}\boldsymbol{(X'X)^{-1}X'X(X'X)^{-1}}$$ $$=\sigma^{2}\boldsymbol{(X'X)^{-1}}$$
 
@@ -773,13 +839,13 @@ SCE = \boldsymbol{(Y-X\hat{\beta})'(Y-X\hat{\beta})}
 \end{equation}
 $$ $$
 \begin{equation}
-=\boldsymbol{Y'Y - \hat{\beta}X'Y-Y'X\hat{\beta}+\hat{\beta} 'X\hat{\beta}}
+=\boldsymbol{Y'Y - \hat{\beta}X'Y-Y'X\hat{\beta}+\hat{\beta} 'X\hat{\beta}} \\
+= \boldsymbol{Y'Y-2\hat{\beta}'X'Y+\beta'X'X\hat{\beta}}
 \end{equation}
 $$
 
-$$
-= \boldsymbol{Y'Y-2\hat{\beta}'X'Y+\beta'X'X\hat{\beta}}
-$$ Puesto que: \$ \boldsymbol{X'X\hat{\beta}=X'Y}\$
+
+Puesto que: $\boldsymbol{X'X\hat{\beta}=X'Y}$
 
 La suma de cuadrados de residuales tiene n - p grados de libertad. Entonces:
 
@@ -795,14 +861,32 @@ $$
 \hat{\sigma}^{2}=CME=\frac{SCE}{n-p}=\frac{\boldsymbol{Y'Y-\hat{\beta}'X'Y}}{n-p}
 (\#eq:estimacion-error-cuadratico-medio-regresion-lineal)
 \end{equation}
+$$ Ejemplo: Para el ejercicio planteado anteriormente: $$
+\begin{equation}
+C = \begin{bmatrix}
+ 1.47945972&   -0.01040009 & -0.4777135\\ 
+ -0.01040009&   0.02982778& -0.1345692\\ 
+ -0.47771354  &  -0.13456922  & 0.8024360
+\end{bmatrix}
+\end{equation}
 $$
 
 Las varianzas y covarianzas de los estimadores vienen dadas por:
 
-$$Var(\hat{\beta_{0}})=\sigma^{2}C_{00}=$$ $$Var(\hat{\beta_{1}})=\sigma^{2}C_{11}=$$ $$Var(\hat{\beta_{2}})=\sigma^{2}C_{22}=$$ $$Cov(\hat{\beta_{0}},\hat{\beta_{1}})=\sigma^{2}C_{01}=$$ $$Cov(\hat{\beta_{0}},\hat{\beta_{2}})=\sigma^{2}C_{02}=$$ $$Cov(\hat{\beta_{1}},\hat{\beta_{2}})=\sigma^{2}C_{12}=$$ La estimación de $\sigma^{2}$ $$
-\boldsymbol{Y'Y}=
+$$
+\begin{equation}
+Var(\hat{\beta_{0}})=\sigma^{2}C_{00}=1.47945972\\
+Var(\hat{\beta_{1}})=\sigma^{2}C_{11}=0.02982778 \\
+Var(\hat{\beta_{2}})=\sigma^{2}C_{22}= 0.8024360\\
+Cov(\hat{\beta_{0}},\hat{\beta_{1}})=\sigma^{2}C_{01}= -0.01040009\\
+Cov(\hat{\beta_{0}},\hat{\beta_{2}})=\sigma^{2}C_{02}= -0.4777135\\
+Cov(\hat{\beta_{1}},\hat{\beta_{2}})=\sigma^{2}C_{12}= -0.13456922\\
+\end{equation}
+$$ 
+La estimación de $\sigma^{2}$ $$
+\boldsymbol{Y'Y}= \sum_{i=1}^{15}y_{i}^{2}=5360 
 $$ $$
-\boldsymbol{\hat{\beta}'X'Y}=
+\boldsymbol{\hat{\beta}'X'Y}= 
 $$ $$
 \boldsymbol{\hat{\beta}'X'Y}=
 $$ Por lo tanto, la suma de cuadrados del error es:
@@ -903,16 +987,14 @@ $$
 H_{0}:\beta_{j}≠0
 (\#eq:hipotesis-alternativa-coeficiente) 
 \end{equation}
-$$
-Si no se rechaza $H_{0}:\beta_{j}=0$,entonces esto indica que la variable regresora $x_{j}$ puede eliminarse del modelo. El estadístico de prueba para esta hipótesis es:
+$$ Si no se rechaza $H_{0}:\beta_{j}=0$,entonces esto indica que la variable regresora $x_{j}$ puede eliminarse del modelo. El estadístico de prueba para esta hipótesis es:
 
 $$
 \begin{equation}
 t_{0}=\frac{\hat{\beta_{j}}}{\sqrt{\hat{\sigma}^{2}C_{jj}}}
 (\#eq:estadistico-t)
 \end{equation}
-$$ 
-donde $C_{jj}$ es el elemento de la diagonal principal de $\boldsymbol{(X'X)^{-1}}$ que corresponde a $\hat{\beta_{j}}$
+$$ donde $C_{jj}$ es el elemento de la diagonal principal de $\boldsymbol{(X'X)^{-1}}$ que corresponde a $\hat{\beta_{j}}$
 
 Decisión: Se rechaza $H_{0}$ si $|t_{0}|>t_{1-\alpha/2;n-p}$
 
@@ -995,4 +1077,36 @@ $$
 \end{equation}
 $$
 
+Ejemplo 2
+
+Como ilustración vamos a usar los datos del ejemplo 14.3 del libro de @canavos1987probabilidad. En el cual los autores ajustan un modelo de regresión lineal múltiple para predecir el costo unitario de fabricación de uno de sus productos como una función de la tasa de producción y de los costos de material y mano de obra.
+
+El objetivo es obtener:
+
+-   IC del 95% para $E(Y|x_{0})$ cuando $x_{0}=13 $
+
+-   IC del 95% para $E(Y|x_{0})$ cuando $x_{0}=13$
+
+-   IC del 90% para $E(Y|x_{0})$ cuando $x_{0}=3$
+
+-   Cree el diagrama de dispersión agregando las líneas de los IC de 95% para $E(Y|x_{0})$ y $\hat{Y}_{0}$
+
+Solución
+
+Se cargan los datos
+```{r}
+y <- c(13.59,15.71,15.97,20.21,24.64,21.25,18.94,14.85,15.18,16.30,15.93,16.45,19.02,18.16,18.57,17.01,18.03,19.22,21.12,23.32)
+x1 <- c(87,78,81,65,51,62,70,91,94,100,102,82,74,85,86,90,93,81,72,60)
+x2 <- c(80,95,106,115,128,128,115,92,93,111,116,117,127,133,135,136,140,142,148,150)
+datos2 <- data.frame(y,x1,x2)
+library(kableExtra)
+knitr::kable(datos2,booktabs = TRUE, align = "c", caption = "Datos de la regresion  multiple para la empresa manufacturera") %>%
+  kable_styling()  %>%
+  kable_classic_2("hover")
+```
+Luego se ajusta el modelo
+
+```{r}
+modelo2 <- lm(y ~ x1 + x2, data=datos2)
+```
 

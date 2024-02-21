@@ -23,7 +23,7 @@
 <meta name="author" content="Sebastian Zabala" />
 
 
-<meta name="date" content="2024-02-20" />
+<meta name="date" content="2024-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -250,8 +250,11 @@ y=\beta _{0} + \beta _{1}X _{1} + \beta _{2}X _{2} + ... + + \beta _{k}X _{k} + 
 \end{equation}
 \]</span></p>
 <p>Se acostumbra presentar los datos de una regresión múltiple en una tabla tal, como sigue:</p>
-<p>$$</p>
-<p>$$</p>
+<p>$$
+<span class="math display">\[\begin{equation}
+
+\end{equation}\]</span>
+$$</p>
 <p>Cada observación <span class="math inline">\((x_{i1}, x_{i2}x_{i3},...x_{ik}, y_{i})\)</span> satisface el modelo, es decir:</p>
 <p><span class="math display" id="eq:el-modelo-de-regresión-múltiple-estimado">\[
 \begin{equation}
@@ -263,7 +266,8 @@ y_{i}=\beta_{0}+\beta_{1}x_{i1}+\beta_{2}x_{i2}+ ... + \beta_{k}x_{ik}+\varepsil
 \begin{equation}
 y_{i}=\beta_{0}+\sum_{j=1}^{k}\beta_{j}x_{ij} + \varepsilon_{i}\hspace{0.9cm} i=1,2,...,n
 \end{equation}
-\]</span> donde: <span class="math inline">\(y_i\)</span> es la i-esima observación de ;a respuesta para un conjunto de valores <span class="math inline">\(x_{i1},x_{i2},..,x_{ik}\)</span> de las variables de predicción, <span class="math inline">\(\varepsilon_{i}\)</span> es el error aleatorio no observable asociado con <span class="math inline">\(y_{i}\)</span> y <span class="math inline">\(\beta_{0},\beta_{1},\beta_{2},...,\beta_{k}\)</span> son <span class="math inline">\(p = k + 1\)</span> parámetros lineales desconocidos.</p>
+\]</span>
+donde: <span class="math inline">\(y_i\)</span> es la i-esima observación de ;a respuesta para un conjunto de valores <span class="math inline">\(x_{i1},x_{i2},..,x_{ik}\)</span> de las variables de predicción, <span class="math inline">\(\varepsilon_{i}\)</span> es el error aleatorio no observable asociado con <span class="math inline">\(y_{i}\)</span> y <span class="math inline">\(\beta_{0},\beta_{1},\beta_{2},...,\beta_{k}\)</span> son <span class="math inline">\(p = k + 1\)</span> parámetros lineales desconocidos.</p>
 <p>Si supone el caso de la teoría basada en el modelo normal, las observaciones son variables aleatorias independientes, normalmente distribuidas con:</p>
 <p><span class="math display" id="eq:modelo-normal-de-variables">\[
 \begin{equation}
@@ -279,29 +283,36 @@ i =1,2,..,n \\
 \begin{equation}
 L=\sum_{i=1}^{n}\varepsilon_{i}^2
 \end{equation}
-\]</span> donde <span class="math inline">\(\varepsilon_{i}=y_{i}-\beta_{0}-\sum_{i=1}^{k}\beta_{j}x_{ij}\)</span></p>
+\]</span> donde
+<span class="math inline">\(\varepsilon_{i}=y_{i}-\beta_{0}-\sum_{i=1}^{k}\beta_{j}x_{ij}\)</span></p>
+<p>$$
+L= _{i=1}<sup>n(y_i-<em>{0}-</em>{j}x_{ij})</sup>2 //</p>
+<p>$$
+Derivando L con respecto a <span class="math inline">\(\beta_{0},\beta_{1},\beta_{2},...,\beta_{k}\)</span> ,se tiene</p>
 <p><span class="math display">\[
-L= \sum_{i=1}^n(y_i-\beta_{0}-\sum_{j}x_{ij})^2
-\]</span> Derivando L con respecto a <span class="math inline">\(\beta_{0},\beta_{1},\beta_{2},...,\beta_{k}\)</span> ,se tiene</p>
-<p><span class="math display">\[
-\frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})
-\]</span> y</p>
-<p><span class="math display">\[
+\frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij}) \\
+y \\
 \frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})x_{ij} \hspace{5.0cm} j =1,2,..,k
-\]</span> Al igualar a cero a estas estimaciones de mínimos cuadrados, se obtiene:</p>
+\]</span>
+Al igualar a cero a estas estimaciones de mínimos cuadrados, se obtiene:</p>
 <p><span class="math display">\[
--2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})=0
-\]</span> <span class="math display">\[
+-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})=0 \\
 \frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})x_{ij}=0 \hspace{5.0cm} j =1,2,..,k
-\]</span> Después de simplificar las ecuaciones anteriores, se obtienen las ecuaciones normlaes de mínimos cuadrados ordinarios.</p>
+\]</span></p>
+<p>Después de simplificar las ecuaciones anteriores, se obtienen las ecuaciones normales de mínimos cuadrados ordinarios.</p>
 <p><span class="math display">\[
-n\hat{\beta_{0}} + \hat{\beta_{1}}\sum_{i=i}^nx_{i1}   + \hat{\beta_{2}}\sum_{i=i}^nx_{i2} +...+ \hat{\beta_{k}}\sum_{i=i}^nx_{ik} = \sum_{i=1}^ny_i
-\]</span> <span class="math display">\[
+\begin{equation}
+n\hat{\beta_{0}} + \hat{\beta_{1}}\sum_{i=i}^nx_{i1}   + \hat{\beta_{2}}\sum_{i=i}^nx_{i2} +...+ \hat{\beta_{k}}\sum_{i=i}^nx_{ik} = \sum_{i=1}^ny_i \\
 \hat{\beta_{0}}\sum_{i=i}^nx_{i1}  + \hat{\beta_{1}}\sum_{i=i}^nx_{i1}^2   + \hat{\beta_{2}}\sum_{i=i}^nx_{i1}x_{i2} +...+ \hat{\beta_{k}}\sum_{i=i}^nx_{i1}x_{ik}= \sum_{i=1}^nx_{i1}y_i
-\]</span> <span class="math display">\[
+\end{equation}
+\]</span>
+<span class="math display">\[
 \vdots  \vdots   \vdots  \vdots  \vdots
-\]</span> <span class="math display">\[
+\]</span>
+<span class="math display">\[
+\begin{equation}
 \hat{\beta_{0}}\sum_{i=i}^nx_{ik}  + \hat{\beta_{1}}\sum_{i=i}^nx_{ik}x_{i1}   + \hat{\beta_{2}}\sum_{i=i}^nx_{ik}x_{i2} +...+ \hat{\beta_{k}}\sum_{i=i}^nx_{ik}^2= \sum_{i=1}^nx_{i1}y_i
+\end{equation}
 \]</span></p>
 <p>Nótese que existen <span class="math inline">\(p = k +1\)</span> ecuaciones normales, una para cada coeficiente de regresion desconocido. La solución de las ecuaciones normales son los estimadores mínimos cuadrados de los coeficientes de regresion <span class="math inline">\(\hat{\beta_{0}},\hat{\beta_{1}},...,\hat{\beta_{k}}\)</span>. La solución de las ecuaciones normales puede obtenerse con cualquier método apropiado para la solución de sistemas de ecuaciones lineales.</p>
 </div>
@@ -572,8 +583,8 @@ Ingreso Nacional
 <span id="cb4-3"><a href="modelos-de-regresión-lineal-múltiple.html#cb4-3" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">scene =</span> <span class="fu">list</span>(<span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;Publicidad (en miles de dolares)&#39;</span>),</span>
 <span id="cb4-4"><a href="modelos-de-regresión-lineal-múltiple.html#cb4-4" tabindex="-1"></a>                      <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;Ingreso nacional (en billones de dolares)&#39;</span>),</span>
 <span id="cb4-5"><a href="modelos-de-regresión-lineal-múltiple.html#cb4-5" tabindex="-1"></a>                      <span class="at">zaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;Pasajeros (en miles)&#39;</span>)))</span></code></pre></div>
-<div class="plotly html-widget html-fill-item" id="htmlwidget-a0f942d213d57be4432e" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-a0f942d213d57be4432e">{"x":{"visdat":{"77a839f657d3":["function () ","plotlyVisDat"]},"cur_data":"77a839f657d3","attrs":{"77a839f657d3":{"x":[10,12,8,17,10,15,10,14,19,10,11,13,16,10,12],"y":[2.3999999999999999,2.7200000000000002,2.0800000000000001,3.6800000000000002,2.5600000000000001,3.3599999999999999,2.2400000000000002,3.2000000000000002,3.8399999999999999,2.7200000000000002,2.0699999999999998,2.3300000000000001,2.98,1.9399999999999999,2.1699999999999999],"z":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16],"color":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"Publicidad (en miles de dolares)"},"yaxis":{"title":"Ingreso nacional (en billones de dolares)"},"zaxis":{"title":"Pasajeros (en miles)"}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[10,12,8,17,10,15,10,14,19,10,11,13,16,10,12],"y":[2.3999999999999999,2.7200000000000002,2.0800000000000001,3.6800000000000002,2.5600000000000001,3.3599999999999999,2.2400000000000002,3.2000000000000002,3.8399999999999999,2.7200000000000002,2.0699999999999998,2.3300000000000001,2.98,1.9399999999999999,2.1699999999999999],"z":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16],"type":"scatter3d","mode":"markers","marker":{"colorbar":{"title":"","ticklen":2},"cmin":13,"cmax":25,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16],"line":{"colorbar":{"title":"","ticklen":2},"cmin":13,"cmax":25,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16]}},"frame":null},{"x":[8,19],"y":[1.9399999999999999,3.8399999999999999],"type":"scatter3d","mode":"markers","opacity":0,"hoverinfo":"none","showlegend":false,"marker":{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"cmin":13,"cmax":25,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"color":[13,25],"line":{"color":"rgba(255,127,14,1)"}},"z":[13,25],"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-db51540c10a74923ad01" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-db51540c10a74923ad01">{"x":{"visdat":{"49c4665e7218":["function () ","plotlyVisDat"]},"cur_data":"49c4665e7218","attrs":{"49c4665e7218":{"x":[10,12,8,17,10,15,10,14,19,10,11,13,16,10,12],"y":[2.3999999999999999,2.7200000000000002,2.0800000000000001,3.6800000000000002,2.5600000000000001,3.3599999999999999,2.2400000000000002,3.2000000000000002,3.8399999999999999,2.7200000000000002,2.0699999999999998,2.3300000000000001,2.98,1.9399999999999999,2.1699999999999999],"z":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16],"color":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"Publicidad (en miles de dolares)"},"yaxis":{"title":"Ingreso nacional (en billones de dolares)"},"zaxis":{"title":"Pasajeros (en miles)"}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[10,12,8,17,10,15,10,14,19,10,11,13,16,10,12],"y":[2.3999999999999999,2.7200000000000002,2.0800000000000001,3.6800000000000002,2.5600000000000001,3.3599999999999999,2.2400000000000002,3.2000000000000002,3.8399999999999999,2.7200000000000002,2.0699999999999998,2.3300000000000001,2.98,1.9399999999999999,2.1699999999999999],"z":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16],"type":"scatter3d","mode":"markers","marker":{"colorbar":{"title":"","ticklen":2},"cmin":13,"cmax":25,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16],"line":{"colorbar":{"title":"","ticklen":2},"cmin":13,"cmax":25,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16]}},"frame":null},{"x":[8,19],"y":[1.9399999999999999,3.8399999999999999],"type":"scatter3d","mode":"markers","opacity":0,"hoverinfo":"none","showlegend":false,"marker":{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"cmin":13,"cmax":25,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"color":[13,25],"line":{"color":"rgba(255,127,14,1)"}},"z":[13,25],"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p>Otro gráfico de dispersión en 3d se puede construir usando el paquete <code>rgl</code>. A continuación está el código para obtener el diagrama de dispersión.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb5-1" tabindex="-1"></a><span class="fu">library</span>(rgl)</span>
 <span id="cb5-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb5-2" tabindex="-1"></a><span class="fu">plot3d</span>(<span class="at">x=</span>publicidad, <span class="at">y=</span>ingreso_nacional, <span class="at">z=</span>pasajeros, <span class="at">type=</span><span class="st">&#39;s&#39;</span>, <span class="at">col=</span><span class="st">&#39;green&#39;</span>,</span>
@@ -588,7 +599,7 @@ Pasajeros \sim N(\mu_{i},\sigma^{2}),\\
 \sigma^{2} = constante
 \end{equation}
 \]</span></p>
-<p>Así se crea el modelo de regresión múltiple ajustado con código:</p>
+<p>Así se crea el modelo de regresión múltiple ajustado en R:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb6-1" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
 <span id="cb6-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb6-2" tabindex="-1"></a><span class="co"># Ajustar un modelo de regresión lineal múltiple</span></span>
 <span id="cb6-3"><a href="modelos-de-regresión-lineal-múltiple.html#cb6-3" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(pasajeros <span class="sc">~</span> publicidad <span class="sc">+</span> ingreso_nacional, <span class="at">data =</span> datos)</span>
@@ -670,45 +681,50 @@ Pasajeros \sim N(\mu_{i},\sigma^{2}),\\
 <span id="cb15-4"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-4" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la variable dependiente (Y)</span></span>
 <span id="cb15-5"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-5" tabindex="-1"></a>sum_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Pasajeros)</span>
 <span id="cb15-6"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-6" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-7" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la primera variable independiente (X1: Publicidad)</span></span>
-<span id="cb15-8"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-8" tabindex="-1"></a>sum_x1 <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Publicidad)</span>
+<span id="cb15-7"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-7" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la variable dependiente al cuadrado (Y)</span></span>
+<span id="cb15-8"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-8" tabindex="-1"></a>sum_y_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Pasajeros<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb15-9"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-9" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-10" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la segunda variable independiente (X2: Ingreso Nacional)</span></span>
-<span id="cb15-11"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-11" tabindex="-1"></a>sum_x2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span><span class="st">`</span><span class="at">Ingreso Nacional</span><span class="st">`</span>)</span>
+<span id="cb15-10"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-10" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la primera variable independiente (X1: Publicidad)</span></span>
+<span id="cb15-11"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-11" tabindex="-1"></a>sum_x1 <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Publicidad)</span>
 <span id="cb15-12"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-12" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-13" tabindex="-1"></a><span class="co"># Sumatoria de la columna de los cuadrados de la primera variable independiente (X1^2)</span></span>
-<span id="cb15-14"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-14" tabindex="-1"></a>sum_x1_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Publicidad<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb15-13"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-13" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la segunda variable independiente (X2: Ingreso Nacional)</span></span>
+<span id="cb15-14"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-14" tabindex="-1"></a>sum_x2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span><span class="st">`</span><span class="at">Ingreso Nacional</span><span class="st">`</span>)</span>
 <span id="cb15-15"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-15" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-16" tabindex="-1"></a><span class="co"># Sumatoria de la columna de los cuadrados de la segunda variable independiente (X1^2)</span></span>
-<span id="cb15-17"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-17" tabindex="-1"></a>sum_x2_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span><span class="st">`</span><span class="at">Ingreso Nacional</span><span class="st">`</span><span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb15-16"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-16" tabindex="-1"></a><span class="co"># Sumatoria de la columna de los cuadrados de la primera variable independiente (X1^2)</span></span>
+<span id="cb15-17"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-17" tabindex="-1"></a>sum_x1_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Publicidad<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb15-18"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-18" tabindex="-1"></a></span>
-<span id="cb15-19"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-19" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la multiplicación entre X1 y X2</span></span>
-<span id="cb15-20"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-20" tabindex="-1"></a>sum_x1_x2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Publicidad <span class="sc">*</span> datos<span class="sc">$</span><span class="st">`</span><span class="at">Ingreso Nacional</span><span class="st">`</span>)</span>
+<span id="cb15-19"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-19" tabindex="-1"></a><span class="co"># Sumatoria de la columna de los cuadrados de la segunda variable independiente (X1^2)</span></span>
+<span id="cb15-20"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-20" tabindex="-1"></a>sum_x2_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span><span class="st">`</span><span class="at">Ingreso Nacional</span><span class="st">`</span><span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb15-21"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-21" tabindex="-1"></a></span>
-<span id="cb15-22"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-22" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la multiplicación entre X1 y Y</span></span>
-<span id="cb15-23"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-23" tabindex="-1"></a>sum_x1_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Publicidad <span class="sc">*</span> datos<span class="sc">$</span>Pasajeros)</span>
+<span id="cb15-22"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-22" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la multiplicación entre X1 y X2</span></span>
+<span id="cb15-23"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-23" tabindex="-1"></a>sum_x1_x2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Publicidad <span class="sc">*</span> datos<span class="sc">$</span><span class="st">`</span><span class="at">Ingreso Nacional</span><span class="st">`</span>)</span>
 <span id="cb15-24"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-24" tabindex="-1"></a></span>
-<span id="cb15-25"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-25" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la multiplicación entre X2 y Y</span></span>
-<span id="cb15-26"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-26" tabindex="-1"></a>sum_x2_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span><span class="st">`</span><span class="at">Ingreso Nacional</span><span class="st">`</span> <span class="sc">*</span> datos<span class="sc">$</span>Pasajeros)</span>
+<span id="cb15-25"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-25" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la multiplicación entre X1 y Y</span></span>
+<span id="cb15-26"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-26" tabindex="-1"></a>sum_x1_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Publicidad <span class="sc">*</span> datos<span class="sc">$</span>Pasajeros)</span>
 <span id="cb15-27"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-27" tabindex="-1"></a></span>
-<span id="cb15-28"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-28" tabindex="-1"></a><span class="co"># Imprimir los resultados</span></span>
-<span id="cb15-29"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-29" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Numero total de observaciones:&quot;</span>, num_observaciones, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<span id="cb15-28"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-28" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la multiplicación entre X2 y Y</span></span>
+<span id="cb15-29"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-29" tabindex="-1"></a>sum_x2_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span><span class="st">`</span><span class="at">Ingreso Nacional</span><span class="st">`</span> <span class="sc">*</span> datos<span class="sc">$</span>Pasajeros)</span>
+<span id="cb15-30"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-30" tabindex="-1"></a></span>
+<span id="cb15-31"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-31" tabindex="-1"></a><span class="co"># Imprimir los resultados</span></span>
+<span id="cb15-32"><a href="modelos-de-regresión-lineal-múltiple.html#cb15-32" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Numero total de observaciones:&quot;</span>, num_observaciones, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Numero total de observaciones: 15</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb17-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de Y:&quot;</span>, sum_y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Sumatoria de la columna de Y: 278</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb19-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X1:&quot;</span>, sum_x1, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb19-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de Y al cuadrado:&quot;</span>, sum_y_squared, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## Sumatoria de la columna de Y al cuadrado: 5360</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb21-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X1:&quot;</span>, sum_x1, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Sumatoria de la columna de X1: 187</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb21-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X2:&quot;</span>, sum_x2, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb23-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X2:&quot;</span>, sum_x2, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Sumatoria de la columna de X2: 40.29</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb23-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X1^2:&quot;</span>, sum_x1_squared, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb25-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X1^2:&quot;</span>, sum_x1_squared, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Sumatoria de la columna de X1^2: 2469</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb25-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X2^2:&quot;</span>, sum_x2_squared, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb27-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X2^2:&quot;</span>, sum_x2_squared, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Sumatoria de la columna de X2^2: 113.3387</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb27-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X1 * X2:&quot;</span>, sum_x1_x2, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb29-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X1 * X2:&quot;</span>, sum_x1_x2, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Sumatoria de la columna de X1 * X2: 525.38</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb29-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X1 * Y:&quot;</span>, sum_x1_y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb31-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X1 * Y:&quot;</span>, sum_x1_y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Sumatoria de la columna de X1 * Y: 3590</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb31-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X2 * Y:&quot;</span>, sum_x2_y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb33-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Sumatoria de la columna de X2 * Y:&quot;</span>, sum_x2_y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Sumatoria de la columna de X2 * Y: 766.02</code></pre>
 <p><span class="math display">\[
 n\hat{\beta_{0}} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1} + \hat{\beta_{i2}}\sum_{i=1}^nx_{i2} = \sum_{i=1}^ny_{i} \\
@@ -720,27 +736,25 @@ n\hat{\beta_{0}} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1} + \hat{\beta_{i2}}\sum_{i=1
 15\hat{\beta_{0}} + 187\hat{\beta_{1}}  + 40.29\hat{\beta_{i2}} = 278 \\
 187\hat{\beta_{0}} + 2469\hat{\beta_{1}} + 525.38\hat{\beta_{i2}} = 3590  \\
 40.29\hat{\beta_{0}} + 525.38\hat{\beta_{1}} + 113.3387\hat{\beta_{i2}} = 766.02
-\]</span>
-La solución de este conjunto de ecuaciones es:</p>
+\]</span> La solución de este conjunto de ecuaciones es:</p>
 <p><span class="math display" id="eq:coefs-beta-valores-estimados">\[
 \hat{\beta_{0}}= 8.015345 \\
 \hat{\beta_{1}}= 1.107798 \\
 \hat{\beta_{2}}= -1.225824 \\
 \tag{1.4}
-\]</span>
-Lo cual se hace con R de la siguiente manera:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb33-1" tabindex="-1"></a><span class="co"># Definir la matriz de coeficientes (lado izquierdo del sistema)</span></span>
-<span id="cb33-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb33-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(pasajeros)</span>
-<span id="cb33-3"><a href="modelos-de-regresión-lineal-múltiple.html#cb33-3" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(n, sum_x1, sum_x2, sum_x1, sum_x1_squared, sum_x1_x2, sum_x2, sum_x1_x2, sum_x2_squared), <span class="at">ncol =</span> <span class="dv">3</span>)</span>
-<span id="cb33-4"><a href="modelos-de-regresión-lineal-múltiple.html#cb33-4" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="modelos-de-regresión-lineal-múltiple.html#cb33-5" tabindex="-1"></a><span class="co"># Definir el vector del lado derecho del sistema</span></span>
-<span id="cb33-6"><a href="modelos-de-regresión-lineal-múltiple.html#cb33-6" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">c</span>(sum_y, sum_x1_y, sum_x2_y)</span>
-<span id="cb33-7"><a href="modelos-de-regresión-lineal-múltiple.html#cb33-7" tabindex="-1"></a></span>
-<span id="cb33-8"><a href="modelos-de-regresión-lineal-múltiple.html#cb33-8" tabindex="-1"></a><span class="co"># Resolver el sistema de ecuaciones lineales</span></span>
-<span id="cb33-9"><a href="modelos-de-regresión-lineal-múltiple.html#cb33-9" tabindex="-1"></a>coefs_beta <span class="ot">&lt;-</span> <span class="fu">solve</span>(A, B)</span>
-<span id="cb33-10"><a href="modelos-de-regresión-lineal-múltiple.html#cb33-10" tabindex="-1"></a></span>
-<span id="cb33-11"><a href="modelos-de-regresión-lineal-múltiple.html#cb33-11" tabindex="-1"></a><span class="co"># Imprimir los coeficientes estimados</span></span>
-<span id="cb33-12"><a href="modelos-de-regresión-lineal-múltiple.html#cb33-12" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Coeficientes estimados (beta0, beta1, beta2):&quot;</span>, coefs_beta, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+\]</span> Lo cual se hace con R de la siguiente manera:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-1" tabindex="-1"></a><span class="co"># Definir la matriz de coeficientes (lado izquierdo del sistema)</span></span>
+<span id="cb35-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(pasajeros)</span>
+<span id="cb35-3"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-3" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(n, sum_x1, sum_x2, sum_x1, sum_x1_squared, sum_x1_x2, sum_x2, sum_x1_x2, sum_x2_squared), <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb35-4"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-4" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-5" tabindex="-1"></a><span class="co"># Definir el vector del lado derecho del sistema</span></span>
+<span id="cb35-6"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-6" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">c</span>(sum_y, sum_x1_y, sum_x2_y)</span>
+<span id="cb35-7"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-7" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-8" tabindex="-1"></a><span class="co"># Resolver el sistema de ecuaciones lineales</span></span>
+<span id="cb35-9"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-9" tabindex="-1"></a>coefs_beta <span class="ot">&lt;-</span> <span class="fu">solve</span>(A, B)</span>
+<span id="cb35-10"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-10" tabindex="-1"></a></span>
+<span id="cb35-11"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-11" tabindex="-1"></a><span class="co"># Imprimir los coeficientes estimados</span></span>
+<span id="cb35-12"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-12" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Coeficientes estimados (beta0, beta1, beta2):&quot;</span>, coefs_beta, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Coeficientes estimados (beta0, beta1, beta2): 8.015345 1.107798 -1.225824</code></pre>
 <p>Por lo tanto, la ecuación de regresión ajustada es:</p>
 <p><span class="math display">\[
@@ -748,20 +762,19 @@ Lo cual se hace con R de la siguiente manera:</p>
 \hat{Y} = 8.0153 + 1.1078x_{1} - 1.2258x_{2}
 \end{equation}
 \]</span></p>
-<p>Como se puede observar de ambas maneras se llega al mismo resultado (ya que internamente la función <code>lm()</code> realiza eso).
-Finalmente, esta ecuación puede emplearse para predecir el numero de pasajeros para pares de valores de las variables de regresion, publicidad e ingreso nacional.</p>
+<p>Como se puede observar de ambas maneras se llega al mismo resultado (ya que internamente la función <code>lm()</code> realiza eso). Finalmente, esta ecuación puede emplearse para predecir el numero de pasajeros para pares de valores de las variables de regresion, publicidad e ingreso nacional.</p>
 </div>
 <div id="Enfoque-matricial" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> Enfoque matricial para un modelo de regresión lineal múltiple<a href="modelos-de-regresión-lineal-múltiple.html#Enfoque-matricial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Al ajustar un modelo de regresión lineal múltiple es mucho mas conveniente expresar las operaciones matemáticas en forma matricial, ya que simplifica en gran medida la presentación.</p>
 <p>Dada una muestra aleatoria de observaciones <span class="math inline">\(Y_{1},Y_{2},...,Y_{n}\)</span> en los puntos de observación <span class="math inline">\(x_{11},x_{12},...,x_{1k},x_{21},x_{22},...,x_{2k},...,x_{n1},x_{n2},...,x_{nk}\)</span>, respectivamente, con base en el modelo lineal general, se tienen las n ecuaciones siguientes:</p>
-<p>$$ <span class="math display">\[\begin{equation}
-
+<p><span class="math display">\[ \begin{equation}
 Y_{1}=\beta _{0} + \beta _{1}X _{11} + \beta _{2}X _{12} + ... + + \beta _{k}X _{1k} + \varepsilon_{1} \\
 Y_{2}=\beta _{0} + \beta _{1}X _{21} + \beta _{2}X _{22} + ... + + \beta _{k}X _{2k} + \varepsilon_{2} \\
 \vdots \\
 Y_{n}=\beta _{0} + \beta _{1}X _{n1} + \beta _{2}X _{n2} + ... + + \beta _{k}X _{nk} + \varepsilon_{n}
-\end{equation}\]</span> $$</p>
+\end{equation}
+\]</span></p>
 <p>Como resultado, el modelo lineal múltiple también puede expresarse en forma matricial como:</p>
 <p><span class="math display" id="eq:el-modelo-de-regresión-múltiple-matricial">\[
 \begin{equation}
@@ -909,27 +922,22 @@ E(\boldsymbol{\varepsilon\varepsilon&#39;})=\sigma^2\boldsymbol{I}
 \frac{
 \partial \sum_{i=1}^n\varepsilon_{i}^2}{\partial x} \Bigg|_{\hat{\beta}}= \boldsymbol{X&#39;Y+X&#39;X\hat{\beta}+\hat{\beta}&#39;X&#39;X=-2X&#39;Y+2X&#39;X\hat{\beta}=0}
 \end{equation}
-\]</span>
-Simplificando, se tiene:</p>
+\]</span> Simplificando, se tiene:</p>
 <p><span class="math display">\[
 \begin{equation}
 \boldsymbol{X&#39;X\hat{\beta}=X&#39;Y}
 \end{equation}
-\]</span>
-Estas ecuaciones son llamadas <strong>ecuaciones normales mínimos cuadrados</strong>. Para resolver dichas ecuaciones se premultiplicando ambos lados por la inversa de la matriz <span class="math inline">\(\boldsymbol{X&#39;X}\)</span> por lo tanto la expresión matricial para obtener los estimadores mínimos cuadrados <span class="math inline">\(\hat{\beta_{0}}\)</span> y <span class="math inline">\(\hat{\beta_{1}}\)</span>, viene dada por:</p>
+\]</span> Estas ecuaciones son llamadas <strong>ecuaciones normales mínimos cuadrados</strong>. Para resolver dichas ecuaciones se premultiplicando ambos lados por la inversa de la matriz <span class="math inline">\(\boldsymbol{X&#39;X}\)</span> por lo tanto la expresión matricial para obtener los estimadores mínimos cuadrados <span class="math inline">\(\hat{\beta_{0}}\)</span> y <span class="math inline">\(\hat{\beta_{1}}\)</span>, viene dada por:</p>
 <p><span class="math display">\[
 \begin{equation}
 \boldsymbol{(X&#39;X)^{-1}(X&#39;X)\hat{\beta}=(X&#39;X)^{-1}X&#39;Y}
 \end{equation}
-\]</span>
-<span class="math display">\[
+\]</span> <span class="math display">\[
 \begin{equation}
 \boldsymbol{\hat{\beta}=(X&#39;X)^{-1}X&#39;Y}
 \end{equation}
-\]</span>
-La forma matricial de este modelo es: <span class="math inline">\(\boldsymbol{\hat{Y}=X\hat{\beta}}\)</span></p>
-<p>Este vector de valores estimados se puede escribir así:
-<span class="math display">\[
+\]</span> La forma matricial de este modelo es: <span class="math inline">\(\boldsymbol{\hat{Y}=X\hat{\beta}}\)</span></p>
+<p>Este vector de valores estimados se puede escribir así: <span class="math display">\[
 \begin{equation}
 \boldsymbol{\hat{Y}=X(X&#39;X)^{-1}X&#39;Y}
 \end{equation}
@@ -939,8 +947,7 @@ La forma matricial de este modelo es: <span class="math inline">\(\boldsymbol{\h
 \boldsymbol{\hat{Y}=HY}
 \tag{1.9}
 \end{equation}
-\]</span>
-La matriz <span class="math inline">\(\boldsymbol{H=X(X&#39;X)^{-1}X&#39;}\)</span> es llamada usualmente matriz “sombrero” de orden n x n</p>
+\]</span> La matriz <span class="math inline">\(\boldsymbol{H=X(X&#39;X)^{-1}X&#39;}\)</span> es llamada usualmente matriz “sombrero” de orden n x n</p>
 <p>Las diferencias entre los valores observados <span class="math inline">\(y_{i}\)</span> y los valores estimados <span class="math inline">\(\hat{y_{i}}\)</span> son los residuales <span class="math inline">\(e_{i}=y_{i}-\hat{y_{i}}\)</span>. Los residuales pueden escribirse matricialmente así:</p>
 <p><span class="math display" id="eq:vector-residuos-regresion-lineal">\[
 \begin{equation}
@@ -956,13 +963,11 @@ La matriz <span class="math inline">\(\boldsymbol{H=X(X&#39;X)^{-1}X&#39;}\)</sp
 <p><span class="math display">\[
 \boldsymbol{(I-H)Y}
 \]</span></p>
-<p>En el ejemplo anterior se ilustro el ajuste del modelo de regresión múltiple.
-<span class="math display">\[
+<p>En el ejemplo anterior se ilustro el ajuste del modelo de regresión múltiple. <span class="math display">\[
 \begin{equation}
 y=\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+\varepsilon
 \end{equation}
-\]</span>
-Donde <span class="math inline">\(y\)</span> es el numero de pasajeros observado que escogen viajar por Hop Scotch, <span class="math inline">\(x_{1}\)</span> es el gasto en publicidad y <span class="math inline">\(x_{2}\)</span> es el ingreso nacional. Ahora se utilizara el enfoque matricial para ajustar el modelo de regresión anterior a este conjunto de datos. La matriz <span class="math inline">\(\boldsymbol{X}\)</span> y el vector <span class="math inline">\(\boldsymbol{Y}\)</span> para este modelo son:</p>
+\]</span> Donde <span class="math inline">\(y\)</span> es el numero de pasajeros observado que escogen viajar por Hop Scotch, <span class="math inline">\(x_{1}\)</span> es el gasto en publicidad y <span class="math inline">\(x_{2}\)</span> es el ingreso nacional. Ahora se utilizara el enfoque matricial para ajustar el modelo de regresión anterior a este conjunto de datos. La matriz <span class="math inline">\(\boldsymbol{X}\)</span> y el vector <span class="math inline">\(\boldsymbol{Y}\)</span> para este modelo son:</p>
 <p><span class="math display" id="eq:matrices-regresion-multiple">\[
 \begin{equation}
 \boldsymbol{X} = \begin{bmatrix}
@@ -981,8 +986,7 @@ Donde <span class="math inline">\(y\)</span> es el numero de pasajeros observado
 \end{bmatrix}_{15x1}
 \tag{1.11}
 \end{equation}
-\]</span>
-La matriz <span class="math inline">\(\boldsymbol{X&#39;X}\)</span> es</p>
+\]</span> La matriz <span class="math inline">\(\boldsymbol{X&#39;X}\)</span> es</p>
 <p><span class="math display">\[
 \begin{equation}
 \boldsymbol{X&#39;X}=\begin{bmatrix}
@@ -1002,13 +1006,12 @@ La matriz <span class="math inline">\(\boldsymbol{X&#39;X}\)</span> es</p>
 40.29  &amp;  525.38 &amp; 113.3387
 \end{bmatrix}
 \end{equation}
-\]</span>
-En R se hace de la siguiente manera:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-1" tabindex="-1"></a>identidad <span class="ot">&lt;-</span>  <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">15</span>)</span>
-<span id="cb35-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-2" tabindex="-1"></a>publicidad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">8</span>,<span class="dv">17</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">14</span>,<span class="dv">19</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">16</span>,<span class="dv">10</span>,<span class="dv">12</span>)</span>
-<span id="cb35-3"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-3" tabindex="-1"></a>ingreso_nacional <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.4</span>,<span class="fl">2.72</span>,<span class="fl">2.08</span>,<span class="fl">3.68</span>,<span class="fl">2.56</span>,<span class="fl">3.36</span>,<span class="fl">2.24</span>,<span class="fl">3.2</span>,<span class="fl">3.84</span>,<span class="fl">2.72</span>,<span class="fl">2.07</span>,<span class="fl">2.33</span>,<span class="fl">2.98</span>,<span class="fl">1.94</span>,<span class="fl">2.17</span>)</span>
-<span id="cb35-4"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-4" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">cbind</span>(identidad,publicidad, ingreso_nacional)</span>
-<span id="cb35-5"><a href="modelos-de-regresión-lineal-múltiple.html#cb35-5" tabindex="-1"></a>x</span></code></pre></div>
+\]</span> En R se hace de la siguiente manera:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb37-1" tabindex="-1"></a>identidad <span class="ot">&lt;-</span>  <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">15</span>)</span>
+<span id="cb37-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb37-2" tabindex="-1"></a>publicidad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">8</span>,<span class="dv">17</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">14</span>,<span class="dv">19</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">16</span>,<span class="dv">10</span>,<span class="dv">12</span>)</span>
+<span id="cb37-3"><a href="modelos-de-regresión-lineal-múltiple.html#cb37-3" tabindex="-1"></a>ingreso_nacional <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.4</span>,<span class="fl">2.72</span>,<span class="fl">2.08</span>,<span class="fl">3.68</span>,<span class="fl">2.56</span>,<span class="fl">3.36</span>,<span class="fl">2.24</span>,<span class="fl">3.2</span>,<span class="fl">3.84</span>,<span class="fl">2.72</span>,<span class="fl">2.07</span>,<span class="fl">2.33</span>,<span class="fl">2.98</span>,<span class="fl">1.94</span>,<span class="fl">2.17</span>)</span>
+<span id="cb37-4"><a href="modelos-de-regresión-lineal-múltiple.html#cb37-4" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">cbind</span>(identidad,publicidad, ingreso_nacional)</span>
+<span id="cb37-5"><a href="modelos-de-regresión-lineal-múltiple.html#cb37-5" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>##       identidad publicidad ingreso_nacional
 ##  [1,]         1         10             2.40
 ##  [2,]         1         12             2.72
@@ -1025,8 +1028,8 @@ En R se hace de la siguiente manera:</p>
 ## [13,]         1         16             2.98
 ## [14,]         1         10             1.94
 ## [15,]         1         12             2.17</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb37-1" tabindex="-1"></a>x_transpuesta_x <span class="ot">&lt;-</span> <span class="fu">t</span>(x) <span class="sc">%*%</span> x</span>
-<span id="cb37-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb37-2" tabindex="-1"></a>x_transpuesta_x</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb39-1" tabindex="-1"></a>x_transpuesta_x <span class="ot">&lt;-</span> <span class="fu">t</span>(x) <span class="sc">%*%</span> x</span>
+<span id="cb39-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb39-2" tabindex="-1"></a>x_transpuesta_x</span></code></pre></div>
 <pre><code>##                  identidad publicidad ingreso_nacional
 ## identidad            15.00     187.00          40.2900
 ## publicidad          187.00    2469.00         525.3800
@@ -1051,8 +1054,8 @@ En R se hace de la siguiente manera:</p>
 \end{bmatrix}
 \end{equation}
 \]</span></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb39-1" tabindex="-1"></a>x_transpuesta_y <span class="ot">&lt;-</span> <span class="fu">t</span>(x) <span class="sc">%*%</span> pasajeros</span>
-<span id="cb39-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb39-2" tabindex="-1"></a>x_transpuesta_y</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb41-1" tabindex="-1"></a>x_transpuesta_y <span class="ot">&lt;-</span> <span class="fu">t</span>(x) <span class="sc">%*%</span> pasajeros</span>
+<span id="cb41-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb41-2" tabindex="-1"></a>x_transpuesta_y</span></code></pre></div>
 <pre><code>##                     [,1]
 ## identidad         278.00
 ## publicidad       3590.00
@@ -1064,6 +1067,7 @@ En R se hace de la siguiente manera:</p>
 \tag{1.12}
 \end{equation}
 \]</span>
+Entonces,
 <span class="math display">\[
 \begin{equation}
 \begin{bmatrix}
@@ -1095,11 +1099,300 @@ En R se hace de la siguiente manera:</p>
 -1.225824
 \end{bmatrix}
 \]</span></p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb41-1" tabindex="-1"></a><span class="fu">solve</span>(x_transpuesta_x) <span class="sc">%*%</span> x_transpuesta_y</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb43-1" tabindex="-1"></a>inv_x_transpuesta_x <span class="ot">&lt;-</span> <span class="fu">solve</span>(x_transpuesta_x)</span>
+<span id="cb43-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb43-2" tabindex="-1"></a>inv_x_transpuesta_x</span></code></pre></div>
+<pre><code>##                    identidad  publicidad ingreso_nacional
+## identidad         1.47945972 -0.01040009       -0.4777135
+## publicidad       -0.01040009  0.02982778       -0.1345692
+## ingreso_nacional -0.47771354 -0.13456922        0.8024360</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb45-1" tabindex="-1"></a>matriz_estimaciones_beta <span class="ot">&lt;-</span> <span class="fu">solve</span>(x_transpuesta_x) <span class="sc">%*%</span> x_transpuesta_y</span>
+<span id="cb45-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb45-2" tabindex="-1"></a>matriz_estimaciones_beta</span></code></pre></div>
 <pre><code>##                       [,1]
 ## identidad         8.015345
 ## publicidad        1.107798
 ## ingreso_nacional -1.225824</code></pre>
+<p>Por consiguiente, el modelo de regresión ajustado con los coeficientes de
+regresión:</p>
+<p><span class="math display">\[
+\begin{equation}
+\hat{Y} = 8.0153 + 1.1078x_{1} - 1.2258x_{2}
+\end{equation}
+\]</span></p>
+<p>La siguiente tabla muestra las observaciones de la variable dependiente y con
+sus correspondientes valores estimados y residuales para este modelo:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb47-1" tabindex="-1"></a>residuos <span class="ot">&lt;-</span> <span class="fu">rstandard</span>(modelo)</span>
+<span id="cb47-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb47-2" tabindex="-1"></a>valor_ajustado <span class="ot">&lt;-</span> <span class="fu">fitted</span>(modelo)</span>
+<span id="cb47-3"><a href="modelos-de-regresión-lineal-múltiple.html#cb47-3" tabindex="-1"></a>datos_t <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(observaciones,pasajeros,valor_ajustado,residuos)</span>
+<span id="cb47-4"><a href="modelos-de-regresión-lineal-múltiple.html#cb47-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(datos_t,<span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">align =</span> <span class="st">&quot;c&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb47-5"><a href="modelos-de-regresión-lineal-múltiple.html#cb47-5" tabindex="-1"></a>  <span class="fu">kable_styling</span>()  <span class="sc">%&gt;%</span></span>
+<span id="cb47-6"><a href="modelos-de-regresión-lineal-múltiple.html#cb47-6" tabindex="-1"></a>  <span class="fu">kable_classic_2</span>(<span class="st">&quot;hover&quot;</span>)</span></code></pre></div>
+<table class="table lightable-classic-2 lightable-hover" style="margin-left: auto; margin-right: auto; font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+observaciones
+</th>
+<th style="text-align:center;">
+pasajeros
+</th>
+<th style="text-align:center;">
+valor_ajustado
+</th>
+<th style="text-align:center;">
+residuos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+16.15135
+</td>
+<td style="text-align:center;">
+-0.4401029
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+17
+</td>
+<td style="text-align:center;">
+17.97468
+</td>
+<td style="text-align:center;">
+-0.3632466
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+13
+</td>
+<td style="text-align:center;">
+14.32802
+</td>
+<td style="text-align:center;">
+-0.5407517
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+23
+</td>
+<td style="text-align:center;">
+22.33688
+</td>
+<td style="text-align:center;">
+0.2757475
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+16
+</td>
+<td style="text-align:center;">
+15.95522
+</td>
+<td style="text-align:center;">
+0.0176639
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+21
+</td>
+<td style="text-align:center;">
+20.51355
+</td>
+<td style="text-align:center;">
+0.1902454
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+14
+</td>
+<td style="text-align:center;">
+16.34748
+</td>
+<td style="text-align:center;">
+-0.8911209
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+20
+</td>
+<td style="text-align:center;">
+19.60188
+</td>
+<td style="text-align:center;">
+0.1533001
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+24.35635
+</td>
+<td style="text-align:center;">
+-0.1618281
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+17
+</td>
+<td style="text-align:center;">
+15.75909
+</td>
+<td style="text-align:center;">
+0.5202244
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+16
+</td>
+<td style="text-align:center;">
+17.66367
+</td>
+<td style="text-align:center;">
+-0.6622525
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+12
+</td>
+<td style="text-align:center;">
+18
+</td>
+<td style="text-align:center;">
+19.56055
+</td>
+<td style="text-align:center;">
+-0.6354394
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+13
+</td>
+<td style="text-align:center;">
+23
+</td>
+<td style="text-align:center;">
+22.08716
+</td>
+<td style="text-align:center;">
+0.3719094
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+14
+</td>
+<td style="text-align:center;">
+25
+</td>
+<td style="text-align:center;">
+16.71523
+</td>
+<td style="text-align:center;">
+3.3129165
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+16
+</td>
+<td style="text-align:center;">
+18.64889
+</td>
+<td style="text-align:center;">
+-1.0744700
+</td>
+</tr>
+</tbody>
+</table>
+<p>A continuación se muestra el gráfico de los residuos vs los valores ajustados, el cual es ideal para observar si a simple vista se cumple o no el principio de homocedasticidad</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb48-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb48-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb48-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">augment</span>(modelo), <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb48-3"><a href="modelos-de-regresión-lineal-múltiple.html#cb48-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb48-4"><a href="modelos-de-regresión-lineal-múltiple.html#cb48-4" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb48-5"><a href="modelos-de-regresión-lineal-múltiple.html#cb48-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Residuos vs. Valores Ajustados&quot;</span>,</span>
+<span id="cb48-6"><a href="modelos-de-regresión-lineal-múltiple.html#cb48-6" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Valores Ajustados&quot;</span>,</span>
+<span id="cb48-7"><a href="modelos-de-regresión-lineal-múltiple.html#cb48-7" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Residuos&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb49-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb49-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">augment</span>(modelo), <span class="fu">aes</span>(<span class="at">sample =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb49-3"><a href="modelos-de-regresión-lineal-múltiple.html#cb49-3" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
+<span id="cb49-4"><a href="modelos-de-regresión-lineal-múltiple.html#cb49-4" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb49-5"><a href="modelos-de-regresión-lineal-múltiple.html#cb49-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Gráfico Q-Q de Residuos&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb50-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb50-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb50-2" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="modelos-de-regresión-lineal-múltiple.html#cb50-3" tabindex="-1"></a><span class="co"># Supongamos que la variable ajustada se llama &quot;ajustados&quot;</span></span>
+<span id="cb50-4"><a href="modelos-de-regresión-lineal-múltiple.html#cb50-4" tabindex="-1"></a>datos<span class="sc">$</span>ajustados <span class="ot">&lt;-</span> <span class="fu">predict</span>(modelo)</span>
+<span id="cb50-5"><a href="modelos-de-regresión-lineal-múltiple.html#cb50-5" tabindex="-1"></a></span>
+<span id="cb50-6"><a href="modelos-de-regresión-lineal-múltiple.html#cb50-6" tabindex="-1"></a><span class="co"># Gráfico de observados vs ajustados</span></span>
+<span id="cb50-7"><a href="modelos-de-regresión-lineal-múltiple.html#cb50-7" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> pasajeros, <span class="at">y =</span> ajustados)) <span class="sc">+</span></span>
+<span id="cb50-8"><a href="modelos-de-regresión-lineal-múltiple.html#cb50-8" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb50-9"><a href="modelos-de-regresión-lineal-múltiple.html#cb50-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb50-10"><a href="modelos-de-regresión-lineal-múltiple.html#cb50-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Valores Observados vs Ajustados&quot;</span>,</span>
+<span id="cb50-11"><a href="modelos-de-regresión-lineal-múltiple.html#cb50-11" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Valores Observados&quot;</span>,</span>
+<span id="cb50-12"><a href="modelos-de-regresión-lineal-múltiple.html#cb50-12" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Valores Ajustados&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb51-1" tabindex="-1"></a><span class="fu">library</span>(car)  <span class="co"># Necesario para la función influencePlot</span></span>
+<span id="cb51-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb51-2" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="modelos-de-regresión-lineal-múltiple.html#cb51-3" tabindex="-1"></a><span class="fu">influencePlot</span>(modelo, <span class="at">id.n =</span> <span class="dv">3</span>, <span class="at">main =</span> <span class="st">&quot;Gráfico de Influencia&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre><code>##       StudRes       Hat       CookD
+## 9  -0.1551080 0.3793056 0.005334554
+## 10  0.5037903 0.2716515 0.033645978
+## 14 10.8550775 0.1994700 0.911590400
+## 15 -1.0820954 0.2220074 0.109814382</code></pre>
 </div>
 <div id="propiedades-de-los-estimadores-mínimos-cuadrados" class="section level2 hasAnchor" number="1.6">
 <h2><span class="header-section-number">1.6</span> Propiedades de los estimadores mínimos cuadrados<a href="modelos-de-regresión-lineal-múltiple.html#propiedades-de-los-estimadores-mínimos-cuadrados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1139,13 +1432,9 @@ p=k+1
 \]</span></p>
 <p><span class="math display">\[
 =E[(\boldsymbol{\hat{\beta}}-\boldsymbol{\beta})(\boldsymbol{\hat{\beta}}-\boldsymbol{\beta})&#39;]
-\]</span>
-donde:
-<span class="math display">\[
+\]</span> donde: <span class="math display">\[
 \boldsymbol{\hat{\beta}-\beta=(X&#39;X)^{-1}X&#39;Y-\beta}
-\]</span>
-<span class="math display">\[\boldsymbol{=(X&#39;X)^{-1}X&#39;(X\beta+\varepsilon)-\beta}\]</span>
-<span class="math display">\[\boldsymbol{=(X&#39;X)^{-1}X&#39;X\beta + (X&#39;X)^{-1}X&#39;                   \varepsilon-\beta}\]</span> <span class="math display">\[\boldsymbol{=I\beta+(X&#39;X)^{-1}X&#39;\varepsilon-\beta}\]</span> <span class="math display">\[=\boldsymbol{(X&#39;X)^{-1}X&#39;\varepsilon}\]</span> Por lo tanto:</p>
+\]</span> <span class="math display">\[\boldsymbol{=(X&#39;X)^{-1}X&#39;(X\beta+\varepsilon)-\beta}\]</span> <span class="math display">\[\boldsymbol{=(X&#39;X)^{-1}X&#39;X\beta + (X&#39;X)^{-1}X&#39;                   \varepsilon-\beta}\]</span> <span class="math display">\[\boldsymbol{=I\beta+(X&#39;X)^{-1}X&#39;\varepsilon-\beta}\]</span> <span class="math display">\[=\boldsymbol{(X&#39;X)^{-1}X&#39;\varepsilon}\]</span> Por lo tanto:</p>
 <p><span class="math display">\[\sum=Var(\boldsymbol{\hat{\beta}})= E[[\boldsymbol{(X&#39;X)^{-1}X&#39;\varepsilon}][\boldsymbol{(X&#39;X)^{-1}X&#39;\varepsilon}]&#39;]\]</span> <span class="math display">\[\boldsymbol{(X&#39;X)^{-1}X&#39;E[\varepsilon\varepsilon&#39;]X(X&#39;X)^{-1}}\]</span> <span class="math display">\[=\boldsymbol{(X&#39;X)^{-1}X&#39;\sigma^{2}IX(X&#39;X)^{-1}}\]</span> <span class="math display">\[\sigma^{2}\boldsymbol{(X&#39;X)^{-1}X&#39;X(X&#39;X)^{-1}}\]</span> <span class="math display">\[=\sigma^{2}\boldsymbol{(X&#39;X)^{-1}}\]</span></p>
 </div>
 <div id="estimación-de-sigma2" class="section level2 hasAnchor" number="1.7">
@@ -1162,12 +1451,11 @@ SCE = \boldsymbol{(Y-X\hat{\beta})&#39;(Y-X\hat{\beta})}
 \end{equation}
 \]</span> <span class="math display">\[
 \begin{equation}
-=\boldsymbol{Y&#39;Y - \hat{\beta}X&#39;Y-Y&#39;X\hat{\beta}+\hat{\beta} &#39;X\hat{\beta}}
+=\boldsymbol{Y&#39;Y - \hat{\beta}X&#39;Y-Y&#39;X\hat{\beta}+\hat{\beta} &#39;X\hat{\beta}} \\
+= \boldsymbol{Y&#39;Y-2\hat{\beta}&#39;X&#39;Y+\beta&#39;X&#39;X\hat{\beta}}
 \end{equation}
 \]</span></p>
-<p><span class="math display">\[
-= \boldsymbol{Y&#39;Y-2\hat{\beta}&#39;X&#39;Y+\beta&#39;X&#39;X\hat{\beta}}
-\]</span> Puesto que: $ $</p>
+<p>Puesto que: <span class="math inline">\(\boldsymbol{X&#39;X\hat{\beta}=X&#39;Y}\)</span></p>
 <p>La suma de cuadrados de residuales tiene n - p grados de libertad. Entonces:</p>
 <p><span class="math display" id="eq:error-cuadratico-medio-regresion-lineal">\[
 \begin{equation}
@@ -1180,10 +1468,28 @@ CME= \frac{SCE}{n-p}
 \hat{\sigma}^{2}=CME=\frac{SCE}{n-p}=\frac{\boldsymbol{Y&#39;Y-\hat{\beta}&#39;X&#39;Y}}{n-p}
 \tag{1.15}
 \end{equation}
+\]</span> Ejemplo: Para el ejercicio planteado anteriormente: <span class="math display">\[
+\begin{equation}
+C = \begin{bmatrix}
+1.47945972&amp;   -0.01040009 &amp; -0.4777135\\
+-0.01040009&amp;   0.02982778&amp; -0.1345692\\
+-0.47771354  &amp;  -0.13456922  &amp; 0.8024360
+\end{bmatrix}
+\end{equation}
 \]</span></p>
 <p>Las varianzas y covarianzas de los estimadores vienen dadas por:</p>
-<p><span class="math display">\[Var(\hat{\beta_{0}})=\sigma^{2}C_{00}=\]</span> <span class="math display">\[Var(\hat{\beta_{1}})=\sigma^{2}C_{11}=\]</span> <span class="math display">\[Var(\hat{\beta_{2}})=\sigma^{2}C_{22}=\]</span> <span class="math display">\[Cov(\hat{\beta_{0}},\hat{\beta_{1}})=\sigma^{2}C_{01}=\]</span> <span class="math display">\[Cov(\hat{\beta_{0}},\hat{\beta_{2}})=\sigma^{2}C_{02}=\]</span> <span class="math display">\[Cov(\hat{\beta_{1}},\hat{\beta_{2}})=\sigma^{2}C_{12}=\]</span> La estimación de <span class="math inline">\(\sigma^{2}\)</span> <span class="math display">\[
-\boldsymbol{Y&#39;Y}=
+<p><span class="math display">\[
+\begin{equation}
+Var(\hat{\beta_{0}})=\sigma^{2}C_{00}=1.47945972\\
+Var(\hat{\beta_{1}})=\sigma^{2}C_{11}=0.02982778 \\
+Var(\hat{\beta_{2}})=\sigma^{2}C_{22}= 0.8024360\\
+Cov(\hat{\beta_{0}},\hat{\beta_{1}})=\sigma^{2}C_{01}= -0.01040009\\
+Cov(\hat{\beta_{0}},\hat{\beta_{2}})=\sigma^{2}C_{02}= -0.4777135\\
+Cov(\hat{\beta_{1}},\hat{\beta_{2}})=\sigma^{2}C_{12}= -0.13456922\\
+\end{equation}
+\]</span>
+La estimación de <span class="math inline">\(\sigma^{2}\)</span> <span class="math display">\[
+\boldsymbol{Y&#39;Y}= \sum_{i=1}^{15}y_{i}^{2}=5360
 \]</span> <span class="math display">\[
 \boldsymbol{\hat{\beta}&#39;X&#39;Y}=
 \]</span> <span class="math display">\[
@@ -1272,15 +1578,13 @@ H_{0}:\beta_{j}=0
 H_{0}:\beta_{j}≠0
 \tag{1.23}
 \end{equation}
-\]</span>
-Si no se rechaza <span class="math inline">\(H_{0}:\beta_{j}=0\)</span>,entonces esto indica que la variable regresora <span class="math inline">\(x_{j}\)</span> puede eliminarse del modelo. El estadístico de prueba para esta hipótesis es:</p>
+\]</span> Si no se rechaza <span class="math inline">\(H_{0}:\beta_{j}=0\)</span>,entonces esto indica que la variable regresora <span class="math inline">\(x_{j}\)</span> puede eliminarse del modelo. El estadístico de prueba para esta hipótesis es:</p>
 <p><span class="math display" id="eq:estadistico-t">\[
 \begin{equation}
 t_{0}=\frac{\hat{\beta_{j}}}{\sqrt{\hat{\sigma}^{2}C_{jj}}}
 \tag{1.24}
 \end{equation}
-\]</span>
-donde <span class="math inline">\(C_{jj}\)</span> es el elemento de la diagonal principal de <span class="math inline">\(\boldsymbol{(X&#39;X)^{-1}}\)</span> que corresponde a <span class="math inline">\(\hat{\beta_{j}}\)</span></p>
+\]</span> donde <span class="math inline">\(C_{jj}\)</span> es el elemento de la diagonal principal de <span class="math inline">\(\boldsymbol{(X&#39;X)^{-1}}\)</span> que corresponde a <span class="math inline">\(\hat{\beta_{j}}\)</span></p>
 <p>Decisión: Se rechaza <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(|t_{0}|&gt;t_{1-\alpha/2;n-p}\)</span></p>
 <p>La siguiente tabla muestra los coeficientes de regresión con sus respectivos valores de t.</p>
 <p>También puede emplearse el valor P para obtener conclusiones. Puesto que los valores de P menores que <span class="math inline">\(\alpha=5\)</span>%, conducen al rechazo las hipótesis nulas, lo que indica que las dos variables regresoras tienen contribución en el modelo.</p>
@@ -1344,14 +1648,272 @@ x_{0k}
 \hat{y_{0}}-t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x&#39;_{0}(X&#39;X)^{-1}x_{0}}}\leq y_{0}\leq\hat{y_{0}}+t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x&#39;_{0}(X&#39;X)^{-1}x_{0}}}
 \end{equation}
 \]</span></p>
-
-
-
-
-
-
+<p>Ejemplo 2</p>
+<p>Como ilustración vamos a usar los datos del ejemplo 14.3 del libro de <span class="citation">Canavos and Medal (<a href="#ref-canavos1987probabilidad">1987</a>)</span>. En el cual los autores ajustan un modelo de regresión lineal múltiple para predecir el costo unitario de fabricación de uno de sus productos como una función de la tasa de producción y de los costos de material y mano de obra.</p>
+<p>El objetivo es obtener:</p>
+<ul>
+<li><p>IC del 95% para <span class="math inline">\(E(Y|x_{0})\)</span> cuando $x_{0}=13 $</p></li>
+<li><p>IC del 95% para <span class="math inline">\(E(Y|x_{0})\)</span> cuando <span class="math inline">\(x_{0}=13\)</span></p></li>
+<li><p>IC del 90% para <span class="math inline">\(E(Y|x_{0})\)</span> cuando <span class="math inline">\(x_{0}=3\)</span></p></li>
+<li><p>Cree el diagrama de dispersión agregando las líneas de los IC de 95% para <span class="math inline">\(E(Y|x_{0})\)</span> y <span class="math inline">\(\hat{Y}_{0}\)</span></p></li>
+</ul>
+<p>Solución</p>
+<p>Se cargan los datos</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb53-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">13.59</span>,<span class="fl">15.71</span>,<span class="fl">15.97</span>,<span class="fl">20.21</span>,<span class="fl">24.64</span>,<span class="fl">21.25</span>,<span class="fl">18.94</span>,<span class="fl">14.85</span>,<span class="fl">15.18</span>,<span class="fl">16.30</span>,<span class="fl">15.93</span>,<span class="fl">16.45</span>,<span class="fl">19.02</span>,<span class="fl">18.16</span>,<span class="fl">18.57</span>,<span class="fl">17.01</span>,<span class="fl">18.03</span>,<span class="fl">19.22</span>,<span class="fl">21.12</span>,<span class="fl">23.32</span>)</span>
+<span id="cb53-2"><a href="modelos-de-regresión-lineal-múltiple.html#cb53-2" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">87</span>,<span class="dv">78</span>,<span class="dv">81</span>,<span class="dv">65</span>,<span class="dv">51</span>,<span class="dv">62</span>,<span class="dv">70</span>,<span class="dv">91</span>,<span class="dv">94</span>,<span class="dv">100</span>,<span class="dv">102</span>,<span class="dv">82</span>,<span class="dv">74</span>,<span class="dv">85</span>,<span class="dv">86</span>,<span class="dv">90</span>,<span class="dv">93</span>,<span class="dv">81</span>,<span class="dv">72</span>,<span class="dv">60</span>)</span>
+<span id="cb53-3"><a href="modelos-de-regresión-lineal-múltiple.html#cb53-3" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">80</span>,<span class="dv">95</span>,<span class="dv">106</span>,<span class="dv">115</span>,<span class="dv">128</span>,<span class="dv">128</span>,<span class="dv">115</span>,<span class="dv">92</span>,<span class="dv">93</span>,<span class="dv">111</span>,<span class="dv">116</span>,<span class="dv">117</span>,<span class="dv">127</span>,<span class="dv">133</span>,<span class="dv">135</span>,<span class="dv">136</span>,<span class="dv">140</span>,<span class="dv">142</span>,<span class="dv">148</span>,<span class="dv">150</span>)</span>
+<span id="cb53-4"><a href="modelos-de-regresión-lineal-múltiple.html#cb53-4" tabindex="-1"></a>datos2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(y,x1,x2)</span>
+<span id="cb53-5"><a href="modelos-de-regresión-lineal-múltiple.html#cb53-5" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb53-6"><a href="modelos-de-regresión-lineal-múltiple.html#cb53-6" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(datos2,<span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">align =</span> <span class="st">&quot;c&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Datos de la regresion  multiple para la empresa manufacturera&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-7"><a href="modelos-de-regresión-lineal-múltiple.html#cb53-7" tabindex="-1"></a>  <span class="fu">kable_styling</span>()  <span class="sc">%&gt;%</span></span>
+<span id="cb53-8"><a href="modelos-de-regresión-lineal-múltiple.html#cb53-8" tabindex="-1"></a>  <span class="fu">kable_classic_2</span>(<span class="st">&quot;hover&quot;</span>)</span></code></pre></div>
+<table class="table lightable-classic-2 lightable-hover" style="margin-left: auto; margin-right: auto; font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-13">Tabla 1.3: </span><span id="tab:unnamed-chunk-13">Tabla 1.4: </span>Datos de la regresion multiple para la empresa manufacturera
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+y
+</th>
+<th style="text-align:center;">
+x1
+</th>
+<th style="text-align:center;">
+x2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+13.59
+</td>
+<td style="text-align:center;">
+87
+</td>
+<td style="text-align:center;">
+80
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+15.71
+</td>
+<td style="text-align:center;">
+78
+</td>
+<td style="text-align:center;">
+95
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+15.97
+</td>
+<td style="text-align:center;">
+81
+</td>
+<td style="text-align:center;">
+106
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+20.21
+</td>
+<td style="text-align:center;">
+65
+</td>
+<td style="text-align:center;">
+115
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+24.64
+</td>
+<td style="text-align:center;">
+51
+</td>
+<td style="text-align:center;">
+128
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+21.25
+</td>
+<td style="text-align:center;">
+62
+</td>
+<td style="text-align:center;">
+128
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+18.94
+</td>
+<td style="text-align:center;">
+70
+</td>
+<td style="text-align:center;">
+115
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+14.85
+</td>
+<td style="text-align:center;">
+91
+</td>
+<td style="text-align:center;">
+92
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+15.18
+</td>
+<td style="text-align:center;">
+94
+</td>
+<td style="text-align:center;">
+93
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+16.30
+</td>
+<td style="text-align:center;">
+100
+</td>
+<td style="text-align:center;">
+111
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+15.93
+</td>
+<td style="text-align:center;">
+102
+</td>
+<td style="text-align:center;">
+116
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+16.45
+</td>
+<td style="text-align:center;">
+82
+</td>
+<td style="text-align:center;">
+117
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+19.02
+</td>
+<td style="text-align:center;">
+74
+</td>
+<td style="text-align:center;">
+127
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+18.16
+</td>
+<td style="text-align:center;">
+85
+</td>
+<td style="text-align:center;">
+133
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+18.57
+</td>
+<td style="text-align:center;">
+86
+</td>
+<td style="text-align:center;">
+135
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+17.01
+</td>
+<td style="text-align:center;">
+90
+</td>
+<td style="text-align:center;">
+136
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+18.03
+</td>
+<td style="text-align:center;">
+93
+</td>
+<td style="text-align:center;">
+140
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+19.22
+</td>
+<td style="text-align:center;">
+81
+</td>
+<td style="text-align:center;">
+142
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+21.12
+</td>
+<td style="text-align:center;">
+72
+</td>
+<td style="text-align:center;">
+148
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+23.32
+</td>
+<td style="text-align:center;">
+60
+</td>
+<td style="text-align:center;">
+150
+</td>
+</tr>
+</tbody>
+</table>
+<p>Luego se ajusta el modelo</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="modelos-de-regresión-lineal-múltiple.html#cb54-1" tabindex="-1"></a>modelo2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data=</span>datos2)</span></code></pre></div>
 
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Canavos, George C, and Edmundo Gerardo Urbina Medal. 1987. <em>Probabilidad y Estad<span>ı́</span>stica</em>. McGraw Hill M<span>é</span>xico.
+</div>
 <div class="csl-entry">
 Webster, Allen L. 2000. <em>Estad<span>ı́</span>stica Aplicada a Los Negocios y La Econom<span>ı́</span>a</em>. 519.5 W391e Ej. 1. McGraw-Hill,.
 </div>
@@ -1361,6 +1923,9 @@ Webster, Allen L. 2000. <em>Estad<span>ı́</span>stica Aplicada a Los Negocios 
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-canavos1987probabilidad" class="csl-entry">
+Canavos, George C, and Edmundo Gerardo Urbina Medal. 1987. <em>Probabilidad y Estad<span>ı́</span>stica</em>. McGraw Hill M<span>é</span>xico.
+</div>
 <div id="ref-webster2000estadistica" class="csl-entry">
 Webster, Allen L. 2000. <em>Estad<span>ı́</span>stica Aplicada a Los Negocios y La Econom<span>ı́</span>a</em>. 519.5 W391e Ej. 1. McGraw-Hill,.
 </div>

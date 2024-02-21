@@ -70,3 +70,14 @@ knitr::write_bib(c(
 inline <- function(x = "") paste0("`` `r ", x, "` ``")
 inline2 <- function(x = "") paste0("`r ", x, "`")
 ```
+
+```{r include=FALSE}
+colorize <- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'>%s</span>", color,
+      x)
+  } else x
+}
+```
