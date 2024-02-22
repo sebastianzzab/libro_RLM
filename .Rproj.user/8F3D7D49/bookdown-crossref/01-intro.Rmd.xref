@@ -3,6 +3,9 @@ h2:intro Introducción
 h2:Estimacion-M.C.O. Estimación de los parámetros de la ecuación de regresión por el método de mínimo cuadrado ordinario (M.C.O.)
 h2:ejemplo Ejemplo
 tab:definicion-datos Datos de la regresion  multiple para Hop Scotch Airlines
+h3:matriz-de-correlación Matriz de correlación
+h3:matriz-de-dispersión Matriz de dispersión
+h3:matriz-de-dispersión-con-correlaciones Matriz de dispersión con correlaciones
 h2:Enfoque-matricial Enfoque matricial para un modelo de regresión lineal múltiple
 h2:supuestos-básicos-del-modelo-de-regresión-utilizando-notación-matricial Supuestos básicos del modelo de regresión utilizando notación matricial
 h2:estimación-de-los-parámetros-del-modelo-por-el-método-m.c.o.-utilizando-la-notación-matricial. Estimación de los parámetros del modelo por el método M.C.O., utilizando la notación matricial.

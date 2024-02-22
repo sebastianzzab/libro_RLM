@@ -42,3 +42,9 @@ tab:unnamed-chunk-8
 tab:unnamed-chunk-9
 tab:unnamed-chunk-12
 tab:unnamed-chunk-13
+tab:unnamed-chunk-15
+tab:unnamed-chunk-16
+matriz-de-dispersión
+tab:unnamed-chunk-17
+matriz-de-correlación
+matriz-de-dispersión-con-correlaciones

@@ -35,7 +35,7 @@ El siguiente bloque de código permite instalar y cargar los paquetes usados par
 
 ```{r eval=FALSE}
 packages <- c(
- 'bookdown', 'knitr', 'rmarkdown','scatterplot3d','plotly', 'tidyverse','rgl', 'lmtest','car', 'broom','kableExtra'
+ 'bookdown', 'knitr', 'rmarkdown','scatterplot3d','plotly', 'tidyverse','rgl', 'lmtest','car', 'psych', 'broom','kableExtra', 'GGally'
 )
 package.check <- lapply(packages, FUN = function(x) {
   if (!require(x, character.only = TRUE)) {
@@ -104,37 +104,38 @@ $$ donde
 $\varepsilon_{i}=y_{i}-\beta_{0}-\sum_{i=1}^{k}\beta_{j}x_{ij}$
 
 $$
+\begin{equation}
 L= \sum_{i=1}^n(y_i-\beta_{0}-\sum_{j}x_{ij})^2 //
-
+\end{equation}
 $$ 
 Derivando L con respecto a $\beta_{0},\beta_{1},\beta_{2},...,\beta_{k}$ ,se tiene
 
 $$
+\begin{equation}
 \frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij}) \\
 y \\
 \frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})x_{ij} \hspace{5.0cm} j =1,2,..,k
+\end{equation}
 $$ 
 Al igualar a cero a estas estimaciones de mínimos cuadrados, se obtiene:
 
 $$
+\begin{equation}
 -2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})=0 \\
 \frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})x_{ij}=0 \hspace{5.0cm} j =1,2,..,k
+\end{equation}
 $$ 
 
 Después de simplificar las ecuaciones anteriores, se obtienen las ecuaciones normales de mínimos cuadrados ordinarios.
 
 $$
 \begin{equation}
-n\hat{\beta_{0}} + \hat{\beta_{1}}\sum_{i=i}^nx_{i1}   + \hat{\beta_{2}}\sum_{i=i}^nx_{i2} +...+ \hat{\beta_{k}}\sum_{i=i}^nx_{ik} = \sum_{i=1}^ny_i \\
-\hat{\beta_{0}}\sum_{i=i}^nx_{i1}  + \hat{\beta_{1}}\sum_{i=i}^nx_{i1}^2   + \hat{\beta_{2}}\sum_{i=i}^nx_{i1}x_{i2} +...+ \hat{\beta_{k}}\sum_{i=i}^nx_{i1}x_{ik}= \sum_{i=1}^nx_{i1}y_i 
-\end{equation}
-$$ 
-$$
-\vdots  \vdots   \vdots  \vdots  \vdots 
-$$ 
-$$
-\begin{equation}
-\hat{\beta_{0}}\sum_{i=i}^nx_{ik}  + \hat{\beta_{1}}\sum_{i=i}^nx_{ik}x_{i1}   + \hat{\beta_{2}}\sum_{i=i}^nx_{ik}x_{i2} +...+ \hat{\beta_{k}}\sum_{i=i}^nx_{ik}^2= \sum_{i=1}^nx_{i1}y_i
+\begin{matrix}
+n\hat{\beta_{0}} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1} + \hat{\beta_{2}}\sum_{i=1}^nx_{i2} + \ldots + \hat{\beta_{k}}\sum_{i=1}^nx_{ik} = \sum_{i=1}^ny_i \\
+\hat{\beta_{0}}\sum_{i=1}^nx_{i1} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1}^2 + \hat{\beta_{2}}\sum_{i=1}^nx_{i1}x_{i2} + \ldots + \hat{\beta_{k}}\sum_{i=1}^nx_{i1}x_{ik} = \sum_{i=1}^nx_{i1}y_i \\
+\vdots \quad \vdots \quad \vdots \quad \vdots \quad \vdots \\
+\hat{\beta_{0}}\sum_{i=1}^nx_{ik} + \hat{\beta_{1}}\sum_{i=1}^nx_{ik}x_{i1} + \hat{\beta_{2}}\sum_{i=1}^nx_{ik}x_{i2} + \ldots + \hat{\beta_{k}}\sum_{i=1}^nx_{ik}^2 = \sum_{i=1}^nx_{ik}y_i
+\end{matrix}
 \end{equation}
 $$
 
@@ -156,11 +157,11 @@ publicidad <- c(10,12,8,17,10,15,10,14,19,10,11,13,16,10,12)
 ingreso_nacional <- c(2.4,2.72,2.08,3.68,2.56,3.36,2.24,3.2,3.84,2.72,2.07,2.33,2.98,1.94,2.17)
 
 # Creación del dataframe
-datos <- data.frame(observaciones,pasajeros,publicidad,ingreso_nacional)
-colnames(datos) <- c("Observaciones","Pasajeros", "Publicidad", "Ingreso Nacional")
+datos <- data.frame(pasajeros,publicidad,ingreso_nacional)
+colnames(datos) <- c("Pasajeros", "Publicidad", "Ingreso Nacional")
 
 library(kableExtra)
-knitr::kable(datos,booktabs = TRUE, align = "c", caption = "Datos de la regresion  multiple para Hop Scotch Airlines" ) %>%
+knitr::kable(cbind(Observaciones = observaciones,datos),booktabs = TRUE, align = "c", caption = "Datos de la regresion  multiple para Hop Scotch Airlines" ) %>%
   kable_styling()  %>%
   kable_classic_2("hover")
 ```
@@ -199,7 +200,45 @@ plot3d(x=publicidad, y=ingreso_nacional, z=pasajeros, type='s', col='green',
 
 ```
 
-Basándonos en el diagrama de dispersión 3d, el modelo que se va a ajustar se muestra a continuación:
+Tambien se puede analizar la relación de las variables observando los gráficos de dispersión entre las variables. Lo cual se hace en R de la siguiente manera: 
+
+```{r}
+library(psych)
+multi.hist(x = datos, dcol = c("blue", "red"), dlty = c("dotted", "solid"),
+           main = "")
+```
+
+Otros paquetes permiten representar a la vez los diagramas de dispersión, los valores de correlación para cada par de variables y la distribución de cada una de las variables.
+
+### Matriz de correlación 
+
+Para calcular dicha correlación, se emplea el siguiente código:
+
+```{r}
+round(cor(datos), 3) # Matriz de correlación redondeada a 3 decimales
+```
+
+
+### Matriz de dispersión 
+
+Esta matriz es una herramienta de exploración de datos que permite comparar varios subconjuntos de la base de datos para buscar patrones y relaciones. Se obtiene así: 
+
+```{r}
+pairs(datos, labels=c("y","x1","x2"), main='Matriz de dispersión', cex.main=0.8, cex = 1.5, pch = 20, bg="light blue", cex.labels = 1, font.labels=1)
+```
+
+### Matriz de dispersión con correlaciones
+Esta matriz también sirve para explorar los datos al comparar varios subconjuntos de la base de datos, pero adiciona la correlación entre cada uno de los subconjuntos. Para obtenerla con R se utilizo el paquete `GGally` que ayuda a hacer este tipo de graficos.
+
+```{r exploracion_visual_variables}
+library(GGally)
+ggpairs(datos, lower = list(continuous = "smooth"),
+        diag = list(continuous = "barDiag"), axisLabels = "none")
+```
+
+
+
+Basándonos en el diagrama de dispersión 3d, y los graficos observados, el modelo que se va a ajustar se muestra a continuación:
 
 $$
 \begin{equation}
@@ -221,6 +260,13 @@ summary(modelo)
 tidy(modelo)
 glance(modelo)
 augment(modelo)
+```
+Ya por defecto la función `summary` presenta el análisis de varianza (ANOVA) por defecto. Si nosotros quisiéramos solamente esa tabla se haría de la siguiente forma:
+
+```{r}
+# Realizar el análisis de varianza
+tabla_anova <- anova(modelo)
+tabla_anova
 ```
 
 Con los resultados obtenidos en el Chunk \@ref(creacion-modelo-regresion), se puede expresar el modelo ajustado como se muestra a continuación:
@@ -712,8 +758,7 @@ $$
 \end{equation}
 $$
 
-La siguiente tabla muestra las observaciones de la variable dependiente y con
-sus correspondientes valores estimados y residuales para este modelo:
+La siguiente tabla muestra las observaciones de la variable dependiente y con sus correspondientes valores estimados y residuales para este modelo:
 
 ```{r}
 residuos <- rstandard(modelo)
@@ -736,15 +781,17 @@ ggplot(augment(modelo), aes(x = .fitted, y = .resid)) +
 
 ```
 
-
+El gráfico de Probabilidad Normal nos permite ver a simple vista si se cumple el supuesto de normalidad.
 
 ```{r}
 library(ggplot2)
 ggplot(augment(modelo), aes(sample = .resid)) +
   stat_qq() +
   geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "red") +
-  labs(title = "Gráfico Q-Q de Residuos")
+  labs(title = "Grafico Q-Q de Residuos")
 ```
+
+El gráfico de los valores observados vs. los valores estimados nos permite realizar la diagnosis del modelo.
 
 ```{r}
 library(ggplot2)
@@ -765,9 +812,7 @@ ggplot(datos, aes(x = pasajeros, y = ajustados)) +
 
 ```{r}
 library(car)  # Necesario para la función influencePlot
-
 influencePlot(modelo, id.n = 3, main = "Gráfico de Influencia")
-
 ```
 
 
@@ -1030,6 +1075,7 @@ $$
 También puede obtenerse un intervalo de confianza para la respuesta promedio en un punto en particular, por ejemplo, $x_{01},x_{02},...,x_{0k}$. Para estimar la respuesta promedio en este punto, se define el vector:
 
 $$
+\begin{equation}
 \boldsymbol{x_{0}}=\begin{bmatrix}
 1\\ 
 x_{01}\\ 
@@ -1037,6 +1083,7 @@ x_{02}\\
 \vdots \\ 
 x_{0k}
 \end{bmatrix}
+\end{equation}
 $$ El valor estimado para este punto es: $\hat{\mu}_{y/x_{0}}=\boldsymbol{x'_{0}\hat{\beta}}$.
 
 Este es un estimador insesgado de $\mu_{y/x_{0}}$, siendo $E(\hat{\mu}_{y/x_{0}})=\boldsymbol{x'_{0}\hat{\beta}}=\mu_{y/x_{0}}$ y la varianza $V(\hat{\mu}_{y/x_{0}})=\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}.$
@@ -1076,37 +1123,4 @@ $$
 \hat{y_{0}}-t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}}\leq y_{0}\leq\hat{y_{0}}+t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}}
 \end{equation}
 $$
-
-Ejemplo 2
-
-Como ilustración vamos a usar los datos del ejemplo 14.3 del libro de @canavos1987probabilidad. En el cual los autores ajustan un modelo de regresión lineal múltiple para predecir el costo unitario de fabricación de uno de sus productos como una función de la tasa de producción y de los costos de material y mano de obra.
-
-El objetivo es obtener:
-
--   IC del 95% para $E(Y|x_{0})$ cuando $x_{0}=13 $
-
--   IC del 95% para $E(Y|x_{0})$ cuando $x_{0}=13$
-
--   IC del 90% para $E(Y|x_{0})$ cuando $x_{0}=3$
-
--   Cree el diagrama de dispersión agregando las líneas de los IC de 95% para $E(Y|x_{0})$ y $\hat{Y}_{0}$
-
-Solución
-
-Se cargan los datos
-```{r}
-y <- c(13.59,15.71,15.97,20.21,24.64,21.25,18.94,14.85,15.18,16.30,15.93,16.45,19.02,18.16,18.57,17.01,18.03,19.22,21.12,23.32)
-x1 <- c(87,78,81,65,51,62,70,91,94,100,102,82,74,85,86,90,93,81,72,60)
-x2 <- c(80,95,106,115,128,128,115,92,93,111,116,117,127,133,135,136,140,142,148,150)
-datos2 <- data.frame(y,x1,x2)
-library(kableExtra)
-knitr::kable(datos2,booktabs = TRUE, align = "c", caption = "Datos de la regresion  multiple para la empresa manufacturera") %>%
-  kable_styling()  %>%
-  kable_classic_2("hover")
-```
-Luego se ajusta el modelo
-
-```{r}
-modelo2 <- lm(y ~ x1 + x2, data=datos2)
-```
 

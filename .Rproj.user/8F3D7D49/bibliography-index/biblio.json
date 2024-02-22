@@ -258,6 +258,35 @@
             "type": "book"
         },
         {
+            "URL": "https://r-forge.r-project.org/projects/car/",
+            "author": [
+                {
+                    "family": "Fox",
+                    "given": "John"
+                },
+                {
+                    "family": "Weisberg",
+                    "given": "Sanford"
+                },
+                {
+                    "family": "Price",
+                    "given": "Brad"
+                }
+            ],
+            "id": "R-carData",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "R package version 3.0-5",
+            "title": "carData: Companion to applied regression data sets",
+            "title-short": "carData",
+            "type": "book"
+        },
+        {
             "URL": "https://ggplot2.tidyverse.org",
             "author": [
                 {
