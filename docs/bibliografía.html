@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Bibliografía | Regresión Lineal múltiple</title>
+  <meta name="description" content="Este libro es una introducción al analisis de regresion por medio del modelo lineal multiple utilizando el lenguaje de programacion R con el paquete bookdown para la escritura de libros." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Bibliografía | Regresión Lineal múltiple" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Este libro es una introducción al analisis de regresion por medio del modelo lineal multiple utilizando el lenguaje de programacion R con el paquete bookdown para la escritura de libros." />
+  <meta name="github-repo" content="sebastianZabala/libro_RLM" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bibliografía | Regresión Lineal múltiple" />
+  
+  <meta name="twitter:description" content="Este libro es una introducción al analisis de regresion por medio del modelo lineal multiple utilizando el lenguaje de programacion R con el paquete bookdown para la escritura de libros." />
+  
+
+<meta name="author" content="Sebastian Zabala" />
+
+
+<meta name="date" content="2024-02-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ejemplo.html"/>
+
+<script src="book_assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="book_assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="book_assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="book_assets/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="book_assets/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="book_assets/plotly-binding-4.10.4/plotly.js"></script>
+<script src="book_assets/typedarray-0.1/typedarray.min.js"></script>
+<link href="book_assets/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="book_assets/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="book_assets/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="book_assets/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Regresión Lineal múltiple</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prólogo</a></li>
+<li class="chapter" data-level="1" data-path="modelos-de-regresión-lineal-múltiple.html"><a href="modelos-de-regresión-lineal-múltiple.html"><i class="fa fa-check"></i><b>1</b> Modelos de regresión lineal múltiple</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="modelos-de-regresión-lineal-múltiple.html"><a href="modelos-de-regresión-lineal-múltiple.html#intro"><i class="fa fa-check"></i><b>1.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.2" data-path="modelos-de-regresión-lineal-múltiple.html"><a href="modelos-de-regresión-lineal-múltiple.html#Estimacion-M.C.O."><i class="fa fa-check"></i><b>1.2</b> Estimación de los parámetros de la ecuación de regresión por el método de mínimo cuadrado ordinario (M.C.O.)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ejemplo.html"><a href="ejemplo.html"><i class="fa fa-check"></i>Ejemplo</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="ejemplo.html"><a href="ejemplo.html#matriz-de-correlación"><i class="fa fa-check"></i><b>1.2.1</b> Matriz de correlación</a></li>
+<li class="chapter" data-level="1.2.2" data-path="ejemplo.html"><a href="ejemplo.html#matriz-de-dispersión"><i class="fa fa-check"></i><b>1.2.2</b> Matriz de dispersión</a></li>
+<li class="chapter" data-level="1.2.3" data-path="ejemplo.html"><a href="ejemplo.html#matriz-de-dispersión-con-correlaciones"><i class="fa fa-check"></i><b>1.2.3</b> Matriz de dispersión con correlaciones</a></li>
+<li class="chapter" data-level="1.3" data-path="ejemplo.html"><a href="ejemplo.html#Enfoque-matricial"><i class="fa fa-check"></i><b>1.3</b> Enfoque matricial para un modelo de regresión lineal múltiple</a></li>
+<li class="chapter" data-level="1.4" data-path="ejemplo.html"><a href="ejemplo.html#supuestos-básicos-del-modelo-de-regresión-utilizando-notación-matricial"><i class="fa fa-check"></i><b>1.4</b> Supuestos básicos del modelo de regresión utilizando notación matricial</a></li>
+<li class="chapter" data-level="1.5" data-path="ejemplo.html"><a href="ejemplo.html#estimación-de-los-parámetros-del-modelo-por-el-método-m.c.o.-utilizando-la-notación-matricial."><i class="fa fa-check"></i><b>1.5</b> Estimación de los parámetros del modelo por el método M.C.O., utilizando la notación matricial.</a></li>
+<li class="chapter" data-level="1.6" data-path="ejemplo.html"><a href="ejemplo.html#propiedades-de-los-estimadores-mínimos-cuadrados"><i class="fa fa-check"></i><b>1.6</b> Propiedades de los estimadores mínimos cuadrados</a></li>
+<li class="chapter" data-level="1.7" data-path="ejemplo.html"><a href="ejemplo.html#estimación-de-sigma2"><i class="fa fa-check"></i><b>1.7</b> Estimación de <span class="math inline">\(\sigma^{2}\)</span></a></li>
+<li class="chapter" data-level="1.8" data-path="ejemplo.html"><a href="ejemplo.html#prueba-de-hipótesis-en-la-regresión-múltiple"><i class="fa fa-check"></i><b>1.8</b> Prueba de hipótesis en la regresión múltiple</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="ejemplo.html"><a href="ejemplo.html#prueba-para-la-significancia-de-la-regresión."><i class="fa fa-check"></i><b>1.8.1</b> Prueba para la significancia de la regresión.</a></li>
+<li class="chapter" data-level="1.8.2" data-path="ejemplo.html"><a href="ejemplo.html#prueba-para-los-coeficientes-de-regresión."><i class="fa fa-check"></i><b>1.8.2</b> Prueba para los coeficientes de regresión.</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="ejemplo.html"><a href="ejemplo.html#estimación-de-los-intervalos-de-confianza-en-la-regresión-lineal-múltiple"><i class="fa fa-check"></i><b>1.9</b> Estimación de los intervalos de confianza en la regresión lineal múltiple</a>
+<ul>
+<li class="chapter" data-level="1.9.1" data-path="ejemplo.html"><a href="ejemplo.html#intervalos-de-confianza-para-los-parámetros."><i class="fa fa-check"></i><b>1.9.1</b> Intervalos de confianza para los parámetros.</a></li>
+<li class="chapter" data-level="1.9.2" data-path="ejemplo.html"><a href="ejemplo.html#intervalo-de-confianza-para-la-respuesta-media-eyx0."><i class="fa fa-check"></i><b>1.9.2</b> Intervalo de confianza para la respuesta media e(y/x0).</a></li>
+<li class="chapter" data-level="1.9.3" data-path="ejemplo.html"><a href="ejemplo.html#intervalo-de-confianza-para-haty_0-observación-futura."><i class="fa fa-check"></i><b>1.9.3</b> Intervalo de confianza para <span class="math inline">\(\hat{y}_{0}\)</span> (observación futura).</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Este libro esta escrito con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Regresión Lineal múltiple</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="bibliografía" class="section level1 unnumbered hasAnchor">
+<h1>Bibliografía<a href="bibliografía.html#bibliografía" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-mendenhall2010introduccion" class="csl-entry">
+Mendenhall, W, RJ Beaver, and BM Beaver. 2010. <span>“Introducci<span>ó</span>n a La Probabilidad y La Estad<span>ı́</span>stica (d<span>é</span>cima Tercera Edici<span>ó</span>n Ed.).”</span> <em>JH Romo, Trad.) M<span>é</span>xico, DF: Cengage Learning</em>.
+</div>
+<div id="ref-wackerly2002estadistica" class="csl-entry">
+Wackerly, Dennis D, William Mendenhall III, Richard L Scheaffer, Jorge Yescas Milanés, et al. 2002. <em>Estad<span>ı́</span>stica Matem<span>á</span>tica Con Aplicaciones</em>.
+</div>
+<div id="ref-webster2000estadistica" class="csl-entry">
+Webster, Allen L. 2000. <em>Estad<span>ı́</span>stica Aplicada a Los Negocios y La Econom<span>ı́</span>a</em>. 519.5 W391e Ej. 1. McGraw-Hill,.
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ejemplo.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

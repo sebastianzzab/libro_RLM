@@ -1,14 +1,20 @@
 h1:modelos-de-regresión-lineal-múltiple Modelos de regresión lineal múltiple
 h2:intro Introducción
 h2:Estimacion-M.C.O. Estimación de los parámetros de la ecuación de regresión por el método de mínimo cuadrado ordinario (M.C.O.)
-h2:ejemplo Ejemplo
-tab:definicion-datos Datos de la regresion  multiple para Hop Scotch Airlines
+h1:ejemplo Ejemplo
+tab:defdatos Tabla con los datos de la regresion  multiple para Hop Scotch Airlines
+fig:explorscatter Grafico de dispersion 3D entre las variables con scatterplot3d
+fig:explorplotly Grafico de dispersion 3D entre las variables con plotly
+fig:multihist Histograma multiple con psych
 h3:matriz-de-correlación Matriz de correlación
 h3:matriz-de-dispersión Matriz de dispersión
 h3:matriz-de-dispersión-con-correlaciones Matriz de dispersión con correlaciones
+fig:explorvar Matriz de dispersión con correlaciones con GGally
 h2:Enfoque-matricial Enfoque matricial para un modelo de regresión lineal múltiple
 h2:supuestos-básicos-del-modelo-de-regresión-utilizando-notación-matricial Supuestos básicos del modelo de regresión utilizando notación matricial
 h2:estimación-de-los-parámetros-del-modelo-por-el-método-m.c.o.-utilizando-la-notación-matricial. Estimación de los parámetros del modelo por el método M.C.O., utilizando la notación matricial.
+tab:res Tabla de Residuos y Ajustes
+tab:performance Tabla de Desempeño del Modelo
 h2:propiedades-de-los-estimadores-mínimos-cuadrados Propiedades de los estimadores mínimos cuadrados
 h2:estimación-de-sigma2 Estimación de 
 h2:prueba-de-hipótesis-en-la-regresión-múltiple Prueba de hipótesis en la regresión múltiple

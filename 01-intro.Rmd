@@ -1,27 +1,18 @@
 # Modelos de regresión lineal múltiple
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-	echo=TRUE,
-	error=FALSE,
-	message=FALSE,
-	warning=FALSE,
-	cache=TRUE
-)
-```
-
 ## Introducción {#intro}
 
-Muchas aplicaciones del análisis de regresión involucran situaciones donde se tiene más de una variable de regresión. Un modelo de regresión que contiene más de una variable independiente recibe el nombre de Modelo de Regresión Múltiple.
+Muchas aplicaciones del análisis de regresión involucran situaciones donde se tiene más de una variable de regresión, los problemas que se presentan en el mundo actual no pueden ser explicados mediante una sola variable. Aquel modelo de regresión que contiene más de una variable independiente recibe el nombre de **Modelo de Regresión Múltiple**.
 
-En general, la variable dependiente o respuesta (y) y puede estar relacionada con k variables independientes o regresoras. El modelo
+En general, la variable dependiente o respuesta (y)  puede estar relacionada con k variables independientes o regresoras. El modelo
 
 $$
 \begin{equation}
 y=\beta _{0} + \beta _{1}X _{1} + \beta _{2}X _{2} + ... + + \beta _{k}X _{k} + \varepsilon
-(\#eq:el-modelo-de-regresión-lineal-múltiple)
+(\#eq:rlm)
 \end {equation}
-$$ recibe el nombre de **modelo de regresión lineal múltiple con k variables de regresión**. Los parámetros $\beta _{0}$ y $\beta _{j}$ para j = 0, 1, ... , k, son parámetros desconocidos, **denominados coeficientes de regresión**.
+$$ 
+recibe el nombre de **modelo de regresión lineal múltiple con k variables de regresión**. Los parámetros $\beta _{0}$ y $\beta _{j}$ para j = 0, 1, ... , k, son parámetros desconocidos, **denominados coeficientes de regresión**.
 
 $\varepsilon$ denota el error, el cual puede ser debido a fluctuaciones aleatorias de la variable respuesta o por error en el modelo planteado.
 
@@ -31,11 +22,23 @@ knitr::include_graphics("imagen-1.png")
 
 Frecuentemente los modelos de regresión lineal múltiple se emplean como funciones de aproximación. Esto es, se desconoce la verdadera relación funcional entre y y $x_{1},x_{2},...,x_{k}$, pero sobre ciertos rangos de las variables independientes el modelo de regresión lineal constituye una aproximación adecuada.
 
-El siguiente bloque de código permite instalar y cargar los paquetes usados para implementar todos los conceptos de regresion lineal múltiple expuestos en este libro con R. Los cuales son los siguientes:
+Al construir una ecuación de predicción o regresion estimada que relacionara $y$ con k variables predictoras. Desde luego que aparecen varias preguntas, al igual que con regresion lineal simple:
+
+¿Que tan bien se ajusta el modelo?
+¿Que tan fuerte es la relación entre y y las variables predictoras?
+¿Se han violado suposiciones importantes?
+¿Qué tan buenas son las estimaciones y predicciones?
+
+Para contestar estas preguntas se pueden usar métodos de **análisis de regresión múltiple**, que casi siempre se hacen con un programa de cómputo, en nuestro caso, utilizando R. Este capítulo contiene una breve introducción al análisis de regresión múltiple y a la difícil tarea de construcción de 
+modelos, es decir, escoger el modelo correcto para una aplicación práctica.
+
+Para mas información leerse la sección 13.1 del libro de  @mendenhall2010introduccion 
+
+El siguiente bloque de código permite instalar y cargar los paquetes de R usados para implementar todos los conceptos de regresion lineal múltiple expuestos en este libro. Los cuales son los siguientes:
 
 ```{r eval=FALSE}
 packages <- c(
- 'bookdown', 'knitr', 'rmarkdown','scatterplot3d','plotly', 'tidyverse','rgl', 'lmtest','car', 'psych', 'broom','kableExtra', 'GGally'
+ 'bookdown', 'knitr', 'rmarkdown','scatterplot3d','plotly', 'tidyverse','rgl', 'lmtest','car', 'psych', 'DT', 'broom','kableExtra', 'GGally','plot3D', 'plot3Drgl','equatiomatic','performance','tinytex' 
 )
 package.check <- lapply(packages, FUN = function(x) {
   if (!require(x, character.only = TRUE)) {
@@ -47,7 +50,7 @@ package.check <- lapply(packages, FUN = function(x) {
 
 ## Estimación de los parámetros de la ecuación de regresión por el método de mínimo cuadrado ordinario (M.C.O.) {#Estimacion-M.C.O.}
 
-El método de mínimos cuadrados ordinarios puede emplearse para estimar los coeficientes de regresión del modelo lineal múltiple de la ecuación anterior.
+El método de mínimos cuadrados ordinarios puede emplearse para estimar los coeficientes de regresión del modelo lineal múltiple de la ecuación anterior \@ref(eq:rlm).
 
 Supóngase que se tienen disponibles n \> k observaciones y sea $x_{ij}$ la i-ésima observación o nivel de la variable $x_{j}$. Las observaciones son:
 
@@ -57,20 +60,14 @@ $$
 \end{equation}
 $$
 
-Se acostumbra presentar los datos de una regresión múltiple en una tabla tal, como sigue:
-
-$$
-\begin{equation}
-
-\end{equation}
-$$
+Se acostumbra presentar los datos de una regresión múltiple en una tabla.
 
 Cada observación $(x_{i1}, x_{i2}x_{i3},...x_{ik}, y_{i})$ satisface el modelo, es decir:
 
 $$
 \begin{equation}
 y_{i}=\beta_{0}+\beta_{1}x_{i1}+\beta_{2}x_{i2}+ ... + \beta_{k}x_{ik}+\varepsilon_{i}
-(\#eq:el-modelo-de-regresión-múltiple-estimado)
+(\#eq:rlme)
 \end{equation}
 $$
 
@@ -141,15 +138,15 @@ $$
 
 Nótese que existen $p = k +1$ ecuaciones normales, una para cada coeficiente de regresion desconocido. La solución de las ecuaciones normales son los estimadores mínimos cuadrados de los coeficientes de regresion $\hat{\beta_{0}},\hat{\beta_{1}},...,\hat{\beta_{k}}$. La solución de las ecuaciones normales puede obtenerse con cualquier método apropiado para la solución de sistemas de ecuaciones lineales.
 
-## Ejemplo {.unnumbered}
+# Ejemplo {-}
 
 Como ilustración vamos a usar los datos del ejemplo del libro @webster2000estadistica .La gerencia de Hop Scotch Airlines, la aerolínea transportadora mas pequeña del mundo, considera que existe una relación directa entre los gastos publicitarios, el ingreso nacional y el numero de pasajeros que escogen viajar por Hop Scotch. Por determinar so esta relación existe, y si es así cual podría ser la naturaleza exacta, los estadísticos empleados por Hop Scotch decidieron utilizar los procedimientos MCO para determinar el modelo de regresion múltiple.
 
-Se recolectaron los valores mensuales por gastos de publicidad, el ingreso nacional y el numero de pasajeros para los n = 15 meses mas recientes. Los datos aparecen en la tabla \@\ref ,junto con otros cálculos necesarios para hallar el modelo de regresion. Se observara que los pasajeros están representados con la variable Y, ya que se asume que depende de la publicidad y el ingreso nacional.
+Se recolectaron los valores mensuales por gastos de publicidad, el ingreso nacional y el numero de pasajeros para los n = 15 meses mas recientes. Los datos aparecen en la tabla \@ref(tab:defdatos) ,junto con otros cálculos necesarios para hallar el modelo de regresion. Se observara que los pasajeros están representados con la variable Y, ya que se asume que depende de la publicidad y el ingreso nacional.
 
 Los datos del ejemplo los pasamos a código para poder trabajar con ellos. A continuación el código para cargar los datos y mostrarlos utilizando el paquete `kableExtra`, en total se disponen de 15 observaciones.
 
-```{r definicion-datos, echo=TRUE}
+```{r defdatos, echo=TRUE}
 # Definición de las variables de estudio y creación del dataframe
 observaciones <- 1:15
 pasajeros <- c(15,17,13,23,16,21,14,20,24,17,16,18,23,25,16)
@@ -161,14 +158,12 @@ datos <- data.frame(pasajeros,publicidad,ingreso_nacional)
 colnames(datos) <- c("Pasajeros", "Publicidad", "Ingreso Nacional")
 
 library(kableExtra)
-knitr::kable(cbind(Observaciones = observaciones,datos),booktabs = TRUE, align = "c", caption = "Datos de la regresion  multiple para Hop Scotch Airlines" ) %>%
-  kable_styling()  %>%
-  kable_classic_2("hover")
+knitr::kable(cbind(Observaciones = observaciones,datos),booktabs = TRUE, align = "c", caption = "Tabla con los datos de la regresion  multiple para Hop Scotch Airlines" ) 
 ```
 
 Un gráfico en 3d es obligatorio para explorar la relación entre las variables, este diagrama de puede obtener usando el paquete `scatterplot3d`. A continuación el código para construirlo.
 
-```{r exploracion-relacion-3D-scatterplot3d, echo=TRUE}
+```{r explorscatter, fig.cap="Grafico de dispersion 3D entre las variables con scatterplot3d", echo=TRUE}
 library(scatterplot3d)
 
 #Se crea un gráfico en 3D para explorar la relación entre las variables
@@ -177,11 +172,11 @@ scatterplot3d(x=publicidad, y=ingreso_nacional, z=pasajeros, pch=16, cex.lab=1,
               ylab='Ingreso nacional (en billones de dolares)', zlab='Pasajeros (en miles)')
 ```
 
-De la figura anterior se ve claramente que a medida que aumenta el gasto en publicidad y aumenta el ingreso nacional se tienden a aumentar el numero de pasajeros en miles.
+De la figura anterior \@ref(fig:explorscatter) se ve claramente que a medida que aumenta el gasto en publicidad y aumenta el ingreso nacional se tienden a aumentar el numero de pasajeros en miles.
 
-El mismo diagrama de dispersión anterior se puede crear usando el paquete `plotly`. El cual permite al lector muchas mas posibilidades con el diagrama como moverlo, acercarlo, etc.
+El mismo diagrama de dispersión se puede crear usando el paquete `plotly`. El cual permite al lector muchas mas posibilidades con el diagrama como moverlo, acercarlo, etc.
 
-```{r exploracion-relacion-3D-plotly}
+```{r explorplotly, fig.cap="Grafico de dispersion 3D entre las variables con plotly"}
 library(plotly)
 plot_ly(x=publicidad, y=ingreso_nacional, z=pasajeros, type="scatter3d", color=pasajeros) %>% 
   layout(scene = list(xaxis = list(title = 'Publicidad (en miles de dolares)'),
@@ -191,7 +186,7 @@ plot_ly(x=publicidad, y=ingreso_nacional, z=pasajeros, type="scatter3d", color=p
 
 Otro gráfico de dispersión en 3d se puede construir usando el paquete `rgl`. A continuación está el código para obtener el diagrama de dispersión.
 
-```{r exploracion-relacion-3D-rgl, echo=TRUE}
+```{r explorrgl ,echo=TRUE}
 library(rgl)
 plot3d(x=publicidad, y=ingreso_nacional, z=pasajeros, type='s', col='green',
        xlab='Publicidad (en miles de dolares)',
@@ -200,9 +195,9 @@ plot3d(x=publicidad, y=ingreso_nacional, z=pasajeros, type='s', col='green',
 
 ```
 
-Tambien se puede analizar la relación de las variables observando los gráficos de dispersión entre las variables. Lo cual se hace en R de la siguiente manera: 
+También se puede analizar la relación de las variables observando los gráficos de dispersión entre las variables. Lo cual se hace en R de la siguiente manera: 
 
-```{r}
+```{r multihist, fig.cap="Histograma multiple con psych"} 
 library(psych)
 multi.hist(x = datos, dcol = c("blue", "red"), dlty = c("dotted", "solid"),
            main = "")
@@ -223,22 +218,21 @@ round(cor(datos), 3) # Matriz de correlación redondeada a 3 decimales
 
 Esta matriz es una herramienta de exploración de datos que permite comparar varios subconjuntos de la base de datos para buscar patrones y relaciones. Se obtiene así: 
 
-```{r}
+```{r mtdisp}
 pairs(datos, labels=c("y","x1","x2"), main='Matriz de dispersión', cex.main=0.8, cex = 1.5, pch = 20, bg="light blue", cex.labels = 1, font.labels=1)
 ```
 
 ### Matriz de dispersión con correlaciones
-Esta matriz también sirve para explorar los datos al comparar varios subconjuntos de la base de datos, pero adiciona la correlación entre cada uno de los subconjuntos. Para obtenerla con R se utilizo el paquete `GGally` que ayuda a hacer este tipo de graficos.
 
-```{r exploracion_visual_variables}
+Esta matriz también sirve para explorar los datos al comparar varios subconjuntos de la base de datos, pero adiciona la correlación entre cada uno de los subconjuntos. Para obtenerla con R se utilizo el paquete `GGally` que ayuda a hacer este tipo de gráficos.
+
+```{r explorvar, fig.cap="Matriz de dispersión con correlaciones con GGally"}
 library(GGally)
 ggpairs(datos, lower = list(continuous = "smooth"),
         diag = list(continuous = "barDiag"), axisLabels = "none")
 ```
 
-
-
-Basándonos en el diagrama de dispersión 3d, y los graficos observados, el modelo que se va a ajustar se muestra a continuación:
+Basándonos en el diagrama de dispersión 3d de la \@ref(fig:explorscatter),\@ref(fig:explorplotly) y los gráficos observados de correlación y dispersión de \@ref(fig:explorvar), el modelo que se va a ajustar se muestra a continuación:
 
 $$
 \begin{equation}
@@ -250,7 +244,7 @@ $$
 
 Así se crea el modelo de regresión múltiple ajustado en R:
 
-```{r creacion-modelo-regresion}
+```{r crearlm}
 library(broom)
 # Ajustar un modelo de regresión lineal múltiple
 modelo <- lm(pasajeros ~ publicidad + ingreso_nacional, data = datos)
@@ -269,7 +263,7 @@ tabla_anova <- anova(modelo)
 tabla_anova
 ```
 
-Con los resultados obtenidos en el Chunk \@ref(creacion-modelo-regresion), se puede expresar el modelo ajustado como se muestra a continuación:
+Con los resultados obtenidos en el Chunk \@ref(crearlm), se puede expresar el modelo ajustado como se muestra a continuación:
 
 $$
 \begin{equation}
@@ -278,6 +272,7 @@ $$
 \hat{\sigma}=2.795
 \end{equation}
 $$ Para incluir el plano de regresión que representa el modelo ajustado anterior se puede usar el siguiente código:
+
 
 ```{r echo=TRUE}
 # Se crea el gráfico 3d y se guarda en un objeto
@@ -290,7 +285,7 @@ mi_modelo_3d$plane3d(modelo, lty.box="solid", col='mediumblue')
 
 ```
 
-**Solución**:
+**Solución sin utilizar la funcion lm()**:
 
 ```{r}
 # Número total de observaciones
@@ -384,6 +379,19 @@ $$
 
 Como se puede observar de ambas maneras se llega al mismo resultado (ya que internamente la función `lm()` realiza eso). Finalmente, esta ecuación puede emplearse para predecir el numero de pasajeros para pares de valores de las variables de regresion, publicidad e ingreso nacional.
 
+Otra forma de obtener las ecuación del modelo de regresion múltiple en formato latex y html es utilizando el paquete `equationmatic`
+
+```{r}
+library(equatiomatic)
+
+#Devuelve la ecuación del modelo ajustada
+extract_eq(modelo)
+
+#Devolver coeficientes numéricos reales en lugar de letras griegas con:use_coefs = TRUE
+extract_eq(modelo, use_coefs = TRUE)
+```
+
+
 ## Enfoque matricial para un modelo de regresión lineal múltiple {#Enfoque-matricial}
 
 Al ajustar un modelo de regresión lineal múltiple es mucho mas conveniente expresar las operaciones matemáticas en forma matricial, ya que simplifica en gran medida la presentación.
@@ -404,7 +412,7 @@ $$
 \begin{equation}
 Y = \boldsymbol{X\beta+\varepsilon}
 \end{equation}
-(\#eq:el-modelo-de-regresión-múltiple-matricial)
+(\#eq:mrlmm)
 $$
 
 donde:
@@ -697,6 +705,7 @@ $$
 $$
 
 ```{r}
+y_transpuesta_y <- t(pasajeros) %*% pasajeros
 x_transpuesta_y <- t(x) %*% pasajeros
 x_transpuesta_y
 ```
@@ -745,8 +754,8 @@ $$
 ```{r}
 inv_x_transpuesta_x <- solve(x_transpuesta_x)
 inv_x_transpuesta_x
-matriz_estimaciones_beta <- solve(x_transpuesta_x) %*% x_transpuesta_y
-matriz_estimaciones_beta
+matr_estimaciones_beta <- solve(x_transpuesta_x) %*% x_transpuesta_y
+matr_estimaciones_beta
 ```
 
 Por consiguiente, el modelo de regresión ajustado con los coeficientes de
@@ -758,15 +767,14 @@ $$
 \end{equation}
 $$
 
-La siguiente tabla muestra las observaciones de la variable dependiente y con sus correspondientes valores estimados y residuales para este modelo:
+La siguiente tabla \@ref(tab:res) muestra las observaciones de la variable dependiente y con sus correspondientes valores estimados y residuales para este modelo:
 
-```{r}
+```{r res}
+library(kableExtra)
 residuos <- rstandard(modelo)
 valor_ajustado <- fitted(modelo)
 datos_t <- data.frame(observaciones,pasajeros,valor_ajustado,residuos)
-knitr::kable(datos_t,booktabs = TRUE, align = "c") %>%
-  kable_styling()  %>%
-  kable_classic_2("hover")
+knitr::kable(datos_t,booktabs = TRUE, align = "c", caption = "Tabla de Residuos y Ajustes" ) 
 ```
 A continuación se muestra el gráfico de los residuos vs los valores ajustados, el cual es ideal para observar si a simple vista se cumple o no el principio de homocedasticidad
 
@@ -809,10 +817,11 @@ ggplot(datos, aes(x = pasajeros, y = ajustados)) +
 
 ```
 
+Una forma de evaluar si el modelo creado es un buen modelo es utilizando el paquete `performance`
 
-```{r}
-library(car)  # Necesario para la función influencePlot
-influencePlot(modelo, id.n = 3, main = "Gráfico de Influencia")
+```{r performance}
+library(performance)
+knitr::kable(model_performance(modelo),caption = "Tabla de Desempeño del Modelo" )
 ```
 
 
@@ -931,18 +940,42 @@ $$
 La estimación de $\sigma^{2}$ $$
 \boldsymbol{Y'Y}= \sum_{i=1}^{15}y_{i}^{2}=5360 
 $$ $$
-\boldsymbol{\hat{\beta}'X'Y}= 
-$$ $$
-\boldsymbol{\hat{\beta}'X'Y}=
-$$ Por lo tanto, la suma de cuadrados del error es:
+\boldsymbol{\hat{\beta}'X'Y} =\begin{bmatrix}
+ 8.0153&  1.1078& -1.2258
+\end{bmatrix}
+\begin{bmatrix}
+ 1&  1&  \cdots& 1\\ 
+ 10&  12&  \cdots& 12\\ 
+ 2.40&  2.72&  \cdots&  2.17
+\end{bmatrix} \\
+\boldsymbol{\hat{\beta}'X'Y} = 5266.256
+$$ 
+
+Por lo tanto, la suma de cuadrados del error es:
 
 $$
-SCE = \boldsymbol{Y'Y - \hat{\beta}'X'Y}=
+SCE = \boldsymbol{Y'Y - \hat{\beta}'X'Y}=93.74405
 $$ Por consiguiente, la estimación de $\sigma^{2}$ es:
 
 $$
-\hat{\sigma}^{2}=CME=\frac{SCE}{n-p}=
+\hat{\sigma}^{2}=CME=\frac{SCE}{n-p}=\frac{93.74405}{15-3}=7.812004
 $$
+```{r}
+# Número de predictores (regresores)
+p <- 3
+
+# Producto de la transpuesta de beta y x_transpuesta_y
+producto_transpuesta_beta_y <- t(matr_estimaciones_beta) %*% x_transpuesta_y
+producto_transpuesta_beta_y
+
+# Suma de cuadrados de los residuos
+suma_cuadrados_residuos <- y_transpuesta_y - producto_transpuesta_beta_y
+suma_cuadrados_residuos
+
+# Varianza estimada del error (s^2)
+sce <- suma_cuadrados_residuos / (n - p)
+sce
+```
 
 ## Prueba de hipótesis en la regresión múltiple
 
@@ -1096,16 +1129,6 @@ $$
 \end{equation}
 $$
 
-Ejemplo:
-
-La respuesta promedio estimada en este punto es:
-
-La varianza de $V(\hat{\mu}_{y/x_{0}})$ se estima por:
-
-$$
-\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}=
-$$ Entonces, el intervalo de confianza para la respuesta promedio es:
-
 ### Intervalo de confianza para $\hat{y}_{0}$ (observación futura).
 
 El modelo de regresión puede ser usado para predecir las observaciones futuras para un y correspondiente a un valor particular de las variables independientes, por ejemplo, $x_{01},x_{02},...,x_{0k}.$
@@ -1123,4 +1146,8 @@ $$
 \hat{y_{0}}-t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}}\leq y_{0}\leq\hat{y_{0}}+t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}}
 \end{equation}
 $$
+
+Todas las demostraciones matemáticas utilizadas en el libro son profundizadas en el capitulo 13 del libro de @wackerly2002estadistica .
+
+`r if (knitr:::is_html_output()) '# Bibliografía {-}'`
 

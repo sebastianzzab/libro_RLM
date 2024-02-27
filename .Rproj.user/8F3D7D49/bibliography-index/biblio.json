@@ -158,6 +158,33 @@
             "type": "book"
         },
         {
+            "author": [
+                {
+                    "family": "Mendenhall",
+                    "given": "W"
+                },
+                {
+                    "family": "Beaver",
+                    "given": "RJ"
+                },
+                {
+                    "family": "Beaver",
+                    "given": "BM"
+                }
+            ],
+            "container-title": "JH Romo, Trad.) México, DF: Cengage Learning",
+            "id": "mendenhall2010introduccion",
+            "issued": {
+                "date-parts": [
+                    [
+                        2010
+                    ]
+                ]
+            },
+            "title": "Introducción a la probabilidad y la estadı́stica (décima tercera edición ed.)",
+            "type": "article-journal"
+        },
+        {
             "URL": "https://www.R-project.org/",
             "author": [
                 {
@@ -258,75 +285,22 @@
             "type": "book"
         },
         {
-            "URL": "https://r-forge.r-project.org/projects/car/",
+            "URL": "https://github.com/rstudio/DT",
             "author": [
                 {
-                    "family": "Fox",
-                    "given": "John"
+                    "family": "Xie",
+                    "given": "Yihui"
                 },
                 {
-                    "family": "Weisberg",
-                    "given": "Sanford"
+                    "family": "Cheng",
+                    "given": "Joe"
                 },
                 {
-                    "family": "Price",
-                    "given": "Brad"
+                    "family": "Tan",
+                    "given": "Xianying"
                 }
             ],
-            "id": "R-carData",
-            "issued": {
-                "date-parts": [
-                    [
-                        2022
-                    ]
-                ]
-            },
-            "note": "R package version 3.0-5",
-            "title": "carData: Companion to applied regression data sets",
-            "title-short": "carData",
-            "type": "book"
-        },
-        {
-            "URL": "https://ggplot2.tidyverse.org",
-            "author": [
-                {
-                    "family": "Wickham",
-                    "given": "Hadley"
-                },
-                {
-                    "family": "Chang",
-                    "given": "Winston"
-                },
-                {
-                    "family": "Henry",
-                    "given": "Lionel"
-                },
-                {
-                    "family": "Pedersen",
-                    "given": "Thomas Lin"
-                },
-                {
-                    "family": "Takahashi",
-                    "given": "Kohske"
-                },
-                {
-                    "family": "Wilke",
-                    "given": "Claus"
-                },
-                {
-                    "family": "Woo",
-                    "given": "Kara"
-                },
-                {
-                    "family": "Yutani",
-                    "given": "Hiroaki"
-                },
-                {
-                    "family": "Dunnington",
-                    "given": "Dewey"
-                }
-            ],
-            "id": "R-ggplot2",
+            "id": "R-DT",
             "issued": {
                 "date-parts": [
                     [
@@ -334,9 +308,38 @@
                     ]
                 ]
             },
-            "note": "R package version 3.4.4",
-            "title": "ggplot2: Create elegant data visualisations using the grammar of graphics",
-            "title-short": "ggplot2",
+            "note": "R package version 0.31",
+            "title": "DT: A wrapper of the JavaScript library DataTables",
+            "title-short": "DT",
+            "type": "book"
+        },
+        {
+            "URL": "https://github.com/datalorax/equatiomatic",
+            "author": [
+                {
+                    "family": "Anderson",
+                    "given": "Daniel"
+                },
+                {
+                    "family": "Heiss",
+                    "given": "Andrew"
+                },
+                {
+                    "family": "Sumners",
+                    "given": "Jay"
+                }
+            ],
+            "id": "R-equatiomatic",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "R package version 0.3.1",
+            "title": "Equatiomatic: Transform models into LaTeX equations",
+            "title-short": "Equatiomatic",
             "type": "book"
         },
         {
@@ -379,6 +382,51 @@
             "note": "R package version 1.45",
             "title": "Knitr: A general-purpose package for dynamic report generation in r",
             "title-short": "Knitr",
+            "type": "book"
+        },
+        {
+            "URL": "https://easystats.github.io/performance/",
+            "author": [
+                {
+                    "family": "Lüdecke",
+                    "given": "Daniel"
+                },
+                {
+                    "family": "Makowski",
+                    "given": "Dominique"
+                },
+                {
+                    "family": "Ben-Shachar",
+                    "given": "Mattan S."
+                },
+                {
+                    "family": "Patil",
+                    "given": "Indrajeet"
+                },
+                {
+                    "family": "Waggoner",
+                    "given": "Philip"
+                },
+                {
+                    "family": "Wiernik",
+                    "given": "Brenton M."
+                },
+                {
+                    "family": "Thériault",
+                    "given": "Rémi"
+                }
+            ],
+            "id": "R-performance",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024
+                    ]
+                ]
+            },
+            "note": "R package version 0.10.9",
+            "title": "Performance: Assessment of regression models performance",
+            "title-short": "Performance",
             "type": "book"
         },
         {
@@ -534,6 +582,27 @@
             "type": "book"
         },
         {
+            "URL": "https://github.com/rstudio/tinytex",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "R-tinytex",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 0.49",
+            "title": "Tinytex: Helper functions to install and maintain TeX live, and compile LaTeX documents",
+            "title-short": "Tinytex",
+            "type": "book"
+        },
+        {
             "ISBN": "978-1138700109",
             "URL": "https://bookdown.org/yihui/bookdown",
             "author": [
@@ -580,28 +649,6 @@
             "publisher": "Sage",
             "publisher-place": "Thousand Oaks CA",
             "title": "An R companion to applied regression",
-            "type": "book"
-        },
-        {
-            "ISBN": "978-3-319-24277-4",
-            "URL": "https://ggplot2.tidyverse.org",
-            "author": [
-                {
-                    "family": "Wickham",
-                    "given": "Hadley"
-                }
-            ],
-            "id": "ggplot22016",
-            "issued": {
-                "date-parts": [
-                    [
-                        2016
-                    ]
-                ]
-            },
-            "publisher": "Springer-Verlag New York",
-            "title": "ggplot2: Elegant graphics for data analysis",
-            "title-short": "ggplot2",
             "type": "book"
         },
         {
@@ -689,6 +736,46 @@
             "title": "Diagnostic checking in regression relationships",
             "type": "article-journal",
             "volume": "2"
+        },
+        {
+            "DOI": "10.21105/joss.03139",
+            "author": [
+                {
+                    "family": "Lüdecke",
+                    "given": "Daniel"
+                },
+                {
+                    "family": "Ben-Shachar",
+                    "given": "Mattan S."
+                },
+                {
+                    "family": "Patil",
+                    "given": "Indrajeet"
+                },
+                {
+                    "family": "Waggoner",
+                    "given": "Philip"
+                },
+                {
+                    "family": "Makowski",
+                    "given": "Dominique"
+                }
+            ],
+            "container-title": "Journal of Open Source Software",
+            "id": "performance2021",
+            "issue": "60",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "page": "3139",
+            "title": "performance: An R package for assessment, comparison and testing of statistical models",
+            "title-short": "performance",
+            "type": "article-journal",
+            "volume": "6"
         },
         {
             "ISBN": "9781138331457",
@@ -913,6 +1000,30 @@
             "title": "Welcome to the tidyverse",
             "type": "article-journal",
             "volume": "4"
+        },
+        {
+            "URL": "https://tug.org/TUGboat/Contents/contents40-1.html",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "container-title": "TUGboat",
+            "id": "tinytex2019",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "page": "30-32",
+            "title": "TinyTeX: A lightweight, cross-platform, and easy-to-maintain LaTeX distribution based on TeX live",
+            "title-short": "TinyTeX",
+            "type": "article-journal",
+            "volume": "40"
         }
     ],
     "project_biblios": [

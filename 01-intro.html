@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>intro</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="01-intro_files/libs/clipboard/clipboard.min.js"></script>
+<script src="01-intro_files/libs/quarto-html/quarto.js"></script>
+<script src="01-intro_files/libs/quarto-html/popper.min.js"></script>
+<script src="01-intro_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="01-intro_files/libs/quarto-html/anchor.min.js"></script>
+<link href="01-intro_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="01-intro_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="01-intro_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="01-intro_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="01-intro_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<script src="01-intro_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="01-intro_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="01-intro_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="01-intro_files/libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="01-intro_files/libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="01-intro_files/libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="01-intro_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="01-intro_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="01-intro_files/libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="01-intro_files/libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="modelos-de-regresión-lineal-múltiple" class="level1">
+<h1>Modelos de regresión lineal múltiple</h1>
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Introducción</h2>
+<p>Muchas aplicaciones del análisis de regresión involucran situaciones donde se tiene más de una variable de regresión, los problemas que se presentan en el mundo actual no pueden ser explicados mediante una sola variable. Aquel modelo de regresión que contiene más de una variable independiente recibe el nombre de <strong>Modelo de Regresión Múltiple</strong>.</p>
+<p>En general, la variable dependiente o respuesta (y) puede estar relacionada con k variables independientes o regresoras. El modelo</p>
+<p><span class="math display">\[
+\begin{equation}
+y=\beta _{0} + \beta _{1}X _{1} + \beta _{2}X _{2} + ... + + \beta _{k}X _{k} + \varepsilon
+(\#eq:el-modelo-de-regresión-lineal-múltiple)
+\end {equation}
+\]</span> recibe el nombre de <strong>modelo de regresión lineal múltiple con k variables de regresión</strong>. Los parámetros <span class="math inline">\(\beta _{0}\)</span> y <span class="math inline">\(\beta _{j}\)</span> para j = 0, 1, … , k, son parámetros desconocidos, <strong>denominados coeficientes de regresión</strong>.</p>
+<p><span class="math inline">\(\varepsilon\)</span> denota el error, el cual puede ser debido a fluctuaciones aleatorias de la variable respuesta o por error en el modelo planteado.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imagen-1.png" class="img-fluid figure-img" width="392"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Frecuentemente los modelos de regresión lineal múltiple se emplean como funciones de aproximación. Esto es, se desconoce la verdadera relación funcional entre y y <span class="math inline">\(x_{1},x_{2},...,x_{k}\)</span>, pero sobre ciertos rangos de las variables independientes el modelo de regresión lineal constituye una aproximación adecuada.</p>
+<p>Al construir una ecuación de predicción o regresion estimada que relacionara <span class="math inline">\(y\)</span> con k variables predictoras. Desde luego que aparecen varias preguntas, al igual que con regresion lineal simple:</p>
+<p>¿Que tan bien se ajusta el modelo? ¿Que tan fuerte es la relación entre y y las variables predictoras? ¿Se han violado suposiciones importantes? ¿Qué tan buenas son las estimaciones y predicciones?</p>
+<p>Para contestar estas preguntas se pueden usar métodos de <strong>análisis de regresión múltiple</strong>, que casi siempre se hacen con un programa de cómputo, en nuestro caso, utilizando R. Este capítulo contiene una breve introducción al análisis de regresión múltiple y a la difícil tarea de construcción de modelos, es decir, escoger el modelo correcto para una aplicación práctica.</p>
+<p>Para mas información leerse la sección 13.1 del libro de <span class="citation" data-cites="mendenhall2010introduccion">@mendenhall2010introduccion</span></p>
+<p>El siguiente bloque de código permite instalar y cargar los paquetes de R usados para implementar todos los conceptos de regresion lineal múltiple expuestos en este libro. Los cuales son los siguientes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> <span class="st">'bookdown'</span>, <span class="st">'knitr'</span>, <span class="st">'rmarkdown'</span>,<span class="st">'scatterplot3d'</span>,<span class="st">'plotly'</span>, <span class="st">'tidyverse'</span>,<span class="st">'rgl'</span>, <span class="st">'lmtest'</span>,<span class="st">'car'</span>, <span class="st">'psych'</span>, <span class="st">'DT'</span>, <span class="st">'broom'</span>,<span class="st">'kableExtra'</span>, <span class="st">'GGally'</span>,<span class="st">'plot3D'</span>, <span class="st">'plot3Drgl'</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>package.check <span class="ot">&lt;-</span> <span class="fu">lapply</span>(packages, <span class="at">FUN =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(x, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="Estimacion-M.C.O." class="level2">
+<h2 class="anchored" data-anchor-id="Estimacion-M.C.O.">Estimación de los parámetros de la ecuación de regresión por el método de mínimo cuadrado ordinario (M.C.O.)</h2>
+<p>El método de mínimos cuadrados ordinarios puede emplearse para estimar los coeficientes de regresión del modelo lineal múltiple de la ecuación anterior.</p>
+<p>Supóngase que se tienen disponibles n &gt; k observaciones y sea <span class="math inline">\(x_{ij}\)</span> la i-ésima observación o nivel de la variable <span class="math inline">\(x_{j}\)</span>. Las observaciones son:</p>
+<p><span class="math display">\[
+\begin{equation}
+(x_{i1},x_{i2}, ..., x_{ik}, y_{i}),\hspace{1.0cm} i = 1,2, ... , n \hspace{1.0cm}y\hspace{1.0cm} n  &gt; k
+\end{equation}
+\]</span></p>
+<p>Se acostumbra presentar los datos de una regresión múltiple en una tabla tal, como sigue:</p>
+<p>$$ <span class="math display">\[\begin{equation}
+
+\end{equation}\]</span> $$</p>
+<p>Cada observación <span class="math inline">\((x_{i1}, x_{i2}x_{i3},...x_{ik}, y_{i})\)</span> satisface el modelo, es decir:</p>
+<p><span class="math display">\[
+\begin{equation}
+y_{i}=\beta_{0}+\beta_{1}x_{i1}+\beta_{2}x_{i2}+ ... + \beta_{k}x_{ik}+\varepsilon_{i}
+(\#eq:el-modelo-de-regresión-múltiple-estimado)
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+y_{i}=\beta_{0}+\sum_{j=1}^{k}\beta_{j}x_{ij} + \varepsilon_{i}\hspace{0.9cm} i=1,2,...,n
+\end{equation}
+\]</span> donde: <span class="math inline">\(y_i\)</span> es la i-esima observación de ;a respuesta para un conjunto de valores <span class="math inline">\(x_{i1},x_{i2},..,x_{ik}\)</span> de las variables de predicción, <span class="math inline">\(\varepsilon_{i}\)</span> es el error aleatorio no observable asociado con <span class="math inline">\(y_{i}\)</span> y <span class="math inline">\(\beta_{0},\beta_{1},\beta_{2},...,\beta_{k}\)</span> son <span class="math inline">\(p = k + 1\)</span> parámetros lineales desconocidos.</p>
+<p>Si supone el caso de la teoría basada en el modelo normal, las observaciones son variables aleatorias independientes, normalmente distribuidas con:</p>
+<p><span class="math display">\[
+\begin{equation}
+E(y_{i})=\beta_{0}+\beta_{1}x_{i1}+\beta_{2}x_{i2}+...+\beta_{k}x_{ik} \\
+V(y_{i})= \sigma^2  \hspace{4cm}
+i =1,2,..,n \\
+(\#eq:modelo-normal-de-variables)
+\end{equation}
+\]</span> De esta forma, los errores son variables aleatorias independientes, normalmente distribuidos con: <span class="math inline">\(E(\varepsilon_{i})= 0\)</span> y <span class="math inline">\(V(\varepsilon_{i})= \sigma^2\)</span></p>
+<p>Demostración:</p>
+<p>La función de mínimos cuadrados ordinarios es:</p>
+<p><span class="math display">\[
+\begin{equation}
+L=\sum_{i=1}^{n}\varepsilon_{i}^2
+\end{equation}
+\]</span> donde <span class="math inline">\(\varepsilon_{i}=y_{i}-\beta_{0}-\sum_{i=1}^{k}\beta_{j}x_{ij}\)</span></p>
+<p><span class="math display">\[
+\begin{equation}
+L= \sum_{i=1}^n(y_i-\beta_{0}-\sum_{j}x_{ij})^2 //
+\end{equation}
+\]</span> Derivando L con respecto a <span class="math inline">\(\beta_{0},\beta_{1},\beta_{2},...,\beta_{k}\)</span> ,se tiene</p>
+<p><span class="math display">\[
+\begin{equation}
+\frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij}) \\
+y \\
+\frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})x_{ij} \hspace{5.0cm} j =1,2,..,k
+\end{equation}
+\]</span> Al igualar a cero a estas estimaciones de mínimos cuadrados, se obtiene:</p>
+<p><span class="math display">\[
+\begin{equation}
+-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})=0 \\
+\frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})x_{ij}=0 \hspace{5.0cm} j =1,2,..,k
+\end{equation}
+\]</span></p>
+<p>Después de simplificar las ecuaciones anteriores, se obtienen las ecuaciones normales de mínimos cuadrados ordinarios.</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{matrix}
+n\hat{\beta_{0}} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1} + \hat{\beta_{2}}\sum_{i=1}^nx_{i2} + \ldots + \hat{\beta_{k}}\sum_{i=1}^nx_{ik} = \sum_{i=1}^ny_i \\
+\hat{\beta_{0}}\sum_{i=1}^nx_{i1} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1}^2 + \hat{\beta_{2}}\sum_{i=1}^nx_{i1}x_{i2} + \ldots + \hat{\beta_{k}}\sum_{i=1}^nx_{i1}x_{ik} = \sum_{i=1}^nx_{i1}y_i \\
+\vdots \quad \vdots \quad \vdots \quad \vdots \quad \vdots \\
+\hat{\beta_{0}}\sum_{i=1}^nx_{ik} + \hat{\beta_{1}}\sum_{i=1}^nx_{ik}x_{i1} + \hat{\beta_{2}}\sum_{i=1}^nx_{ik}x_{i2} + \ldots + \hat{\beta_{k}}\sum_{i=1}^nx_{ik}^2 = \sum_{i=1}^nx_{ik}y_i
+\end{matrix}
+\end{equation}
+\]</span></p>
+<p>Nótese que existen <span class="math inline">\(p = k +1\)</span> ecuaciones normales, una para cada coeficiente de regresion desconocido. La solución de las ecuaciones normales son los estimadores mínimos cuadrados de los coeficientes de regresion <span class="math inline">\(\hat{\beta_{0}},\hat{\beta_{1}},...,\hat{\beta_{k}}\)</span>. La solución de las ecuaciones normales puede obtenerse con cualquier método apropiado para la solución de sistemas de ecuaciones lineales.</p>
+<p>Ejemplo</p>
+<p>Como ilustración vamos a usar los datos del ejemplo del libro <span class="citation" data-cites="webster2000estadistica">@webster2000estadistica</span> .La gerencia de Hop Scotch Airlines, la aerolínea transportadora mas pequeña del mundo, considera que existe una relación directa entre los gastos publicitarios, el ingreso nacional y el numero de pasajeros que escogen viajar por Hop Scotch. Por determinar so esta relación existe, y si es así cual podría ser la naturaleza exacta, los estadísticos empleados por Hop Scotch decidieron utilizar los procedimientos MCO para determinar el modelo de regresion múltiple.</p>
+<p>Se recolectaron los valores mensuales por gastos de publicidad, el ingreso nacional y el numero de pasajeros para los n = 15 meses mas recientes. Los datos aparecen en la tabla @,junto con otros cálculos necesarios para hallar el modelo de regresion. Se observara que los pasajeros están representados con la variable Y, ya que se asume que depende de la publicidad y el ingreso nacional.</p>
+<p>Los datos del ejemplo los pasamos a código para poder trabajar con ellos. A continuación el código para cargar los datos y mostrarlos utilizando el paquete <code>kableExtra</code>, en total se disponen de 15 observaciones.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición de las variables de estudio y creación del dataframe</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>observaciones <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pasajeros <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">17</span>,<span class="dv">13</span>,<span class="dv">23</span>,<span class="dv">16</span>,<span class="dv">21</span>,<span class="dv">14</span>,<span class="dv">20</span>,<span class="dv">24</span>,<span class="dv">17</span>,<span class="dv">16</span>,<span class="dv">18</span>,<span class="dv">23</span>,<span class="dv">25</span>,<span class="dv">16</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>publicidad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">8</span>,<span class="dv">17</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">14</span>,<span class="dv">19</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">16</span>,<span class="dv">10</span>,<span class="dv">12</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ingreso_nacional <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.4</span>,<span class="fl">2.72</span>,<span class="fl">2.08</span>,<span class="fl">3.68</span>,<span class="fl">2.56</span>,<span class="fl">3.36</span>,<span class="fl">2.24</span>,<span class="fl">3.2</span>,<span class="fl">3.84</span>,<span class="fl">2.72</span>,<span class="fl">2.07</span>,<span class="fl">2.33</span>,<span class="fl">2.98</span>,<span class="fl">1.94</span>,<span class="fl">2.17</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación del dataframe</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(pasajeros,publicidad,ingreso_nacional)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(datos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Pasajeros"</span>, <span class="st">"Publicidad"</span>, <span class="st">"Ingreso Nacional"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'kableExtra' was built under R version 4.3.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">cbind</span>(<span class="at">Observaciones =</span> observaciones,datos),<span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">align =</span> <span class="st">"c"</span>, <span class="at">caption =</span> <span class="st">"Datos de la regresion  multiple para Hop Scotch Airlines"</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>()  <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic_2</span>(<span class="st">"hover"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table lightable-classic-2 lightable-hover table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Datos de la regresion multiple para Hop Scotch Airlines</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Observaciones</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Pasajeros</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Publicidad</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Ingreso Nacional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">2.40</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">2.72</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2.08</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">3.68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">2.56</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">3.36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">2.24</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">3.20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">3.84</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">2.72</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">2.07</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">2.33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2.98</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">1.94</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">2.17</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>Un gráfico en 3d es obligatorio para explorar la relación entre las variables, este diagrama de puede obtener usando el paquete <code>scatterplot3d</code>. A continuación el código para construirlo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scatterplot3d)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Se crea un gráfico en 3D para explorar la relación entre las variables</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplot3d</span>(<span class="at">x=</span>publicidad, <span class="at">y=</span>ingreso_nacional, <span class="at">z=</span>pasajeros, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">cex.lab=</span><span class="dv">1</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">highlight.3d=</span><span class="cn">TRUE</span>, <span class="at">type=</span><span class="st">"h"</span>, <span class="at">xlab=</span><span class="st">'Publicidad (en miles de dolares)'</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">ylab=</span><span class="st">'Ingreso nacional (en billones de dolares)'</span>, <span class="at">zlab=</span><span class="st">'Pasajeros (en miles)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="01-intro_files/figure-html/exploracion-relacion-3D-scatterplot3d-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>De la figura anterior se ve claramente que a medida que aumenta el gasto en publicidad y aumenta el ingreso nacional se tienden a aumentar el numero de pasajeros en miles.</p>
+<p>El mismo diagrama de dispersión anterior se puede crear usando el paquete <code>plotly</code>. El cual permite al lector muchas mas posibilidades con el diagrama como moverlo, acercarlo, etc.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'plotly' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: ggplot2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'plotly'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:ggplot2':
+
+    last_plot</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    filter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:graphics':
+
+    layout</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(<span class="at">x=</span>publicidad, <span class="at">y=</span>ingreso_nacional, <span class="at">z=</span>pasajeros, <span class="at">type=</span><span class="st">"scatter3d"</span>, <span class="at">color=</span>pasajeros) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">scene =</span> <span class="fu">list</span>(<span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'Publicidad (en miles de dolares)'</span>),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'Ingreso nacional (en billones de dolares)'</span>),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">zaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'Pasajeros (en miles)'</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>No scatter3d mode specifed:
+  Setting the mode to markers
+  Read more about this attribute -&gt; https://plotly.com/r/reference/#scatter-mode</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-55b7a2eeb380a4c1f4df" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-55b7a2eeb380a4c1f4df">{"x":{"visdat":{"1c68de01ec7":["function () ","plotlyVisDat"]},"cur_data":"1c68de01ec7","attrs":{"1c68de01ec7":{"x":[10,12,8,17,10,15,10,14,19,10,11,13,16,10,12],"y":[2.3999999999999999,2.7200000000000002,2.0800000000000001,3.6800000000000002,2.5600000000000001,3.3599999999999999,2.2400000000000002,3.2000000000000002,3.8399999999999999,2.7200000000000002,2.0699999999999998,2.3300000000000001,2.98,1.9399999999999999,2.1699999999999999],"z":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16],"color":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"Publicidad (en miles de dolares)"},"yaxis":{"title":"Ingreso nacional (en billones de dolares)"},"zaxis":{"title":"Pasajeros (en miles)"}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[10,12,8,17,10,15,10,14,19,10,11,13,16,10,12],"y":[2.3999999999999999,2.7200000000000002,2.0800000000000001,3.6800000000000002,2.5600000000000001,3.3599999999999999,2.2400000000000002,3.2000000000000002,3.8399999999999999,2.7200000000000002,2.0699999999999998,2.3300000000000001,2.98,1.9399999999999999,2.1699999999999999],"z":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16],"type":"scatter3d","mode":"markers","marker":{"colorbar":{"title":"","ticklen":2},"cmin":13,"cmax":25,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16],"line":{"colorbar":{"title":"","ticklen":2},"cmin":13,"cmax":25,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[15,17,13,23,16,21,14,20,24,17,16,18,23,25,16]}},"frame":null},{"x":[8,19],"y":[1.9399999999999999,3.8399999999999999],"type":"scatter3d","mode":"markers","opacity":0,"hoverinfo":"none","showlegend":false,"marker":{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"cmin":13,"cmax":25,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"color":[13,25],"line":{"color":"rgba(255,127,14,1)"}},"z":[13,25],"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Otro gráfico de dispersión en 3d se puede construir usando el paquete <code>rgl</code>. A continuación está el código para obtener el diagrama de dispersión.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgl)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot3d</span>(<span class="at">x=</span>publicidad, <span class="at">y=</span>ingreso_nacional, <span class="at">z=</span>pasajeros, <span class="at">type=</span><span class="st">'s'</span>, <span class="at">col=</span><span class="st">'green'</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">'Publicidad (en miles de dolares)'</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">'Ingreso nacional (en billones de dolares)'</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">zlab=</span><span class="st">'Pasajeros (en miles)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Tambien se puede analizar la relación de las variables observando los gráficos de dispersión entre las variables. Lo cual se hace en R de la siguiente manera:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'psych' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'psych'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:ggplot2':
+
+    %+%, alpha</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">multi.hist</span>(<span class="at">x =</span> datos, <span class="at">dcol =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">dlty =</span> <span class="fu">c</span>(<span class="st">"dotted"</span>, <span class="st">"solid"</span>),</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="01-intro_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Otros paquetes permiten representar a la vez los diagramas de dispersión, los valores de correlación para cada par de variables y la distribución de cada una de las variables.</p>
+<section id="matriz-de-correlación" class="level3">
+<h3 class="anchored" data-anchor-id="matriz-de-correlación">Matriz de correlación</h3>
+<p>Para calcular dicha correlación, se emplea el siguiente código:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">cor</span>(datos), <span class="dv">3</span>) <span class="co"># Matriz de correlación redondeada a 3 decimales</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Pasajeros Publicidad Ingreso Nacional
+Pasajeros            1.000      0.735            0.592
+Publicidad           0.735      1.000            0.870
+Ingreso Nacional     0.592      0.870            1.000</code></pre>
+</div>
+</div>
+</section>
+<section id="matriz-de-dispersión" class="level3">
+<h3 class="anchored" data-anchor-id="matriz-de-dispersión">Matriz de dispersión</h3>
+<p>Esta matriz es una herramienta de exploración de datos que permite comparar varios subconjuntos de la base de datos para buscar patrones y relaciones. Se obtiene así:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(datos, <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"y"</span>,<span class="st">"x1"</span>,<span class="st">"x2"</span>), <span class="at">main=</span><span class="st">'Matriz de dispersión'</span>, <span class="at">cex.main=</span><span class="fl">0.8</span>, <span class="at">cex =</span> <span class="fl">1.5</span>, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">bg=</span><span class="st">"light blue"</span>, <span class="at">cex.labels =</span> <span class="dv">1</span>, <span class="at">font.labels=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="01-intro_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="matriz-de-dispersión-con-correlaciones" class="level3">
+<h3 class="anchored" data-anchor-id="matriz-de-dispersión-con-correlaciones">Matriz de dispersión con correlaciones</h3>
+<p>Esta matriz también sirve para explorar los datos al comparar varios subconjuntos de la base de datos, pero adiciona la correlación entre cada uno de los subconjuntos. Para obtenerla con R se utilizo el paquete <code>GGally</code> que ayuda a hacer este tipo de graficos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'GGally' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'GGally':
+  method from   
+  +.gg   ggplot2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(datos, <span class="at">lower =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="st">"smooth"</span>),</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">diag =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="st">"barDiag"</span>), <span class="at">axisLabels =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="01-intro_files/figure-html/exploracion_visual_variables-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Basándonos en el diagrama de dispersión 3d, y los gráficos observados, el modelo que se va a ajustar se muestra a continuación:</p>
+<p><span class="math display">\[
+\begin{equation}
+Pasajeros \sim N(\mu_{i},\sigma^{2}),\\
+\mu_{i} = \beta_{0} + \beta_{1}Publicidad_{i} + \beta_{2}Ingreso_{i},\\
+\sigma^{2} = constante
+\end{equation}
+\]</span></p>
+<p>Así se crea el modelo de regresión múltiple ajustado en R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'broom' was built under R version 4.3.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustar un modelo de regresión lineal múltiple</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(pasajeros <span class="sc">~</span> publicidad <span class="sc">+</span> ingreso_nacional, <span class="at">data =</span> datos)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizar el paquete broom para obtener resúmenes y estadísticas del modelo</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = pasajeros ~ publicidad + ingreso_nacional, data = datos)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.6489 -1.4443 -0.3563  0.5748  8.2848 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)        8.0153     3.3996   2.358   0.0362 *
+publicidad         1.1078     0.4827   2.295   0.0406 *
+ingreso_nacional  -1.2258     2.5037  -0.490   0.6332  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.795 on 12 degrees of freedom
+Multiple R-squared:  0.5487,    Adjusted R-squared:  0.4735 
+F-statistic: 7.296 on 2 and 12 DF,  p-value: 0.008445</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  term             estimate std.error statistic p.value
+  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 (Intercept)          8.02     3.40      2.36   0.0362
+2 publicidad           1.11     0.483     2.29   0.0406
+3 ingreso_nacional    -1.23     2.50     -0.490  0.633 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
+      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     0.549         0.474  2.79      7.30 0.00845     2  -35.0  78.1  80.9
+# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 9
+   pasajeros publicidad ingreso_nacional .fitted  .resid   .hat .sigma   .cooksd
+       &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
+ 1        15         10             2.4     16.2 -1.15   0.124   2.90  0.00913  
+ 2        17         12             2.72    18.0 -0.975  0.0784  2.90  0.00374  
+ 3        13          8             2.08    14.3 -1.33   0.228   2.88  0.0288   
+ 4        23         17             3.68    22.3  0.663  0.260   2.91  0.00889  
+ 5        16         10             2.56    16.0  0.0448 0.177   2.92  0.0000224
+ 6        21         15             3.36    20.5  0.486  0.163   2.91  0.00235  
+ 7        14         10             2.24    16.3 -2.35   0.112   2.82  0.0333   
+ 8        20         14             3.2     19.6  0.398  0.137   2.92  0.00124  
+ 9        24         19             3.84    24.4 -0.356  0.379   2.92  0.00533  
+10        17         10             2.72    15.8  1.24   0.272   2.89  0.0336   
+11        16         11             2.07    17.7 -1.66   0.192   2.87  0.0348   
+12        18         13             2.33    19.6 -1.56   0.228   2.87  0.0397   
+13        23         16             2.98    22.1  0.913  0.229   2.90  0.0137   
+14        25         10             1.94    16.7  8.28   0.199   0.853 0.912    
+15        16         12             2.17    18.6 -2.65   0.222   2.78  0.110    
+# ℹ 1 more variable: .std.resid &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Ya por defecto la función <code>summary</code> presenta el análisis de varianza (ANOVA) por defecto. Si nosotros quisiéramos solamente esa tabla se haría de la siguiente forma:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar el análisis de varianza</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>tabla_anova <span class="ot">&lt;-</span> <span class="fu">anova</span>(modelo)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>tabla_anova</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: pasajeros
+                 Df  Sum Sq Mean Sq F value   Pr(&gt;F)   
+publicidad        1 112.117 112.117 14.3518 0.002584 **
+ingreso_nacional  1   1.873   1.873  0.2397 0.633245   
+Residuals        12  93.744   7.812                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Con los resultados obtenidos en el Chunk @ref(creacion-modelo-regresion), se puede expresar el modelo ajustado como se muestra a continuación:</p>
+<p><span class="math display">\[
+\begin{equation}
+\widehat{Tiempo_{i}} \sim N(\hat{\mu_{i}},\hat{\sigma}^{2}),
+\hat{\mu_{i}} = 8.0153 + 1.1078Publicidad_{i} - 1.2258Ingreso_{i},
+\hat{\sigma}=2.795
+\end{equation}
+\]</span> Para incluir el plano de regresión que representa el modelo ajustado anterior se puede usar el siguiente código:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Se crea el gráfico 3d y se guarda en un objeto</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scatterplot3d)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>mi_modelo_3d <span class="ot">&lt;-</span> <span class="fu">scatterplot3d</span>(<span class="at">x=</span>publicidad, <span class="at">y=</span>ingreso_nacional, <span class="at">z=</span>pasajeros, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">cex.lab=</span><span class="dv">1</span>,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">highlight.3d=</span><span class="cn">TRUE</span>, <span class="at">type=</span><span class="st">"h"</span>, <span class="at">xlab=</span><span class="st">'Publicidad (en miles de dolares)'</span>,</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ylab=</span><span class="st">'Ingreso nacional (en billones de dolares)'</span>, <span class="at">zlab=</span><span class="st">'Pasajeros (en miles)'</span>)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Para agregar el plano usamos $plane3d( ) con argumento modelo ajustado</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>mi_modelo_3d<span class="sc">$</span><span class="fu">plane3d</span>(modelo, <span class="at">lty.box=</span><span class="st">"solid"</span>, <span class="at">col=</span><span class="st">'mediumblue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="01-intro_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Solución</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Número total de observaciones</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>num_observaciones <span class="ot">&lt;-</span> <span class="fu">nrow</span>(datos)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la variable dependiente (Y)</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>sum_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Pasajeros)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la variable dependiente al cuadrado (Y)</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>sum_y_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Pasajeros<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la primera variable independiente (X1: Publicidad)</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>sum_x1 <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Publicidad)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la segunda variable independiente (X2: Ingreso Nacional)</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>sum_x2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span><span class="st">`</span><span class="at">Ingreso Nacional</span><span class="st">`</span>)</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Sumatoria de la columna de los cuadrados de la primera variable independiente (X1^2)</span></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>sum_x1_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Publicidad<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Sumatoria de la columna de los cuadrados de la segunda variable independiente (X1^2)</span></span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>sum_x2_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span><span class="st">`</span><span class="at">Ingreso Nacional</span><span class="st">`</span><span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la multiplicación entre X1 y X2</span></span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>sum_x1_x2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Publicidad <span class="sc">*</span> datos<span class="sc">$</span><span class="st">`</span><span class="at">Ingreso Nacional</span><span class="st">`</span>)</span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la multiplicación entre X1 y Y</span></span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>sum_x1_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>Publicidad <span class="sc">*</span> datos<span class="sc">$</span>Pasajeros)</span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Sumatoria de la columna de la multiplicación entre X2 y Y</span></span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>sum_x2_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span><span class="st">`</span><span class="at">Ingreso Nacional</span><span class="st">`</span> <span class="sc">*</span> datos<span class="sc">$</span>Pasajeros)</span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimir los resultados</span></span>
+<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Numero total de observaciones:"</span>, num_observaciones, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Numero total de observaciones: 15 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sumatoria de la columna de Y:"</span>, sum_y, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sumatoria de la columna de Y: 278 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sumatoria de la columna de Y al cuadrado:"</span>, sum_y_squared, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sumatoria de la columna de Y al cuadrado: 5360 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sumatoria de la columna de X1:"</span>, sum_x1, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sumatoria de la columna de X1: 187 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sumatoria de la columna de X2:"</span>, sum_x2, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sumatoria de la columna de X2: 40.29 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sumatoria de la columna de X1^2:"</span>, sum_x1_squared, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sumatoria de la columna de X1^2: 2469 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sumatoria de la columna de X2^2:"</span>, sum_x2_squared, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sumatoria de la columna de X2^2: 113.3387 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sumatoria de la columna de X1 * X2:"</span>, sum_x1_x2, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sumatoria de la columna de X1 * X2: 525.38 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sumatoria de la columna de X1 * Y:"</span>, sum_x1_y, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sumatoria de la columna de X1 * Y: 3590 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sumatoria de la columna de X2 * Y:"</span>, sum_x2_y, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sumatoria de la columna de X2 * Y: 766.02 </code></pre>
+</div>
+</div>
+<p><span class="math display">\[
+n\hat{\beta_{0}} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1} + \hat{\beta_{i2}}\sum_{i=1}^nx_{i2} = \sum_{i=1}^ny_{i} \\
+\hat{\beta_{0}}\sum_{i=1}^nx_{i1} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1}^2 + \hat{\beta_{i2}}\sum_{i=1}^nx_{i1}x_{i2} = \sum_{i=1}^nx_{i1}y_{i} \\
+\hat{\beta_{0}}\sum_{i=1}^nx_{i2} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1}x_{i2} + \hat{\beta_{i2}}\sum_{i=1}^nx_{i2}^2 = \sum_{i=1}^nx_{i2}y_{i}
+\]</span></p>
+<p>Al sustituir las sumatorias calculadas en las ecuaciones normales, se tiene que:</p>
+<p><span class="math display">\[
+15\hat{\beta_{0}} + 187\hat{\beta_{1}}  + 40.29\hat{\beta_{i2}} = 278 \\
+187\hat{\beta_{0}} + 2469\hat{\beta_{1}} + 525.38\hat{\beta_{i2}} = 3590  \\
+40.29\hat{\beta_{0}} + 525.38\hat{\beta_{1}} + 113.3387\hat{\beta_{i2}} = 766.02
+\]</span> La solución de este conjunto de ecuaciones es:</p>
+<p><span class="math display">\[
+\hat{\beta_{0}}= 8.015345 \\
+\hat{\beta_{1}}= 1.107798 \\
+\hat{\beta_{2}}= -1.225824 \\
+(\#eq:coefs-beta-valores-estimados)
+\]</span> Lo cual se hace con R de la siguiente manera:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir la matriz de coeficientes (lado izquierdo del sistema)</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(pasajeros)</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(n, sum_x1, sum_x2, sum_x1, sum_x1_squared, sum_x1_x2, sum_x2, sum_x1_x2, sum_x2_squared), <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir el vector del lado derecho del sistema</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">c</span>(sum_y, sum_x1_y, sum_x2_y)</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Resolver el sistema de ecuaciones lineales</span></span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>coefs_beta <span class="ot">&lt;-</span> <span class="fu">solve</span>(A, B)</span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimir los coeficientes estimados</span></span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Coeficientes estimados (beta0, beta1, beta2):"</span>, coefs_beta, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Coeficientes estimados (beta0, beta1, beta2): 8.015345 1.107798 -1.225824 </code></pre>
+</div>
+</div>
+<p>Por lo tanto, la ecuación de regresión ajustada es:</p>
+<p><span class="math display">\[
+\begin{equation}
+\hat{Y} = 8.0153 + 1.1078x_{1} - 1.2258x_{2}
+\end{equation}
+\]</span></p>
+<p>Como se puede observar de ambas maneras se llega al mismo resultado (ya que internamente la función <code>lm()</code> realiza eso). Finalmente, esta ecuación puede emplearse para predecir el numero de pasajeros para pares de valores de las variables de regresion, publicidad e ingreso nacional.</p>
+</section>
+</section>
+<section id="Enfoque-matricial" class="level2">
+<h2 class="anchored" data-anchor-id="Enfoque-matricial">Enfoque matricial para un modelo de regresión lineal múltiple</h2>
+<p>Al ajustar un modelo de regresión lineal múltiple es mucho mas conveniente expresar las operaciones matemáticas en forma matricial, ya que simplifica en gran medida la presentación.</p>
+<p>Dada una muestra aleatoria de observaciones <span class="math inline">\(Y_{1},Y_{2},...,Y_{n}\)</span> en los puntos de observación <span class="math inline">\(x_{11},x_{12},...,x_{1k},x_{21},x_{22},...,x_{2k},...,x_{n1},x_{n2},...,x_{nk}\)</span>, respectivamente, con base en el modelo lineal general, se tienen las n ecuaciones siguientes:</p>
+<p><span class="math display">\[ \begin{equation}
+Y_{1}=\beta _{0} + \beta _{1}X _{11} + \beta _{2}X _{12} + ... + + \beta _{k}X _{1k} + \varepsilon_{1} \\
+Y_{2}=\beta _{0} + \beta _{1}X _{21} + \beta _{2}X _{22} + ... + + \beta _{k}X _{2k} + \varepsilon_{2} \\
+\vdots \\
+Y_{n}=\beta _{0} + \beta _{1}X _{n1} + \beta _{2}X _{n2} + ... + + \beta _{k}X _{nk} + \varepsilon_{n}
+\end{equation}
+\]</span></p>
+<p>Como resultado, el modelo lineal múltiple también puede expresarse en forma matricial como:</p>
+<p><span class="math display">\[
+\begin{equation}
+Y = \boldsymbol{X\beta+\varepsilon}
+\end{equation}
+(\#eq:el-modelo-de-regresión-múltiple-matricial)
+\]</span></p>
+<p>donde:</p>
+<p><span class="math display">\[
+\begin{equation}
+\mathbf{Y} = \begin{bmatrix}
+Y_{1}\\
+Y_{2}\\
+\vdots \\
+Y_{n}
+\end{bmatrix}_{nx1}
+\mathbf{X} =\begin{bmatrix}
+1&amp;  X_{11}&amp;  X_{12}&amp;  \cdots &amp; X_{1k}\\
+1&amp;  X_{12}&amp;  X_{22}&amp;  \cdots&amp; X_{2k}\\
+\vdots &amp;  \vdots&amp;  \vdots&amp;  \ddots &amp; \vdots\\
+1&amp;  X_{n1}&amp;  X_{n2}&amp;  \cdots&amp;  X_{nk}
+\end{bmatrix}_{nxp}
+\boldsymbol{\beta } = \begin{bmatrix}
+\beta_{1}\\
+\beta_{2}\\
+\vdots \\
+\beta_{n}
+\end{bmatrix}_{px1}
+\boldsymbol{\varepsilon } = \begin{bmatrix}
+\varepsilon_{1}\\
+\varepsilon_{2}\\
+\vdots \\
+\varepsilon_{n}
+\end{bmatrix}_{nx1}
+\end{equation}
+\]</span></p>
+<p>En general, <strong>Y</strong> es un vector de observaciones de orden n x 1, <span class="math inline">\(\mathbf{X}\)</span> es una matriz (n x p) de los niveles de las variables independientes, <span class="math inline">\(\boldsymbol{\beta }\)</span> es un vector de orden p x 1, formado por los coeficientes de regresion y <span class="math inline">\(\boldsymbol{\varepsilon}\)</span> es un vector de orden n x 1 de errores aleatorios.</p>
+</section>
+<section id="supuestos-básicos-del-modelo-de-regresión-utilizando-notación-matricial" class="level2">
+<h2 class="anchored" data-anchor-id="supuestos-básicos-del-modelo-de-regresión-utilizando-notación-matricial">Supuestos básicos del modelo de regresión utilizando notación matricial</h2>
+<p>a.- Los errores están distribuidos normalmente con media cero y varianza constante. <span class="math inline">\(\boldsymbol{\varepsilon}\sim N(0,\sigma^2I)\)</span>.</p>
+<p><span class="math inline">\(E(\boldsymbol{\varepsilon})=0\)</span>, donde el valor de cada uno de sus elementos es cero, el cual se demuestra de la siguiente manera:</p>
+<p><span class="math display">\[
+\begin{equation}
+\varepsilon = \begin{bmatrix}
+\varepsilon_{1}\\
+\varepsilon_{2}\\
+\vdots \\
+\varepsilon_{n}
+\end{bmatrix}
+= \begin{bmatrix}
+E(\varepsilon_{1})\\
+E(\varepsilon_{2})\\
+\vdots \\
+E(\varepsilon_{n})
+\end{bmatrix}
+= \begin{bmatrix}
+0\\
+0\\
+\vdots \\
+0
+\end{bmatrix}
+(\#eq:definicion-y-suposiciones-errores)
+\end{equation}
+\]</span></p>
+<p>la varianza se expresa como : <span class="math inline">\(E(\boldsymbol{\varepsilon\varepsilon'})=\sigma^2\boldsymbol{I}\)</span> es decir, es una forma concreta de expresar que los errores están correlacionados y que tienen varianza constante. Por lo tanto, su expresión matricial viene dada por:</p>
+<p><span class="math display">\[
+E(\boldsymbol{\varepsilon\varepsilon'})=E\begin{bmatrix}
+\begin{bmatrix}
+\varepsilon_{1}\\
+\varepsilon_{2}\\
+\vdots \\
+\varepsilon_{n}
+\end{bmatrix}_{nx1}
+\begin{bmatrix}
+\varepsilon_{1}&amp;  \varepsilon_{2}&amp;  \cdots &amp; \varepsilon_{n}
+\end{bmatrix}_{1xn}
+\end{bmatrix}
+\]</span></p>
+<p>Efectuando la multiplicación se obtiene:</p>
+<p><span class="math display">\[
+E(\boldsymbol{\varepsilon\varepsilon'})=E\begin{bmatrix}
+\varepsilon_{1}^2&amp;  \varepsilon_{1}\varepsilon_{2}&amp;  \cdots &amp; \varepsilon_{1}\varepsilon_{n}\\
+\varepsilon_{2}\varepsilon_{1}&amp;  \varepsilon_{2}^2&amp;  \cdots&amp; \varepsilon_{2}\varepsilon_{n}\\
+\vdots &amp;  \vdots &amp;  \ddots &amp; \vdots\\
+\varepsilon_{n}\varepsilon_{1}&amp;  \varepsilon_{n}\varepsilon_{2}&amp;  \cdots&amp; \varepsilon_{n}^2
+\end{bmatrix}_{nxn}
+\]</span></p>
+<p>Aplicando el operador del valor esperado(E), se tiene:</p>
+<p><span class="math display">\[
+E(\boldsymbol{\varepsilon\varepsilon'})=E\begin{bmatrix}
+E(\varepsilon_{1}^2)&amp;  E(\varepsilon_{1}\varepsilon_{2})&amp;  \cdots &amp; E(\varepsilon_{1}\varepsilon_{n})\\
+E(\varepsilon_{2}\varepsilon_{1})&amp;  E(\varepsilon_{2}^2)&amp;  \cdots&amp; E(\varepsilon_{2}\varepsilon_{n})\\
+\vdots &amp;  \vdots &amp;  \ddots &amp; \vdots\\
+E(\varepsilon_{n}\varepsilon_{1})&amp;  E(\varepsilon_{n}\varepsilon_{2})&amp;  \cdots&amp; E(\varepsilon_{n}^2)
+\end{bmatrix}_{nxn}
+\]</span></p>
+<p>Debido a los supuestos de homocedasticidad y no correlación, la matriz se reduce a:</p>
+<p><span class="math display">\[
+E(\boldsymbol{\varepsilon\varepsilon'})=\begin{bmatrix}
+\sigma^2&amp;  0&amp;  \cdots &amp; 0\\
+0&amp;  \sigma^2&amp;  \cdots&amp; 0\\
+\vdots &amp;  \vdots &amp;  \ddots &amp; \vdots\\
+0&amp;  0&amp;  \cdots&amp; \sigma^2
+\end{bmatrix}_{nxn}
+\]</span></p>
+<p><span class="math display">\[
+E(\boldsymbol{\varepsilon\varepsilon'})=\begin{bmatrix}
+1&amp;  0&amp;  \cdots &amp; 0\\
+0&amp;  1&amp;  \cdots&amp; 0\\
+\vdots &amp;  \vdots &amp;  \ddots &amp; \vdots\\
+0&amp;  0&amp;  \cdots&amp; 1
+\end{bmatrix}_{nxn}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+E(\boldsymbol{\varepsilon\varepsilon'})=\sigma^2\boldsymbol{I}
+(\#eq:covarianza-errores-regresion-lineal)
+\end{equation}
+\]</span></p>
+<p>b.- La matriz <span class="math inline">\(\mathbf{X}\)</span> de orden n x p no es aleatoria, lo cual implica que está formada por números fijos, es decir, el análisis de regresión es un análisis condicional, por lo cual los valores de y dependen de los valores fijos de las variables x.</p>
+<p>c.- <span class="math inline">\(\mathbf{Y} \sim N(\mathbf{X \boldsymbol{\beta}}, \sigma^2\mathbf{I)}\)</span></p>
+</section>
+<section id="estimación-de-los-parámetros-del-modelo-por-el-método-m.c.o.-utilizando-la-notación-matricial." class="level2">
+<h2 class="anchored" data-anchor-id="estimación-de-los-parámetros-del-modelo-por-el-método-m.c.o.-utilizando-la-notación-matricial.">Estimación de los parámetros del modelo por el método M.C.O., utilizando la notación matricial.</h2>
+<p>Se desea encontrar el vector de estimadores de mínimos cuadrados, <span class="math inline">\(\hat{\beta}\)</span> que minimiza la expresión:</p>
+<p><span class="math display">\[
+\begin{equation}
+\boldsymbol{\varepsilon=Y-X\beta}
+(\#eq:relacion-errores-y-x-beta)
+\end{equation}
+\]</span> Premultiplicando ambos lados por <span class="math inline">\(\beta'\)</span></p>
+<p><span class="math display">\[
+\begin{equation}
+\boldsymbol{\varepsilon'\varepsilon=(Y-X\beta)'(Y-X\beta)}
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\sum_{i=1}^n\varepsilon_{i}^2=\boldsymbol{(Y-X\beta)'(Y-X\beta)}
+\]</span> <span class="math display">\[
+\sum_{i=1}^n\varepsilon_{i}^2=\boldsymbol{(Y'-X'\beta')(Y-X\beta)=Y'Y-Y'X\beta-\beta'X'Y+\beta'X'X\beta}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+\frac{
+\partial \sum_{i=1}^n\varepsilon_{i}^2}{\partial x} \Bigg|_{\hat{\beta}}= \boldsymbol{X'Y+X'X\hat{\beta}+\hat{\beta}'X'X=-2X'Y+2X'X\hat{\beta}=0}
+\end{equation}
+\]</span> Simplificando, se tiene:</p>
+<p><span class="math display">\[
+\begin{equation}
+\boldsymbol{X'X\hat{\beta}=X'Y}
+\end{equation}
+\]</span> Estas ecuaciones son llamadas <strong>ecuaciones normales mínimos cuadrados</strong>. Para resolver dichas ecuaciones se premultiplicando ambos lados por la inversa de la matriz <span class="math inline">\(\boldsymbol{X'X}\)</span> por lo tanto la expresión matricial para obtener los estimadores mínimos cuadrados <span class="math inline">\(\hat{\beta_{0}}\)</span> y <span class="math inline">\(\hat{\beta_{1}}\)</span>, viene dada por:</p>
+<p><span class="math display">\[
+\begin{equation}
+\boldsymbol{(X'X)^{-1}(X'X)\hat{\beta}=(X'X)^{-1}X'Y}
+\end{equation}
+\]</span> <span class="math display">\[
+\begin{equation}
+\boldsymbol{\hat{\beta}=(X'X)^{-1}X'Y}
+\end{equation}
+\]</span> La forma matricial de este modelo es: <span class="math inline">\(\boldsymbol{\hat{Y}=X\hat{\beta}}\)</span></p>
+<p>Este vector de valores estimados se puede escribir así: <span class="math display">\[
+\begin{equation}
+\boldsymbol{\hat{Y}=X(X'X)^{-1}X'Y}
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+\boldsymbol{\hat{Y}=HY}
+(\#eq:predicciones-matriz-proyeccion)
+\end{equation}
+\]</span> La matriz <span class="math inline">\(\boldsymbol{H=X(X'X)^{-1}X'}\)</span> es llamada usualmente matriz “sombrero” de orden n x n</p>
+<p>Las diferencias entre los valores observados <span class="math inline">\(y_{i}\)</span> y los valores estimados <span class="math inline">\(\hat{y_{i}}\)</span> son los residuales <span class="math inline">\(e_{i}=y_{i}-\hat{y_{i}}\)</span>. Los residuales pueden escribirse matricialmente así:</p>
+<p><span class="math display">\[
+\begin{equation}
+\boldsymbol{e=Y-\hat{Y}}
+(\#eq:vector-residuos-regresion-lineal)
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+\boldsymbol{=Y-HY}
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{(I-H)Y}
+\]</span></p>
+<p>En el ejemplo anterior se ilustro el ajuste del modelo de regresión múltiple. <span class="math display">\[
+\begin{equation}
+y=\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+\varepsilon
+\end{equation}
+\]</span> Donde <span class="math inline">\(y\)</span> es el numero de pasajeros observado que escogen viajar por Hop Scotch, <span class="math inline">\(x_{1}\)</span> es el gasto en publicidad y <span class="math inline">\(x_{2}\)</span> es el ingreso nacional. Ahora se utilizara el enfoque matricial para ajustar el modelo de regresión anterior a este conjunto de datos. La matriz <span class="math inline">\(\boldsymbol{X}\)</span> y el vector <span class="math inline">\(\boldsymbol{Y}\)</span> para este modelo son:</p>
+<p><span class="math display">\[
+\begin{equation}
+\boldsymbol{X} = \begin{bmatrix}
+1&amp;  10&amp; 2.40\\
+1&amp;  12&amp; 2.72\\
+1&amp;  8&amp; 2.08\\
+\vdots &amp;  \vdots&amp; \vdots\\
+1&amp;  12&amp; 2.17
+\end{bmatrix}_{15x3}
+\boldsymbol{Y} = \begin{bmatrix}
+15\\
+17\\
+13\\
+\vdots \\
+16
+\end{bmatrix}_{15x1}
+(\#eq:matrices-regresion-multiple)
+\end{equation}
+\]</span> La matriz <span class="math inline">\(\boldsymbol{X'X}\)</span> es</p>
+<p><span class="math display">\[
+\begin{equation}
+\boldsymbol{X'X}=\begin{bmatrix}
+1&amp;  1&amp;  \cdots&amp; 1\\
+10&amp;  12&amp;  \cdots&amp; 12\\
+2.40&amp;  2.72&amp;  \cdots&amp;  2.17
+\end{bmatrix}_{3x15}
+\begin{bmatrix}
+1&amp;  10&amp; 2.40\\
+1&amp;  12&amp; 2.72\\
+\vdots &amp;  \vdots&amp; \vdots\\
+1&amp;  12&amp; 2.17
+\end{bmatrix}_{15x3} \\
+= \begin{bmatrix}
+15&amp;   187 &amp; 40.29\\
+187&amp;   2469&amp; 525.38\\
+40.29  &amp;  525.38 &amp; 113.3387
+\end{bmatrix}
+\end{equation}
+\]</span> En R se hace de la siguiente manera:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>identidad <span class="ot">&lt;-</span>  <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">15</span>)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>publicidad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">8</span>,<span class="dv">17</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">14</span>,<span class="dv">19</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">16</span>,<span class="dv">10</span>,<span class="dv">12</span>)</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>ingreso_nacional <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.4</span>,<span class="fl">2.72</span>,<span class="fl">2.08</span>,<span class="fl">3.68</span>,<span class="fl">2.56</span>,<span class="fl">3.36</span>,<span class="fl">2.24</span>,<span class="fl">3.2</span>,<span class="fl">3.84</span>,<span class="fl">2.72</span>,<span class="fl">2.07</span>,<span class="fl">2.33</span>,<span class="fl">2.98</span>,<span class="fl">1.94</span>,<span class="fl">2.17</span>)</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">cbind</span>(identidad,publicidad, ingreso_nacional)</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      identidad publicidad ingreso_nacional
+ [1,]         1         10             2.40
+ [2,]         1         12             2.72
+ [3,]         1          8             2.08
+ [4,]         1         17             3.68
+ [5,]         1         10             2.56
+ [6,]         1         15             3.36
+ [7,]         1         10             2.24
+ [8,]         1         14             3.20
+ [9,]         1         19             3.84
+[10,]         1         10             2.72
+[11,]         1         11             2.07
+[12,]         1         13             2.33
+[13,]         1         16             2.98
+[14,]         1         10             1.94
+[15,]         1         12             2.17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>x_transpuesta_x <span class="ot">&lt;-</span> <span class="fu">t</span>(x) <span class="sc">%*%</span> x</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>x_transpuesta_x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 identidad publicidad ingreso_nacional
+identidad            15.00     187.00          40.2900
+publicidad          187.00    2469.00         525.3800
+ingreso_nacional     40.29     525.38         113.3387</code></pre>
+</div>
+</div>
+<p>y el vector <span class="math inline">\(\boldsymbol{X'Y}\)</span> es:</p>
+<p><span class="math display">\[
+\begin{equation}
+\boldsymbol{X'Y}=\begin{bmatrix}
+1&amp;  1&amp;  \cdots&amp; 1\\
+10&amp;  12&amp;  \cdots&amp; 12\\
+2.40&amp;  2.72&amp;  \cdots&amp;  2.17
+\end{bmatrix}_{3x15}
+\begin{bmatrix}
+15\\
+17\\
+\vdots \\
+16
+\end{bmatrix}_{15x1} = \begin{bmatrix}
+278.00\\
+3590\\
+766.02
+\end{bmatrix}
+\end{equation}
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>x_transpuesta_y <span class="ot">&lt;-</span> <span class="fu">t</span>(x) <span class="sc">%*%</span> pasajeros</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>x_transpuesta_y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    [,1]
+identidad         278.00
+publicidad       3590.00
+ingreso_nacional  766.02</code></pre>
+</div>
+</div>
+<p>Los estimadores mínimos cuadrados se obtienen a partir de la ecuación:</p>
+<p><span class="math display">\[
+\begin{equation}
+\boldsymbol{\hat{\beta}=(X'X)^{-1}X'Y}
+(\#eq:estimacion-coeficientes-ecuaciones-normales)
+\end{equation}
+\]</span> Entonces, <span class="math display">\[
+\begin{equation}
+\begin{bmatrix}
+\hat{\beta_{0}}\\
+\hat{\beta_{1}}\\
+\hat{\beta_{2}}
+\end{bmatrix} = \begin{bmatrix}
+15&amp;   187 &amp; 40.29\\
+187&amp;   2469&amp; 525.38\\
+40.29  &amp;  525.38 &amp; 113.3387
+\end{bmatrix}^{-1}
+\end{equation} \begin{bmatrix}
+278.00\\
+3590\\
+766.02
+\end{bmatrix} \\
+= \begin{bmatrix}
+1.47945972&amp;   -0.01040009 &amp; -0.4777135\\
+-0.01040009&amp;   0.02982778&amp; -0.1345692\\
+-0.47771354  &amp;  -0.13456922  &amp; 0.8024360
+\end{bmatrix} \begin{bmatrix}
+278.00\\
+3590\\
+766.02
+\end{bmatrix} \\
+= \begin{bmatrix}
+8.015345\\
+1.107798\\
+-1.225824
+\end{bmatrix}
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>inv_x_transpuesta_x <span class="ot">&lt;-</span> <span class="fu">solve</span>(x_transpuesta_x)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>inv_x_transpuesta_x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   identidad  publicidad ingreso_nacional
+identidad         1.47945972 -0.01040009       -0.4777135
+publicidad       -0.01040009  0.02982778       -0.1345692
+ingreso_nacional -0.47771354 -0.13456922        0.8024360</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>matriz_estimaciones_beta <span class="ot">&lt;-</span> <span class="fu">solve</span>(x_transpuesta_x) <span class="sc">%*%</span> x_transpuesta_y</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>matriz_estimaciones_beta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      [,1]
+identidad         8.015345
+publicidad        1.107798
+ingreso_nacional -1.225824</code></pre>
+</div>
+</div>
+<p>Por consiguiente, el modelo de regresión ajustado con los coeficientes de regresión:</p>
+<p><span class="math display">\[
+\begin{equation}
+\hat{Y} = 8.0153 + 1.1078x_{1} - 1.2258x_{2}
+\end{equation}
+\]</span></p>
+<p>La siguiente tabla muestra las observaciones de la variable dependiente y con sus correspondientes valores estimados y residuales para este modelo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>residuos <span class="ot">&lt;-</span> <span class="fu">rstandard</span>(modelo)</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>valor_ajustado <span class="ot">&lt;-</span> <span class="fu">fitted</span>(modelo)</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>datos_t <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(observaciones,pasajeros,valor_ajustado,residuos)</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(datos_t,<span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>()  <span class="sc">%&gt;%</span></span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic_2</span>(<span class="st">"hover"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table lightable-classic-2 lightable-hover table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">observaciones</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">pasajeros</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">valor_ajustado</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">residuos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">16.15135</td>
+<td style="text-align: center;">-0.4401029</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">17.97468</td>
+<td style="text-align: center;">-0.3632466</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">14.32802</td>
+<td style="text-align: center;">-0.5407517</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">22.33688</td>
+<td style="text-align: center;">0.2757475</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">15.95522</td>
+<td style="text-align: center;">0.0176639</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">20.51355</td>
+<td style="text-align: center;">0.1902454</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">16.34748</td>
+<td style="text-align: center;">-0.8911209</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">19.60188</td>
+<td style="text-align: center;">0.1533001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">24.35635</td>
+<td style="text-align: center;">-0.1618281</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">15.75909</td>
+<td style="text-align: center;">0.5202244</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">17.66367</td>
+<td style="text-align: center;">-0.6622525</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">19.56055</td>
+<td style="text-align: center;">-0.6354394</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">22.08716</td>
+<td style="text-align: center;">0.3719094</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">16.71523</td>
+<td style="text-align: center;">3.3129165</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">18.64889</td>
+<td style="text-align: center;">-1.0744700</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>A continuación se muestra el gráfico de los residuos vs los valores ajustados, el cual es ideal para observar si a simple vista se cumple o no el principio de homocedasticidad</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">augment</span>(modelo), <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Residuos vs. Valores Ajustados"</span>,</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Valores Ajustados"</span>,</span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Residuos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="01-intro_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>El gráfico de Probabilidad Normal nos permite ver a simple vista si se cumple el supuesto de normalidad.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">augment</span>(modelo), <span class="fu">aes</span>(<span class="at">sample =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Grafico Q-Q de Residuos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="01-intro_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>El gráfico de los valores observados vs.&nbsp;los valores estimados nos permite realizar la diagnosis del modelo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Supongamos que la variable ajustada se llama "ajustados"</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>ajustados <span class="ot">&lt;-</span> <span class="fu">predict</span>(modelo)</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de observados vs ajustados</span></span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> pasajeros, <span class="at">y =</span> ajustados)) <span class="sc">+</span></span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Valores Observados vs Ajustados"</span>,</span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Valores Observados"</span>,</span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Valores Ajustados"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="01-intro_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)  <span class="co"># Necesario para la función influencePlot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: carData</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'car'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:psych':
+
+    logit</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">influencePlot</span>(modelo, <span class="at">id.n =</span> <span class="dv">3</span>, <span class="at">main =</span> <span class="st">"Gráfico de Influencia"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot.window(...): "id.n" is not a graphical parameter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot.xy(xy, type, ...): "id.n" is not a graphical parameter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in axis(side = side, at = at, labels = labels, ...): "id.n" is not a
+graphical parameter
+
+Warning in axis(side = side, at = at, labels = labels, ...): "id.n" is not a
+graphical parameter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in box(...): "id.n" is not a graphical parameter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in title(...): "id.n" is not a graphical parameter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot.xy(xy.coords(x, y), type = type, ...): "id.n" is not a
+graphical parameter</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="01-intro_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      StudRes       Hat       CookD
+9  -0.1551080 0.3793056 0.005334554
+10  0.5037903 0.2716515 0.033645978
+14 10.8550775 0.1994700 0.911590400
+15 -1.0820954 0.2220074 0.109814382</code></pre>
+</div>
+</div>
+</section>
+<section id="propiedades-de-los-estimadores-mínimos-cuadrados" class="level2">
+<h2 class="anchored" data-anchor-id="propiedades-de-los-estimadores-mínimos-cuadrados">Propiedades de los estimadores mínimos cuadrados</h2>
+<p>Las propiedades estadísticas de los estimadores mínimos cuadrados <span class="math inline">\(\hat{\beta_{o}},\hat{\beta_{1}},...,\hat{\beta_{k}}\)</span> pueden determinarse con facilidad, bajo ciertas condiciones sobre los términos del error <span class="math inline">\(\varepsilon_{1},\varepsilon_{2},...,\varepsilon_{n}\)</span> del modelo de regresión. Paralelamente con las suposiciones hechas en el modelo de regresión lineal simple, aquí se supondrá que los errores <span class="math inline">\(\varepsilon_{i}\)</span> son estadisticamente independientes con media cero y varianza <span class="math inline">\(\sigma_{2}\)</span>. Bajo estas suposiciones, los estimadores mínimos cuadrados ordinarios <span class="math inline">\(\hat{\beta_{o}},\hat{\beta_{1}},...,\hat{\beta_{k}}\)</span> son estimadores insesgados de los coeficientes de regresión <span class="math inline">\(\beta_{o},\beta_{1},...,\beta_{k}\)</span>. Esta propiedad puede demostrarse de la siguiente manera:</p>
+<p><span class="math display">\[
+\begin{equation}
+E(\boldsymbol{\hat{\beta}}) = E\boldsymbol{[(X'X)^{-1}X'Y]} \\
+= E\boldsymbol{[(X'X)^{-1}X'(X\beta + \varepsilon)]} \\
+= E\boldsymbol{[(X'X)^{-1}X'X\beta + (X'X)^{-1}X' + \varepsilon)]} \\
+= E\boldsymbol{[I\beta + (X'X)^{-1}X'\varepsilon)]} \\
+= E\boldsymbol{[I\beta] + E[(X'X)^{-1}X'\varepsilon)]} \\
+= E\boldsymbol{[\beta] + (X'X)^{-1}X'E[\varepsilon]} \\
+E(\boldsymbol{\hat{\beta}})= \boldsymbol{\beta}
+\end{equation}
+\]</span></p>
+<p>Puesto que <span class="math inline">\(E[\boldsymbol{\varepsilon]}=0\)</span>. Por lo tanto <span class="math inline">\(\boldsymbol{\hat{\beta}}\)</span> se expresan en términos de los elementos de la inversa de la matriz X’X. La inversa de X´X multiplicada por la constante <span class="math inline">\(\sigma^{2}\)</span> representa la matriz de varianza-covarianza de los coeficientes de regresión <span class="math inline">\(\boldsymbol{\hat{\beta}}\)</span>. Los elementos de la diagonal principal de <span class="math inline">\(\sigma^{2}(X'X)^{-1}\)</span> son las varianzas de <span class="math inline">\(\hat{\beta_{o}},\hat{\beta_{1}},...,\hat{\beta_{k}}\)</span> mientras que los elementos que están fuera de la diagonal principal son las covarianzas.</p>
+<p>Entonces <span class="math inline">\(\sum=Var(\boldsymbol{\hat{\beta}})=\sigma^{2}(X'X)^{-1}\)</span> si llamamos <span class="math inline">\(C=(X'X)^{-1}\)</span>, entonces la varianza de <span class="math inline">\(\hat{\beta_{j}}\)</span> es <span class="math inline">\(\sigma^{2}C_{jj}\)</span> y la covarianza entre <span class="math inline">\(\hat{\beta_{i}}\)</span> y <span class="math inline">\(\hat{\beta_{j}}\)</span> es <span class="math inline">\(\sigma^{2}C_{jj}\)</span>.</p>
+<p>La matriz C es una matriz simétrica que tiene la siguiente estructura:</p>
+<p><span class="math display">\[
+\begin{equation}
+C=\begin{bmatrix}
+C_{00}&amp;  C_{01}&amp;  \cdots&amp; C_{0K}\\
+C_{10}&amp;  C_{11}^2&amp;  \cdots&amp; C_{1K}\\
+\vdots &amp;  \vdots &amp;  \ddots &amp; \vdots\\
+C_{K0}&amp;  C_{1k}&amp;  \cdots&amp; C_{kk}
+\end{bmatrix}_{pxp}
+j = 0,1,2,...,k
+p=k+1
+\end{equation}
+\]</span></p>
+<p>En general: <span class="math display">\[Var(\hat{\beta})= \sigma^{2}C_{jj}\]</span> para j = 0, 1, 2, …, k <span class="math display">\[Cov(\hat{\beta_{j}},\hat{\beta_{j}})=\sigma^{2}C_{jj}\]</span> para i≠j.</p>
+<p>La matriz de varianza-covarianza de <span class="math inline">\(\boldsymbol{\hat{\beta}}\)</span>, viene dada por:</p>
+<p><span class="math display">\[
+\begin{equation}
+\sum = Var(\boldsymbol{\hat{\beta}})=E[(\boldsymbol{\hat{\beta}}-E(\boldsymbol{\hat{\beta}})(\boldsymbol{\hat{\beta}}-E(\boldsymbol{\hat{\beta}}))']
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+=E[(\boldsymbol{\hat{\beta}}-\boldsymbol{\beta})(\boldsymbol{\hat{\beta}}-\boldsymbol{\beta})']
+\]</span> donde: <span class="math display">\[
+\boldsymbol{\hat{\beta}-\beta=(X'X)^{-1}X'Y-\beta}
+\]</span> <span class="math display">\[\boldsymbol{=(X'X)^{-1}X'(X\beta+\varepsilon)-\beta}\]</span> <span class="math display">\[\boldsymbol{=(X'X)^{-1}X'X\beta + (X'X)^{-1}X'                   \varepsilon-\beta}\]</span> <span class="math display">\[\boldsymbol{=I\beta+(X'X)^{-1}X'\varepsilon-\beta}\]</span> <span class="math display">\[=\boldsymbol{(X'X)^{-1}X'\varepsilon}\]</span> Por lo tanto:</p>
+<p><span class="math display">\[\sum=Var(\boldsymbol{\hat{\beta}})= E[[\boldsymbol{(X'X)^{-1}X'\varepsilon}][\boldsymbol{(X'X)^{-1}X'\varepsilon}]']\]</span> <span class="math display">\[\boldsymbol{(X'X)^{-1}X'E[\varepsilon\varepsilon']X(X'X)^{-1}}\]</span> <span class="math display">\[=\boldsymbol{(X'X)^{-1}X'\sigma^{2}IX(X'X)^{-1}}\]</span> <span class="math display">\[\sigma^{2}\boldsymbol{(X'X)^{-1}X'X(X'X)^{-1}}\]</span> <span class="math display">\[=\sigma^{2}\boldsymbol{(X'X)^{-1}}\]</span></p>
+</section>
+<section id="estimación-de-sigma2" class="level2">
+<h2 class="anchored" data-anchor-id="estimación-de-sigma2">Estimación de <span class="math inline">\(\sigma^{2}\)</span></h2>
+<p>Al igual que en el caso de la regresión lineal simple, la estimación de <span class="math inline">\(\sigma^2\)</span> está definida en términos de la suma de cuadrados de los residuos.</p>
+<p><span class="math display">\[
+\begin{equation}
+SCE = \sum_{i=1}^{n}(y_{i}-\hat{y_{i}})^{2} = \sum_{i=1}^{n}e_{i}^{2} = \boldsymbol{\varepsilon'\varepsilon}
+(\#eq:suma-error-cuadratico-regresion-lineal)
+\end{equation}
+\]</span> Sustituyendo <span class="math inline">\(\boldsymbol{\varepsilon=Y-X\hat{\beta}}\)</span>, se tiene: <span class="math display">\[
+\begin{equation}
+SCE = \boldsymbol{(Y-X\hat{\beta})'(Y-X\hat{\beta})}
+\end{equation}
+\]</span> <span class="math display">\[
+\begin{equation}
+=\boldsymbol{Y'Y - \hat{\beta}X'Y-Y'X\hat{\beta}+\hat{\beta} 'X\hat{\beta}} \\
+= \boldsymbol{Y'Y-2\hat{\beta}'X'Y+\beta'X'X\hat{\beta}}
+\end{equation}
+\]</span></p>
+<p>Puesto que: <span class="math inline">\(\boldsymbol{X'X\hat{\beta}=X'Y}\)</span></p>
+<p>La suma de cuadrados de residuales tiene n - p grados de libertad. Entonces:</p>
+<p><span class="math display">\[
+\begin{equation}
+CME= \frac{SCE}{n-p}
+(\#eq:error-cuadratico-medio-regresion-lineal)
+\end{equation}
+\]</span> Pero el valor esperado de CME es <span class="math inline">\(\sigma^{2}\)</span> y un estimador insesgado de <span class="math inline">\(\sigma^{2}\)</span> es:</p>
+<p><span class="math display">\[
+\begin{equation}
+\hat{\sigma}^{2}=CME=\frac{SCE}{n-p}=\frac{\boldsymbol{Y'Y-\hat{\beta}'X'Y}}{n-p}
+(\#eq:estimacion-error-cuadratico-medio-regresion-lineal)
+\end{equation}
+\]</span> Ejemplo: Para el ejercicio planteado anteriormente: <span class="math display">\[
+\begin{equation}
+C = \begin{bmatrix}
+1.47945972&amp;   -0.01040009 &amp; -0.4777135\\
+-0.01040009&amp;   0.02982778&amp; -0.1345692\\
+-0.47771354  &amp;  -0.13456922  &amp; 0.8024360
+\end{bmatrix}
+\end{equation}
+\]</span></p>
+<p>Las varianzas y covarianzas de los estimadores vienen dadas por:</p>
+<span class="math display">\[
+\begin{equation}
+Var(\hat{\beta_{0}})=\sigma^{2}C_{00}=1.47945972\\
+Var(\hat{\beta_{1}})=\sigma^{2}C_{11}=0.02982778 \\
+Var(\hat{\beta_{2}})=\sigma^{2}C_{22}= 0.8024360\\
+Cov(\hat{\beta_{0}},\hat{\beta_{1}})=\sigma^{2}C_{01}= -0.01040009\\
+Cov(\hat{\beta_{0}},\hat{\beta_{2}})=\sigma^{2}C_{02}= -0.4777135\\
+Cov(\hat{\beta_{1}},\hat{\beta_{2}})=\sigma^{2}C_{12}= -0.13456922\\
+\end{equation}
+\]</span> La estimación de <span class="math inline">\(\sigma^{2}\)</span> <span class="math display">\[
+\boldsymbol{Y'Y}= \sum_{i=1}^{15}y_{i}^{2}=5360
+\]</span> $$ =
+<span class="math display">\[\begin{bmatrix}
+8.0153&amp;  1.1078&amp; -1.2258
+\end{bmatrix}
+\begin{bmatrix}
+1&amp;  1&amp;  \cdots&amp; 1\\
+10&amp;  12&amp;  \cdots&amp; 12\\
+2.40&amp;  2.72&amp;  \cdots&amp;  2.17
+\end{bmatrix}\]</span>
+<p>\</p>
+<p>$$</p>
+<p>Por lo tanto, la suma de cuadrados del error es:</p>
+<p><span class="math display">\[
+SCE = \boldsymbol{Y'Y - \hat{\beta}'X'Y}=
+\]</span> Por consiguiente, la estimación de <span class="math inline">\(\sigma^{2}\)</span> es:</p>
+<p><span class="math display">\[
+\hat{\sigma}^{2}=CME=\frac{SCE}{n-p}=
+\]</span></p>
+</section>
+<section id="prueba-de-hipótesis-en-la-regresión-múltiple" class="level2">
+<h2 class="anchored" data-anchor-id="prueba-de-hipótesis-en-la-regresión-múltiple">Prueba de hipótesis en la regresión múltiple</h2>
+<p>En problemas de regresión lineal múltiple, existen ciertas pruebas de hipótesis sobre los parámetros del modelo que son útiles para medir la adecuación del mismo. Al igual que en el caso de la regresión lineal simple, la prueba de hipótesis requiere que los términos error <span class="math inline">\(e_{i}\)</span> del modelo de regresión tengan distribuciones normales e independientes con media cero y varianza constante <span class="math inline">\(\sigma^{2}\)</span>.</p>
+<section id="prueba-para-la-significancia-de-la-regresión." class="level3">
+<h3 class="anchored" data-anchor-id="prueba-para-la-significancia-de-la-regresión.">Prueba para la significancia de la regresión.</h3>
+<p>La prueba para la significancia de la regresión es una prueba para determinar si existe una relación lineal entre las variables respuesta y y un conjunto de las variables independientes <span class="math inline">\(x_{1},x_{2},...,x_{k}\)</span>. Las hipótesis apropiados son:</p>
+<p><span class="math display">\[
+\begin{equation}
+H_{0}:\beta_{1}=\beta_{2}=...=\beta_{k}=0
+\end{equation}
+(\#eq:hipotesis-nula)
+\]</span> <span class="math display">\[
+\begin{equation}
+H_{1}:\beta_{1}≠0
+(\#eq:hipotesis-alternativa)
+\end{equation}
+\]</span> Al menos para una j, siendo j = 1,2,…,k.</p>
+<p>El rechazo de <span class="math inline">\(H_{0}:\beta_{1}=\beta_{2}=...=\beta_{k}=0\)</span> implica que al menos una de las variables de regresión <span class="math inline">\(x_{1},x_{2},...,x_{k}\)</span> tiene una contribución significativa en el modelo.</p>
+<p>La prueba de significancia de la regresión es una generalización del procedimiento utilizando en la regresión lineal simple. La suma de cuadrado total SCT se divide en una suma de cuadrados debida a la regresión y una suma de cuadrados debida al error,</p>
+<p><span class="math display">\[
+\begin{equation}
+SCT=SCR+SCE
+(\#eq:identidad-total)
+\end{equation}
+\]</span> <span class="math inline">\(SCR/\sigma^{2} \sim X_{K}^2\)</span> con k grados de libertad igual al número de variables regresoras y <span class="math inline">\(SCR/\sigma^{2} \sim X_{n-K-1}^2\)</span> 1 k n − − χ con n – k – 1 grados de libertad. Por lo tanto el estadístico de prueba viene dada por:</p>
+<p><span class="math display">\[
+\begin{equation}
+F_{0}= \frac{SCR/k}{SCE/n-k-1}=\frac{CMR}{CME}
+(\#eq:estadistico-F)
+\end{equation}
+\]</span> Decisión: Se rechaza <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(F_{0}&gt;f_{\alpha;k,n-k-1}\)</span></p>
+<p>En general, el procedimiento se resume en una tabla de análisis de varianza, tal como se muestra en la siguiente tabla:</p>
+<p>Siendo: <span class="math display">\[
+\begin{equation}
+SCE = \boldsymbol{Y'Y - \hat{\beta}'X'Y}
+(\#eq:sce-formula)
+\end{equation}
+\]</span> <span class="math display">\[
+\begin{equation}
+SCT=S_{yy}= \boldsymbol{Y'Y}-\frac{\bigg(\sum_{i=1}^{2}Y_{i}\bigg)^{2}}{n} = \sum_{i=1}^{2}Y_{i}^{2}- \frac{\bigg(\sum_{i=1}^{2}Y_{i}\bigg)^{2}}{n}
+\end{equation}
+\]</span></p>
+<p>Entonces, <span class="math display">\[
+\begin{equation}
+SCR=S_{yy}-SCE
+(\#eq:scr-formula)
+\end{equation}
+\]</span> <span class="math display">\[
+\begin{equation}
+SCR= \boldsymbol{Y'Y}-\frac{\bigg(\sum_{i=1}^{2}Y_{i}\bigg)^{2}}{n}-[\boldsymbol{Y'Y-\hat{\beta}'X'Y}]
+\end{equation}
+\]</span> Por consiguiente, la suma de cuadrados debida a la regresión, es:</p>
+<p><span class="math display">\[
+\begin{equation}
+SCR= \boldsymbol{\hat{\beta}X'Y}-\frac{\bigg(\sum_{i=1}^{2}Y_{i}\bigg)^{2}}{n}
+\end{equation}
+\]</span></p>
+</section>
+<section id="prueba-para-los-coeficientes-de-regresión." class="level3">
+<h3 class="anchored" data-anchor-id="prueba-para-los-coeficientes-de-regresión.">Prueba para los coeficientes de regresión.</h3>
+<p>A menudo se tiene interés en hacer pruebas de hipótesis sobre los coeficientes de regresión. Tales pruebas son útiles para determinar el valor potencial de cada una de las variables de regresión del modelo de regresión. Por ejemplo, el modelo puede ser más eficaz con la inclusión de variables adicionales, o quizás con la eliminación de uno o más de las regresoras presentes en el modelo.</p>
+<p>Las hipótesis para la prueba de la significancia de cualquier coeficiente de regresión individual, por ejemplo, <span class="math inline">\(\beta_{j}\)</span>, son: <span class="math display">\[
+\begin{equation}
+H_{0}:\beta_{j}=0
+(\#eq:hipotesis-nula-coeficiente)
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+H_{0}:\beta_{j}≠0
+(\#eq:hipotesis-alternativa-coeficiente)
+\end{equation}
+\]</span> Si no se rechaza <span class="math inline">\(H_{0}:\beta_{j}=0\)</span>,entonces esto indica que la variable regresora <span class="math inline">\(x_{j}\)</span> puede eliminarse del modelo. El estadístico de prueba para esta hipótesis es:</p>
+<p><span class="math display">\[
+\begin{equation}
+t_{0}=\frac{\hat{\beta_{j}}}{\sqrt{\hat{\sigma}^{2}C_{jj}}}
+(\#eq:estadistico-t)
+\end{equation}
+\]</span> donde <span class="math inline">\(C_{jj}\)</span> es el elemento de la diagonal principal de <span class="math inline">\(\boldsymbol{(X'X)^{-1}}\)</span> que corresponde a <span class="math inline">\(\hat{\beta_{j}}\)</span></p>
+<p>Decisión: Se rechaza <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(|t_{0}|&gt;t_{1-\alpha/2;n-p}\)</span></p>
+<p>La siguiente tabla muestra los coeficientes de regresión con sus respectivos valores de t.</p>
+<p>También puede emplearse el valor P para obtener conclusiones. Puesto que los valores de P menores que <span class="math inline">\(\alpha=5\)</span>%, conducen al rechazo las hipótesis nulas, lo que indica que las dos variables regresoras tienen contribución en el modelo.</p>
+<p>Nótese que esta prueba mide la contribución parcial de <span class="math inline">\(x_{2}\)</span>, dado que <span class="math inline">\(x_{1}\)</span> aparece en el modelo esto es, la prueba t mide la contribución que tiene la adición de la variable</p>
+<p>Existe otra manera de probar la contribución al modelo de cada variable de regresión. Este enfoque determina el aumento de la suma de los cuadrados de la regresión obtenida al agregar una variable <span class="math inline">\(x_{j}\)</span> al modelo, dado que las demás variables x_{i} (i ≠ j) ya están incluidas en la ecuación de regresión.</p>
+</section>
+</section>
+<section id="estimación-de-los-intervalos-de-confianza-en-la-regresión-lineal-múltiple" class="level2">
+<h2 class="anchored" data-anchor-id="estimación-de-los-intervalos-de-confianza-en-la-regresión-lineal-múltiple">Estimación de los intervalos de confianza en la regresión lineal múltiple</h2>
+<section id="intervalos-de-confianza-para-los-parámetros." class="level3">
+<h3 class="anchored" data-anchor-id="intervalos-de-confianza-para-los-parámetros.">Intervalos de confianza para los parámetros.</h3>
+<p>En los modelos de regresión múltiple, a menudo es útil construir estimaciones de intervalos de confianza para los coeficientes de regresión <span class="math inline">\(\beta_{j}\)</span>. El desarrollo de un procedimiento para obtener estos intervalos de confianza requiere que los errores <span class="math inline">\(\varepsilon_{i}\)</span>, estén distribuidos de manera normal e independientemente, con media cero y varianza constante <span class="math inline">\(\sigma_{2}\)</span>. Ésta es la misma suposición que se requiere para la prueba de hipótesis. Por consiguiente, las observaciones <span class="math inline">\(y_{i}\)</span> están normal e independientemente distribuidas con media y varianza. Puesto que el estimador de M.C.O. <span class="math inline">\(\boldsymbol{\hat{\beta}}\)</span> es una combinación lineal de las observaciones, se desprende entonces que <span class="math inline">\(\boldsymbol{\hat{\beta}}\)</span> tiene una distribución normal con un vector promedio <span class="math inline">\(\beta_{0}+\sum_{j=1}^{n}\beta_{j}x_{ij}\)</span> y matriz de varianza-covarianza <span class="math inline">\(\sigma^{2}\boldsymbol{(X'X)^{-1}}\)</span>. Entonces, cada uno de los estadísticos</p>
+<p><span class="math display">\[
+\frac{\hat{\beta_{j}}}{\sqrt{\hat{\sigma}^{2}C_{jj}}}
+\hspace{3.0cm}j = 0,1,...,k
+\]</span> tienen distribución t con n – p grados de libertad, donde <span class="math inline">\(C_{jj}\)</span> es el j-ésimo elemento de la matriz <span class="math inline">\(\boldsymbol{(X'X)^{-1}}\)</span> y <span class="math inline">\(\hat{\sigma}^{2}\)</span> es la estimación de la varianza del error.</p>
+<p>Un intervalo de confianza del <span class="math inline">\((1-\alpha)100\)</span>% para el coeficiente de regresión <span class="math inline">\(\beta_{j}\)</span>, j = 0,1,…,k está dado por:</p>
+<p><span class="math display">\[
+\begin{equation}
+\hat{\beta}-t_{\alpha/2;n-p}\sqrt{\hat{\sigma}^{2}C_{jj}}\leq \beta_{j}\leq\hat{\beta}+t_{\alpha/2;n-p}\sqrt{\hat{\sigma}^{2}C_{jj}}
+\end{equation}
+\]</span></p>
+</section>
+<section id="intervalo-de-confianza-para-la-respuesta-media-eyx0." class="level3">
+<h3 class="anchored" data-anchor-id="intervalo-de-confianza-para-la-respuesta-media-eyx0.">Intervalo de confianza para la respuesta media e(y/x0).</h3>
+<p>También puede obtenerse un intervalo de confianza para la respuesta promedio en un punto en particular, por ejemplo, <span class="math inline">\(x_{01},x_{02},...,x_{0k}\)</span>. Para estimar la respuesta promedio en este punto, se define el vector:</p>
+<p><span class="math display">\[
+\begin{equation}
+\boldsymbol{x_{0}}=\begin{bmatrix}
+1\\
+x_{01}\\
+x_{02}\\
+\vdots \\
+x_{0k}
+\end{bmatrix}
+\end{equation}
+\]</span> El valor estimado para este punto es: <span class="math inline">\(\hat{\mu}_{y/x_{0}}=\boldsymbol{x'_{0}\hat{\beta}}\)</span>.</p>
+<p>Este es un estimador insesgado de <span class="math inline">\(\mu_{y/x_{0}}\)</span>, siendo <span class="math inline">\(E(\hat{\mu}_{y/x_{0}})=\boldsymbol{x'_{0}\hat{\beta}}=\mu_{y/x_{0}}\)</span> y la varianza <span class="math inline">\(V(\hat{\mu}_{y/x_{0}})=\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}.\)</span></p>
+<p>Entonces, un intervalo de confianza del <span class="math inline">\((1-\alpha)100\)</span>% para la respuesta media en el punto <span class="math inline">\(x_{01},x_{02},...,x_{0k};\)</span> está dado por:</p>
+<p><span class="math display">\[
+\begin{equation}
+\hat{\mu}_{y/x_{0}}-t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}}\leq\mu_{y/x_{0}}\leq\hat{\mu}_{y/x_{0}}+t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}}
+\end{equation}
+\]</span></p>
+<p>Ejemplo:</p>
+<p>La respuesta promedio estimada en este punto es:</p>
+<p>La varianza de <span class="math inline">\(V(\hat{\mu}_{y/x_{0}})\)</span> se estima por:</p>
+<p><span class="math display">\[
+\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}=
+\]</span> Entonces, el intervalo de confianza para la respuesta promedio es:</p>
+</section>
+<section id="intervalo-de-confianza-para-haty_0-observación-futura." class="level3">
+<h3 class="anchored" data-anchor-id="intervalo-de-confianza-para-haty_0-observación-futura.">Intervalo de confianza para <span class="math inline">\(\hat{y}_{0}\)</span> (observación futura).</h3>
+<p>El modelo de regresión puede ser usado para predecir las observaciones futuras para un y correspondiente a un valor particular de las variables independientes, por ejemplo, <span class="math inline">\(x_{01},x_{02},...,x_{0k}.\)</span></p>
+<p><span class="math display">\[
+\boldsymbol{x_{0}}=\begin{bmatrix}
+1&amp;  x_{01}&amp;  x_{02}&amp;  \cdots&amp; x_{0k}
+\end{bmatrix}
+\]</span> entonces una estimación de la observación futura y0 en el punto <span class="math inline">\(x_{01},x_{02},...,x_{0k}\)</span> es: <span class="math inline">\(\hat{y}_{0}=\boldsymbol{x'_{0}\hat{\beta}}.\)</span></p>
+<p>Un intervalo de confianza del <span class="math inline">\((1-\alpha)\)</span>% para una observación futura <span class="math inline">\(y_{0}\)</span> en el valor <span class="math inline">\(x_{0}\)</span>, está dado por:</p>
+<p><span class="math display">\[
+\begin{equation}
+\hat{y_{0}}-t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}}\leq y_{0}\leq\hat{y_{0}}+t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}}
+\end{equation}
+\]</span></p>
+</section>
+</section>
+</section>
+<section id="bibliografía" class="level1 unnumbered">
+<h1 class="unnumbered">Bibliografía</h1>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

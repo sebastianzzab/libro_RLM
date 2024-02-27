@@ -1,26 +1,31 @@
 --- 
 title: "Regresión Lineal múltiple"
 author: "Sebastian Zabala"
+email: 'sebastianzabalaza@gmail.com'
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
-github-repo: rstudio/bookdown-demo
+github-repo: sebastianZabala/libro_RLM
 link-citations: yes
 description: 
   Este libro es una introducción al analisis de regresion por medio del modelo lineal multiple utilizando el lenguaje de programacion R con el paquete bookdown para la escritura de libros.
 output:
+  bookdown::gitbook:
+    split_by: "chapter"       
+    split_bib: no     # No se muestra bibliografía al final de cada página
+    lib_dir: "book_assets"
   bookdown::html_document2:
-   
+    df_print: kable
     # ver/ocultar los trozos de código  
     code_download: true  # si incluimos un botón para bajar el código o no
+    code_folding: hide    # por defecto el código aparecerá oculto
     #tabla de contenido
     toc_depth: 2 
     toc: yes                  # incluir tabla de contenido
     toc_float: yes            # toc flotante a la izquierda
     number_sections: yes      # numerar secciones y subsecciones
-    code_folding: hide        # por defecto el código aparecerá oculto
     mathjax: local            # emplea una copia local de MathJax, hay que establecer:
     collapsed: false      # que se escondan los tit
     smooth_scroll: false  # scroll en TOC
@@ -31,12 +36,11 @@ output:
     toc_depth: 2
     keep_tex: yes             # conservar fichero latex
 ---
-
 # Prólogo {-}
 
 Este libro es una guía para la enseñanza del **análisis  de regresión** por medio del modelo lineal múltiple aplicado con el lenguaje de programación R.
 
-Este mismo libro ha sido escrito en [R-Markdown](http://rmarkdown.rstudio.com) empleando el paquete [`bookdown`](https://bookdown.org/yihui/bookdown/)  y está disponible en el repositorio Github: 
+Este mismo libro ha sido escrito en [R-Markdown](http://rmarkdown.rstudio.com) empleando el paquete [`bookdown`](https://bookdown.org/yihui/bookdown/)  y está disponible en mi repositorio [Github](https://github.com/sebastianZabala/libro_RLM): 
 
 Para generar el libro (compilar) puede ser recomendable instalar la última versión de [RStudio]((https://www.rstudio.com/products/rstudio/download/)) y la versión de desarrollo de `bookdown` disponible en [Github](https://github.com/rstudio/bookdown). 
 
@@ -50,21 +54,10 @@ Esta obra está bajo una licencia de [Creative Commons Reconocimiento-CompartirI
 knitr::include_graphics("imagen-2.jpg")
 ```
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-	echo=TRUE,
-	error=FALSE,
-	message=FALSE,
-	warning=FALSE,
-	cache=TRUE
-)
-```
-
-
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown','scatterplot3d','plotly', 'tidyverse','rgl', 'lmtest','car', 'broom','kableExtra'
+  .packages(), 'bookdown', 'knitr', 'rmarkdown','scatterplot3d','plotly', 'tidyverse','rgl', 'lmtest','car','equatiomatic', 'broom','kableExtra', 'DT','performance','tinytex'
 ), 'packages.bib')
 # funciones auxiliares
 inline <- function(x = "") paste0("`` `r ", x, "` ``")
@@ -72,7 +65,7 @@ inline2 <- function(x = "") paste0("`r ", x, "`")
 ```
 
 ```{r include=FALSE}
-colorize <- function(x, color) {
+colorize <- function(x, color = "blue") {
   if (knitr::is_latex_output()) {
     sprintf("\\textcolor{%s}{%s}", color, x)
   } else if (knitr::is_html_output()) {
@@ -81,3 +74,4 @@ colorize <- function(x, color) {
   } else x
 }
 ```
+

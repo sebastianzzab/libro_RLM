@@ -1,0 +1,1881 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Untitled},
+  pdfauthor={Sebastian Zabala},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Untitled}
+\author{Sebastian Zabala}
+\date{2024-02-27}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{pruxf3logo}{%
+\chapter*{Prólogo}\label{pruxf3logo}}
+\addcontentsline{toc}{chapter}{Prólogo}
+
+Este libro es una guía para la enseñanza del \textbf{análisis de regresión} por medio del modelo lineal múltiple aplicado con el lenguaje de programación R.
+
+Este mismo libro ha sido escrito en \href{http://rmarkdown.rstudio.com}{R-Markdown} empleando el paquete \href{https://bookdown.org/yihui/bookdown/}{\texttt{bookdown}} y está disponible en mi repositorio \href{https://github.com/sebastianZabala/libro_RLM}{Github}:
+
+Para generar el libro (compilar) puede ser recomendable instalar la última versión de \href{(https://www.rstudio.com/products/rstudio/download/)}{RStudio} y la versión de desarrollo de \texttt{bookdown} disponible en \href{https://github.com/rstudio/bookdown}{Github}.
+
+Esta obra está bajo una licencia de \href{https://creativecommons.org/licenses/by-sa/4.0/deed.es}{Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional}.
+
+\begin{center}\includegraphics[width=9.79in]{imagen-2} \end{center}
+
+\hypertarget{modelos-de-regresiuxf3n-lineal-muxfaltiple}{%
+\chapter{Modelos de regresión lineal múltiple}\label{modelos-de-regresiuxf3n-lineal-muxfaltiple}}
+
+\hypertarget{intro}{%
+\section{Introducción}\label{intro}}
+
+Muchas aplicaciones del análisis de regresión involucran situaciones donde se tiene más de una variable de regresión, los problemas que se presentan en el mundo actual no pueden ser explicados mediante una sola variable. Aquel modelo de regresión que contiene más de una variable independiente recibe el nombre de \textbf{Modelo de Regresión Múltiple}.
+
+En general, la variable dependiente o respuesta (y) puede estar relacionada con k variables independientes o regresoras. El modelo
+
+\[
+\begin{equation}
+y=\beta _{0} + \beta _{1}X _{1} + \beta _{2}X _{2} + ... + + \beta _{k}X _{k} + \varepsilon
+\label{eq:rlm}
+\end {equation}
+\]
+recibe el nombre de \textbf{modelo de regresión lineal múltiple con k variables de regresión}. Los parámetros \(\beta _{0}\) y \(\beta _{j}\) para j = 0, 1, \ldots{} , k, son parámetros desconocidos, \textbf{denominados coeficientes de regresión}.
+
+\(\varepsilon\) denota el error, el cual puede ser debido a fluctuaciones aleatorias de la variable respuesta o por error en el modelo planteado.
+
+\begin{center}\includegraphics[width=10.88in]{imagen-1} \end{center}
+
+Frecuentemente los modelos de regresión lineal múltiple se emplean como funciones de aproximación. Esto es, se desconoce la verdadera relación funcional entre y y \(x_{1},x_{2},...,x_{k}\), pero sobre ciertos rangos de las variables independientes el modelo de regresión lineal constituye una aproximación adecuada.
+
+Al construir una ecuación de predicción o regresion estimada que relacionara \(y\) con k variables predictoras. Desde luego que aparecen varias preguntas, al igual que con regresion lineal simple:
+
+¿Que tan bien se ajusta el modelo?
+¿Que tan fuerte es la relación entre y y las variables predictoras?
+¿Se han violado suposiciones importantes?
+¿Qué tan buenas son las estimaciones y predicciones?
+
+Para contestar estas preguntas se pueden usar métodos de \textbf{análisis de regresión múltiple}, que casi siempre se hacen con un programa de cómputo, en nuestro caso, utilizando R. Este capítulo contiene una breve introducción al análisis de regresión múltiple y a la difícil tarea de construcción de
+modelos, es decir, escoger el modelo correcto para una aplicación práctica.
+
+Para mas información leerse la sección 13.1 del libro de \citet{mendenhall2010introduccion}
+
+El siguiente bloque de código permite instalar y cargar los paquetes de R usados para implementar todos los conceptos de regresion lineal múltiple expuestos en este libro. Los cuales son los siguientes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{packages }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+ \StringTok{\textquotesingle{}bookdown\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}knitr\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}rmarkdown\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}scatterplot3d\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}plotly\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}tidyverse\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}rgl\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}lmtest\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}car\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}psych\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}DT\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}broom\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}kableExtra\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}GGally\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}plot3D\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}plot3Drgl\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}equatiomatic\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}performance\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}tinytex\textquotesingle{}} 
+\NormalTok{)}
+\NormalTok{package.check }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(packages, }\AttributeTok{FUN =} \ControlFlowTok{function}\NormalTok{(x) \{}
+  \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{require}\NormalTok{(x, }\AttributeTok{character.only =} \ConstantTok{TRUE}\NormalTok{)) \{}
+    \FunctionTok{install.packages}\NormalTok{(x, }\AttributeTok{dependencies =} \ConstantTok{TRUE}\NormalTok{)}
+    \FunctionTok{library}\NormalTok{(x, }\AttributeTok{character.only =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{Estimacion-M.C.O.}{%
+\section{Estimación de los parámetros de la ecuación de regresión por el método de mínimo cuadrado ordinario (M.C.O.)}\label{Estimacion-M.C.O.}}
+
+El método de mínimos cuadrados ordinarios puede emplearse para estimar los coeficientes de regresión del modelo lineal múltiple de la ecuación anterior \eqref{eq:rlm}.
+
+Supóngase que se tienen disponibles n \textgreater{} k observaciones y sea \(x_{ij}\) la i-ésima observación o nivel de la variable \(x_{j}\). Las observaciones son:
+
+\[
+\begin{equation}
+(x_{i1},x_{i2}, ..., x_{ik}, y_{i}),\hspace{1.0cm} i = 1,2, ... , n \hspace{1.0cm}y\hspace{1.0cm} n  > k
+\end{equation}
+\]
+
+Se acostumbra presentar los datos de una regresión múltiple en una tabla tal, como sigue:
+
+\$\$
+\begin{equation}
+
+\end{equation}
+\$\$
+
+Cada observación \((x_{i1}, x_{i2}x_{i3},...x_{ik}, y_{i})\) satisface el modelo, es decir:
+
+\[
+\begin{equation}
+y_{i}=\beta_{0}+\beta_{1}x_{i1}+\beta_{2}x_{i2}+ ... + \beta_{k}x_{ik}+\varepsilon_{i}
+\label{eq:rlme}
+\end{equation}
+\]
+
+\[
+\begin{equation}
+y_{i}=\beta_{0}+\sum_{j=1}^{k}\beta_{j}x_{ij} + \varepsilon_{i}\hspace{0.9cm} i=1,2,...,n 
+\end{equation}
+\]
+donde: \(y_i\) es la i-esima observación de ;a respuesta para un conjunto de valores \(x_{i1},x_{i2},..,x_{ik}\) de las variables de predicción, \(\varepsilon_{i}\) es el error aleatorio no observable asociado con \(y_{i}\) y \(\beta_{0},\beta_{1},\beta_{2},...,\beta_{k}\) son \(p = k + 1\) parámetros lineales desconocidos.
+
+Si supone el caso de la teoría basada en el modelo normal, las observaciones son variables aleatorias independientes, normalmente distribuidas con:
+
+\[
+\begin{equation}
+E(y_{i})=\beta_{0}+\beta_{1}x_{i1}+\beta_{2}x_{i2}+...+\beta_{k}x_{ik} \\
+V(y_{i})= \sigma^2  \hspace{4cm}
+i =1,2,..,n \\
+\label{eq:modelo-normal-de-variables}
+\end{equation}
+\] De esta forma, los errores son variables aleatorias independientes, normalmente distribuidos con: \(E(\varepsilon_{i})= 0\) y \(V(\varepsilon_{i})= \sigma^2\)
+
+Demostración:
+
+La función de mínimos cuadrados ordinarios es:
+
+\[
+\begin{equation}
+L=\sum_{i=1}^{n}\varepsilon_{i}^2
+\end{equation}
+\] donde
+\(\varepsilon_{i}=y_{i}-\beta_{0}-\sum_{i=1}^{k}\beta_{j}x_{ij}\)
+
+\[
+\begin{equation}
+L= \sum_{i=1}^n(y_i-\beta_{0}-\sum_{j}x_{ij})^2 //
+\end{equation}
+\]
+Derivando L con respecto a \(\beta_{0},\beta_{1},\beta_{2},...,\beta_{k}\) ,se tiene
+
+\[
+\begin{equation}
+\frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij}) \\
+y \\
+\frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})x_{ij} \hspace{5.0cm} j =1,2,..,k
+\end{equation}
+\]
+Al igualar a cero a estas estimaciones de mínimos cuadrados, se obtiene:
+
+\[
+\begin{equation}
+-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})=0 \\
+\frac{\partial L}{\partial \beta} \Bigg|_{\hat{\beta_{0}},\hat{\beta_{1}},...,\hat\beta_{k}}=-2\sum_{i=1}^n(y_{i}-\hat{\beta_{0}}-\sum_{j=1}^k\hat{\beta_{j}}x_{ij})x_{ij}=0 \hspace{5.0cm} j =1,2,..,k
+\end{equation}
+\]
+
+Después de simplificar las ecuaciones anteriores, se obtienen las ecuaciones normales de mínimos cuadrados ordinarios.
+
+\[
+\begin{equation}
+\begin{matrix}
+n\hat{\beta_{0}} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1} + \hat{\beta_{2}}\sum_{i=1}^nx_{i2} + \ldots + \hat{\beta_{k}}\sum_{i=1}^nx_{ik} = \sum_{i=1}^ny_i \\
+\hat{\beta_{0}}\sum_{i=1}^nx_{i1} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1}^2 + \hat{\beta_{2}}\sum_{i=1}^nx_{i1}x_{i2} + \ldots + \hat{\beta_{k}}\sum_{i=1}^nx_{i1}x_{ik} = \sum_{i=1}^nx_{i1}y_i \\
+\vdots \quad \vdots \quad \vdots \quad \vdots \quad \vdots \\
+\hat{\beta_{0}}\sum_{i=1}^nx_{ik} + \hat{\beta_{1}}\sum_{i=1}^nx_{ik}x_{i1} + \hat{\beta_{2}}\sum_{i=1}^nx_{ik}x_{i2} + \ldots + \hat{\beta_{k}}\sum_{i=1}^nx_{ik}^2 = \sum_{i=1}^nx_{ik}y_i
+\end{matrix}
+\end{equation}
+\]
+
+Nótese que existen \(p = k +1\) ecuaciones normales, una para cada coeficiente de regresion desconocido. La solución de las ecuaciones normales son los estimadores mínimos cuadrados de los coeficientes de regresion \(\hat{\beta_{0}},\hat{\beta_{1}},...,\hat{\beta_{k}}\). La solución de las ecuaciones normales puede obtenerse con cualquier método apropiado para la solución de sistemas de ecuaciones lineales.
+
+\hypertarget{ejemplo}{%
+\chapter*{Ejemplo}\label{ejemplo}}
+\addcontentsline{toc}{chapter}{Ejemplo}
+
+Como ilustración vamos a usar los datos del ejemplo del libro \citet{webster2000estadistica} .La gerencia de Hop Scotch Airlines, la aerolínea transportadora mas pequeña del mundo, considera que existe una relación directa entre los gastos publicitarios, el ingreso nacional y el numero de pasajeros que escogen viajar por Hop Scotch. Por determinar so esta relación existe, y si es así cual podría ser la naturaleza exacta, los estadísticos empleados por Hop Scotch decidieron utilizar los procedimientos MCO para determinar el modelo de regresion múltiple.
+
+Se recolectaron los valores mensuales por gastos de publicidad, el ingreso nacional y el numero de pasajeros para los n = 15 meses mas recientes. Los datos aparecen en la tabla \ref{tab:defdatos} ,junto con otros cálculos necesarios para hallar el modelo de regresion. Se observara que los pasajeros están representados con la variable Y, ya que se asume que depende de la publicidad y el ingreso nacional.
+
+Los datos del ejemplo los pasamos a código para poder trabajar con ellos. A continuación el código para cargar los datos y mostrarlos utilizando el paquete \texttt{kableExtra}, en total se disponen de 15 observaciones.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Definición de las variables de estudio y creación del dataframe}
+\NormalTok{observaciones }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{15}
+\NormalTok{pasajeros }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{,}\DecValTok{17}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{23}\NormalTok{,}\DecValTok{16}\NormalTok{,}\DecValTok{21}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{24}\NormalTok{,}\DecValTok{17}\NormalTok{,}\DecValTok{16}\NormalTok{,}\DecValTok{18}\NormalTok{,}\DecValTok{23}\NormalTok{,}\DecValTok{25}\NormalTok{,}\DecValTok{16}\NormalTok{)}
+\NormalTok{publicidad }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{17}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{15}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{16}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{12}\NormalTok{)}
+\NormalTok{ingreso\_nacional }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{2.4}\NormalTok{,}\FloatTok{2.72}\NormalTok{,}\FloatTok{2.08}\NormalTok{,}\FloatTok{3.68}\NormalTok{,}\FloatTok{2.56}\NormalTok{,}\FloatTok{3.36}\NormalTok{,}\FloatTok{2.24}\NormalTok{,}\FloatTok{3.2}\NormalTok{,}\FloatTok{3.84}\NormalTok{,}\FloatTok{2.72}\NormalTok{,}\FloatTok{2.07}\NormalTok{,}\FloatTok{2.33}\NormalTok{,}\FloatTok{2.98}\NormalTok{,}\FloatTok{1.94}\NormalTok{,}\FloatTok{2.17}\NormalTok{)}
+
+\CommentTok{\# Creación del dataframe}
+\NormalTok{datos }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(pasajeros,publicidad,ingreso\_nacional)}
+\FunctionTok{colnames}\NormalTok{(datos) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Pasajeros"}\NormalTok{, }\StringTok{"Publicidad"}\NormalTok{, }\StringTok{"Ingreso Nacional"}\NormalTok{)}
+
+\FunctionTok{library}\NormalTok{(kableExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'kableExtra' was built under R version 4.3.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(}\AttributeTok{Observaciones =}\NormalTok{ observaciones,datos),}\AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{align =} \StringTok{"c"}\NormalTok{, }\AttributeTok{caption =} \StringTok{"Tabla con los datos de la regresion  multiple para Hop Scotch Airlines"}\NormalTok{ ) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:defdatos}Tabla con los datos de la regresion  multiple para Hop Scotch Airlines}
+\centering
+\begin{tabular}[t]{cccc}
+\toprule
+Observaciones & Pasajeros & Publicidad & Ingreso Nacional\\
+\midrule
+1 & 15 & 10 & 2.40\\
+2 & 17 & 12 & 2.72\\
+3 & 13 & 8 & 2.08\\
+4 & 23 & 17 & 3.68\\
+5 & 16 & 10 & 2.56\\
+\addlinespace
+6 & 21 & 15 & 3.36\\
+7 & 14 & 10 & 2.24\\
+8 & 20 & 14 & 3.20\\
+9 & 24 & 19 & 3.84\\
+10 & 17 & 10 & 2.72\\
+\addlinespace
+11 & 16 & 11 & 2.07\\
+12 & 18 & 13 & 2.33\\
+13 & 23 & 16 & 2.98\\
+14 & 25 & 10 & 1.94\\
+15 & 16 & 12 & 2.17\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Un gráfico en 3d es obligatorio para explorar la relación entre las variables, este diagrama de puede obtener usando el paquete \texttt{scatterplot3d}. A continuación el código para construirlo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(scatterplot3d)}
+
+\CommentTok{\#Se crea un gráfico en 3D para explorar la relación entre las variables}
+\FunctionTok{scatterplot3d}\NormalTok{(}\AttributeTok{x=}\NormalTok{publicidad, }\AttributeTok{y=}\NormalTok{ingreso\_nacional, }\AttributeTok{z=}\NormalTok{pasajeros, }\AttributeTok{pch=}\DecValTok{16}\NormalTok{, }\AttributeTok{cex.lab=}\DecValTok{1}\NormalTok{,}
+              \AttributeTok{highlight.3d=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type=}\StringTok{"h"}\NormalTok{, }\AttributeTok{xlab=}\StringTok{\textquotesingle{}Publicidad (en miles de dolares)\textquotesingle{}}\NormalTok{,}
+              \AttributeTok{ylab=}\StringTok{\textquotesingle{}Ingreso nacional (en billones de dolares)\textquotesingle{}}\NormalTok{, }\AttributeTok{zlab=}\StringTok{\textquotesingle{}Pasajeros (en miles)\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/explorscatter-1.pdf}
+\caption{\label{fig:explorscatter}Grafico de dispersion 3D entre las variables con scatterplot3d}
+\end{figure}
+
+De la figura anterior \ref{fig:explorscatter} se ve claramente que a medida que aumenta el gasto en publicidad y aumenta el ingreso nacional se tienden a aumentar el numero de pasajeros en miles.
+
+El mismo diagrama de dispersión se puede crear usando el paquete \texttt{plotly}. El cual permite al lector muchas mas posibilidades con el diagrama como moverlo, acercarlo, etc.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(plotly)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'plotly' was built under R version 4.3.2
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: ggplot2
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'plotly'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:ggplot2':
+## 
+##     last_plot
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:stats':
+## 
+##     filter
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:graphics':
+## 
+##     layout
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot\_ly}\NormalTok{(}\AttributeTok{x=}\NormalTok{publicidad, }\AttributeTok{y=}\NormalTok{ingreso\_nacional, }\AttributeTok{z=}\NormalTok{pasajeros, }\AttributeTok{type=}\StringTok{"scatter3d"}\NormalTok{, }\AttributeTok{color=}\NormalTok{pasajeros) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{layout}\NormalTok{(}\AttributeTok{scene =} \FunctionTok{list}\NormalTok{(}\AttributeTok{xaxis =} \FunctionTok{list}\NormalTok{(}\AttributeTok{title =} \StringTok{\textquotesingle{}Publicidad (en miles de dolares)\textquotesingle{}}\NormalTok{),}
+                      \AttributeTok{yaxis =} \FunctionTok{list}\NormalTok{(}\AttributeTok{title =} \StringTok{\textquotesingle{}Ingreso nacional (en billones de dolares)\textquotesingle{}}\NormalTok{),}
+                      \AttributeTok{zaxis =} \FunctionTok{list}\NormalTok{(}\AttributeTok{title =} \StringTok{\textquotesingle{}Pasajeros (en miles)\textquotesingle{}}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
+\end{verbatim}
+
+\begin{verbatim}
+## No scatter3d mode specifed:
+##   Setting the mode to markers
+##   Read more about this attribute -> https://plotly.com/r/reference/#scatter-mode
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/explorplotly-1.pdf}
+\caption{\label{fig:explorplotly}Grafico de dispersion 3D entre las variables con plotly}
+\end{figure}
+
+Otro gráfico de dispersión en 3d se puede construir usando el paquete \texttt{rgl}. A continuación está el código para obtener el diagrama de dispersión.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rgl)}
+\FunctionTok{plot3d}\NormalTok{(}\AttributeTok{x=}\NormalTok{publicidad, }\AttributeTok{y=}\NormalTok{ingreso\_nacional, }\AttributeTok{z=}\NormalTok{pasajeros, }\AttributeTok{type=}\StringTok{\textquotesingle{}s\textquotesingle{}}\NormalTok{, }\AttributeTok{col=}\StringTok{\textquotesingle{}green\textquotesingle{}}\NormalTok{,}
+       \AttributeTok{xlab=}\StringTok{\textquotesingle{}Publicidad (en miles de dolares)\textquotesingle{}}\NormalTok{,}
+       \AttributeTok{ylab=}\StringTok{\textquotesingle{}Ingreso nacional (en billones de dolares)\textquotesingle{}}\NormalTok{,}
+       \AttributeTok{zlab=}\StringTok{\textquotesingle{}Pasajeros (en miles)\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+También se puede analizar la relación de las variables observando los gráficos de dispersión entre las variables. Lo cual se hace en R de la siguiente manera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(psych)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'psych' was built under R version 4.3.2
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'psych'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:ggplot2':
+## 
+##     %+%, alpha
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{multi.hist}\NormalTok{(}\AttributeTok{x =}\NormalTok{ datos, }\AttributeTok{dcol =} \FunctionTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\AttributeTok{dlty =} \FunctionTok{c}\NormalTok{(}\StringTok{"dotted"}\NormalTok{, }\StringTok{"solid"}\NormalTok{),}
+           \AttributeTok{main =} \StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/multihist-1.pdf}
+\caption{\label{fig:multihist}Histograma multiple con psych}
+\end{figure}
+
+Otros paquetes permiten representar a la vez los diagramas de dispersión, los valores de correlación para cada par de variables y la distribución de cada una de las variables.
+
+\hypertarget{matriz-de-correlaciuxf3n}{%
+\subsection{Matriz de correlación}\label{matriz-de-correlaciuxf3n}}
+
+Para calcular dicha correlación, se emplea el siguiente código:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(}\FunctionTok{cor}\NormalTok{(datos), }\DecValTok{3}\NormalTok{) }\CommentTok{\# Matriz de correlación redondeada a 3 decimales}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                  Pasajeros Publicidad Ingreso Nacional
+## Pasajeros            1.000      0.735            0.592
+## Publicidad           0.735      1.000            0.870
+## Ingreso Nacional     0.592      0.870            1.000
+\end{verbatim}
+
+\hypertarget{matriz-de-dispersiuxf3n}{%
+\subsection{Matriz de dispersión}\label{matriz-de-dispersiuxf3n}}
+
+Esta matriz es una herramienta de exploración de datos que permite comparar varios subconjuntos de la base de datos para buscar patrones y relaciones. Se obtiene así:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pairs}\NormalTok{(datos, }\AttributeTok{labels=}\FunctionTok{c}\NormalTok{(}\StringTok{"y"}\NormalTok{,}\StringTok{"x1"}\NormalTok{,}\StringTok{"x2"}\NormalTok{), }\AttributeTok{main=}\StringTok{\textquotesingle{}Matriz de dispersión\textquotesingle{}}\NormalTok{, }\AttributeTok{cex.main=}\FloatTok{0.8}\NormalTok{, }\AttributeTok{cex =} \FloatTok{1.5}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{, }\AttributeTok{bg=}\StringTok{"light blue"}\NormalTok{, }\AttributeTok{cex.labels =} \DecValTok{1}\NormalTok{, }\AttributeTok{font.labels=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/mtdisp-1.pdf}
+
+\hypertarget{matriz-de-dispersiuxf3n-con-correlaciones}{%
+\subsection{Matriz de dispersión con correlaciones}\label{matriz-de-dispersiuxf3n-con-correlaciones}}
+
+Esta matriz también sirve para explorar los datos al comparar varios subconjuntos de la base de datos, pero adiciona la correlación entre cada uno de los subconjuntos. Para obtenerla con R se utilizo el paquete \texttt{GGally} que ayuda a hacer este tipo de gráficos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(GGally)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'GGally' was built under R version 4.3.2
+\end{verbatim}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'GGally':
+##   method from   
+##   +.gg   ggplot2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggpairs}\NormalTok{(datos, }\AttributeTok{lower =} \FunctionTok{list}\NormalTok{(}\AttributeTok{continuous =} \StringTok{"smooth"}\NormalTok{),}
+        \AttributeTok{diag =} \FunctionTok{list}\NormalTok{(}\AttributeTok{continuous =} \StringTok{"barDiag"}\NormalTok{), }\AttributeTok{axisLabels =} \StringTok{"none"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick
+## better value with `binwidth`.
+\end{verbatim}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick
+## better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick
+## better value with `binwidth`.
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/explorvar-1.pdf}
+\caption{\label{fig:explorvar}Matriz de dispersión con correlaciones con GGally}
+\end{figure}
+
+Basándonos en el diagrama de dispersión 3d de la \ref{fig:explorscatter},\ref{fig:explorplotly} y los gráficos observados de correlación y dispersión de \ref{fig:explorvar}, el modelo que se va a ajustar se muestra a continuación:
+
+\[
+\begin{equation}
+Pasajeros \sim N(\mu_{i},\sigma^{2}),\\
+\mu_{i} = \beta_{0} + \beta_{1}Publicidad_{i} + \beta_{2}Ingreso_{i},\\
+\sigma^{2} = constante
+\end{equation}
+\]
+
+Así se crea el modelo de regresión múltiple ajustado en R:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(broom)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'broom' was built under R version 4.3.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Ajustar un modelo de regresión lineal múltiple}
+\NormalTok{modelo }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(pasajeros }\SpecialCharTok{\textasciitilde{}}\NormalTok{ publicidad }\SpecialCharTok{+}\NormalTok{ ingreso\_nacional, }\AttributeTok{data =}\NormalTok{ datos)}
+
+\CommentTok{\# Utilizar el paquete broom para obtener resúmenes y estadísticas del modelo}
+\FunctionTok{summary}\NormalTok{(modelo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = pasajeros ~ publicidad + ingreso_nacional, data = datos)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.6489 -1.4443 -0.3563  0.5748  8.2848 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(>|t|)  
+## (Intercept)        8.0153     3.3996   2.358   0.0362 *
+## publicidad         1.1078     0.4827   2.295   0.0406 *
+## ingreso_nacional  -1.2258     2.5037  -0.490   0.6332  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.795 on 12 degrees of freedom
+## Multiple R-squared:  0.5487, Adjusted R-squared:  0.4735 
+## F-statistic: 7.296 on 2 and 12 DF,  p-value: 0.008445
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tidy}\NormalTok{(modelo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 5
+##   term             estimate std.error statistic p.value
+##   <chr>               <dbl>     <dbl>     <dbl>   <dbl>
+## 1 (Intercept)          8.02     3.40      2.36   0.0362
+## 2 publicidad           1.11     0.483     2.29   0.0406
+## 3 ingreso_nacional    -1.23     2.50     -0.490  0.633
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glance}\NormalTok{(modelo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 12
+##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
+##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>
+## 1     0.549         0.474  2.79      7.30 0.00845     2  -35.0  78.1  80.9
+## # i 3 more variables: deviance <dbl>, df.residual <int>, nobs <int>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{augment}\NormalTok{(modelo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 15 x 9
+##    pasajeros publicidad ingreso_nacional .fitted  .resid   .hat .sigma   .cooksd
+##        <dbl>      <dbl>            <dbl>   <dbl>   <dbl>  <dbl>  <dbl>     <dbl>
+##  1        15         10             2.4     16.2 -1.15   0.124   2.90  0.00913  
+##  2        17         12             2.72    18.0 -0.975  0.0784  2.90  0.00374  
+##  3        13          8             2.08    14.3 -1.33   0.228   2.88  0.0288   
+##  4        23         17             3.68    22.3  0.663  0.260   2.91  0.00889  
+##  5        16         10             2.56    16.0  0.0448 0.177   2.92  0.0000224
+##  6        21         15             3.36    20.5  0.486  0.163   2.91  0.00235  
+##  7        14         10             2.24    16.3 -2.35   0.112   2.82  0.0333   
+##  8        20         14             3.2     19.6  0.398  0.137   2.92  0.00124  
+##  9        24         19             3.84    24.4 -0.356  0.379   2.92  0.00533  
+## 10        17         10             2.72    15.8  1.24   0.272   2.89  0.0336   
+## 11        16         11             2.07    17.7 -1.66   0.192   2.87  0.0348   
+## 12        18         13             2.33    19.6 -1.56   0.228   2.87  0.0397   
+## 13        23         16             2.98    22.1  0.913  0.229   2.90  0.0137   
+## 14        25         10             1.94    16.7  8.28   0.199   0.853 0.912    
+## 15        16         12             2.17    18.6 -2.65   0.222   2.78  0.110    
+## # i 1 more variable: .std.resid <dbl>
+\end{verbatim}
+
+Ya por defecto la función \texttt{summary} presenta el análisis de varianza (ANOVA) por defecto. Si nosotros quisiéramos solamente esa tabla se haría de la siguiente forma:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Realizar el análisis de varianza}
+\NormalTok{tabla\_anova }\OtherTok{\textless{}{-}} \FunctionTok{anova}\NormalTok{(modelo)}
+\NormalTok{tabla\_anova}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: pasajeros
+##                  Df  Sum Sq Mean Sq F value   Pr(>F)   
+## publicidad        1 112.117 112.117 14.3518 0.002584 **
+## ingreso_nacional  1   1.873   1.873  0.2397 0.633245   
+## Residuals        12  93.744   7.812                    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Con los resultados obtenidos en el Chunk \ref{crearlm}, se puede expresar el modelo ajustado como se muestra a continuación:
+
+\[
+\begin{equation}
+\widehat{Tiempo_{i}} \sim N(\hat{\mu_{i}},\hat{\sigma}^{2}),
+\hat{\mu_{i}} = 8.0153 + 1.1078Publicidad_{i} - 1.2258Ingreso_{i},
+\hat{\sigma}=2.795
+\end{equation}
+\] Para incluir el plano de regresión que representa el modelo ajustado anterior se puede usar el siguiente código:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Se crea el gráfico 3d y se guarda en un objeto}
+\FunctionTok{library}\NormalTok{(scatterplot3d)}
+\NormalTok{mi\_modelo\_3d }\OtherTok{\textless{}{-}} \FunctionTok{scatterplot3d}\NormalTok{(}\AttributeTok{x=}\NormalTok{publicidad, }\AttributeTok{y=}\NormalTok{ingreso\_nacional, }\AttributeTok{z=}\NormalTok{pasajeros, }\AttributeTok{pch=}\DecValTok{16}\NormalTok{, }\AttributeTok{cex.lab=}\DecValTok{1}\NormalTok{,}
+                       \AttributeTok{highlight.3d=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type=}\StringTok{"h"}\NormalTok{, }\AttributeTok{xlab=}\StringTok{\textquotesingle{}Publicidad (en miles de dolares)\textquotesingle{}}\NormalTok{,}
+                       \AttributeTok{ylab=}\StringTok{\textquotesingle{}Ingreso nacional (en billones de dolares)\textquotesingle{}}\NormalTok{, }\AttributeTok{zlab=}\StringTok{\textquotesingle{}Pasajeros (en miles)\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Para agregar el plano usamos $plane3d( ) con argumento modelo ajustado}
+\NormalTok{mi\_modelo\_3d}\SpecialCharTok{$}\FunctionTok{plane3d}\NormalTok{(modelo, }\AttributeTok{lty.box=}\StringTok{"solid"}\NormalTok{, }\AttributeTok{col=}\StringTok{\textquotesingle{}mediumblue\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\textbf{Solución}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Número total de observaciones}
+\NormalTok{num\_observaciones }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(datos)}
+
+\CommentTok{\# Sumatoria de la columna de la variable dependiente (Y)}
+\NormalTok{sum\_y }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(datos}\SpecialCharTok{$}\NormalTok{Pasajeros)}
+
+\CommentTok{\# Sumatoria de la columna de la variable dependiente al cuadrado (Y)}
+\NormalTok{sum\_y\_squared }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(datos}\SpecialCharTok{$}\NormalTok{Pasajeros}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Sumatoria de la columna de la primera variable independiente (X1: Publicidad)}
+\NormalTok{sum\_x1 }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(datos}\SpecialCharTok{$}\NormalTok{Publicidad)}
+
+\CommentTok{\# Sumatoria de la columna de la segunda variable independiente (X2: Ingreso Nacional)}
+\NormalTok{sum\_x2 }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(datos}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Ingreso Nacional}\StringTok{\textasciigrave{}}\NormalTok{)}
+
+\CommentTok{\# Sumatoria de la columna de los cuadrados de la primera variable independiente (X1\^{}2)}
+\NormalTok{sum\_x1\_squared }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(datos}\SpecialCharTok{$}\NormalTok{Publicidad}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Sumatoria de la columna de los cuadrados de la segunda variable independiente (X1\^{}2)}
+\NormalTok{sum\_x2\_squared }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(datos}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Ingreso Nacional}\StringTok{\textasciigrave{}}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Sumatoria de la columna de la multiplicación entre X1 y X2}
+\NormalTok{sum\_x1\_x2 }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(datos}\SpecialCharTok{$}\NormalTok{Publicidad }\SpecialCharTok{*}\NormalTok{ datos}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Ingreso Nacional}\StringTok{\textasciigrave{}}\NormalTok{)}
+
+\CommentTok{\# Sumatoria de la columna de la multiplicación entre X1 y Y}
+\NormalTok{sum\_x1\_y }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(datos}\SpecialCharTok{$}\NormalTok{Publicidad }\SpecialCharTok{*}\NormalTok{ datos}\SpecialCharTok{$}\NormalTok{Pasajeros)}
+
+\CommentTok{\# Sumatoria de la columna de la multiplicación entre X2 y Y}
+\NormalTok{sum\_x2\_y }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(datos}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Ingreso Nacional}\StringTok{\textasciigrave{}} \SpecialCharTok{*}\NormalTok{ datos}\SpecialCharTok{$}\NormalTok{Pasajeros)}
+
+\CommentTok{\# Imprimir los resultados}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Numero total de observaciones:"}\NormalTok{, num\_observaciones, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Numero total de observaciones: 15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Sumatoria de la columna de Y:"}\NormalTok{, sum\_y, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Sumatoria de la columna de Y: 278
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Sumatoria de la columna de Y al cuadrado:"}\NormalTok{, sum\_y\_squared, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Sumatoria de la columna de Y al cuadrado: 5360
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Sumatoria de la columna de X1:"}\NormalTok{, sum\_x1, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Sumatoria de la columna de X1: 187
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Sumatoria de la columna de X2:"}\NormalTok{, sum\_x2, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Sumatoria de la columna de X2: 40.29
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Sumatoria de la columna de X1\^{}2:"}\NormalTok{, sum\_x1\_squared, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Sumatoria de la columna de X1^2: 2469
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Sumatoria de la columna de X2\^{}2:"}\NormalTok{, sum\_x2\_squared, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Sumatoria de la columna de X2^2: 113.3387
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Sumatoria de la columna de X1 * X2:"}\NormalTok{, sum\_x1\_x2, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Sumatoria de la columna de X1 * X2: 525.38
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Sumatoria de la columna de X1 * Y:"}\NormalTok{, sum\_x1\_y, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Sumatoria de la columna de X1 * Y: 3590
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Sumatoria de la columna de X2 * Y:"}\NormalTok{, sum\_x2\_y, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Sumatoria de la columna de X2 * Y: 766.02
+\end{verbatim}
+
+\[
+n\hat{\beta_{0}} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1} + \hat{\beta_{i2}}\sum_{i=1}^nx_{i2} = \sum_{i=1}^ny_{i} \\
+\hat{\beta_{0}}\sum_{i=1}^nx_{i1} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1}^2 + \hat{\beta_{i2}}\sum_{i=1}^nx_{i1}x_{i2} = \sum_{i=1}^nx_{i1}y_{i} \\
+\hat{\beta_{0}}\sum_{i=1}^nx_{i2} + \hat{\beta_{1}}\sum_{i=1}^nx_{i1}x_{i2} + \hat{\beta_{i2}}\sum_{i=1}^nx_{i2}^2 = \sum_{i=1}^nx_{i2}y_{i}
+\]
+
+Al sustituir las sumatorias calculadas en las ecuaciones normales, se tiene que:
+
+\[
+15\hat{\beta_{0}} + 187\hat{\beta_{1}}  + 40.29\hat{\beta_{i2}} = 278 \\
+187\hat{\beta_{0}} + 2469\hat{\beta_{1}} + 525.38\hat{\beta_{i2}} = 3590  \\
+40.29\hat{\beta_{0}} + 525.38\hat{\beta_{1}} + 113.3387\hat{\beta_{i2}} = 766.02
+\] La solución de este conjunto de ecuaciones es:
+
+\[
+\hat{\beta_{0}}= 8.015345 \\
+\hat{\beta_{1}}= 1.107798 \\
+\hat{\beta_{2}}= -1.225824 \\
+\label{eq:coefs-beta-valores-estimados}
+\] Lo cual se hace con R de la siguiente manera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Definir la matriz de coeficientes (lado izquierdo del sistema)}
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(pasajeros)}
+\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(n, sum\_x1, sum\_x2, sum\_x1, sum\_x1\_squared, sum\_x1\_x2, sum\_x2, sum\_x1\_x2, sum\_x2\_squared), }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{)}
+
+\CommentTok{\# Definir el vector del lado derecho del sistema}
+\NormalTok{B }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(sum\_y, sum\_x1\_y, sum\_x2\_y)}
+
+\CommentTok{\# Resolver el sistema de ecuaciones lineales}
+\NormalTok{coefs\_beta }\OtherTok{\textless{}{-}} \FunctionTok{solve}\NormalTok{(A, B)}
+
+\CommentTok{\# Imprimir los coeficientes estimados}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Coeficientes estimados (beta0, beta1, beta2):"}\NormalTok{, coefs\_beta, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Coeficientes estimados (beta0, beta1, beta2): 8.015345 1.107798 -1.225824
+\end{verbatim}
+
+Por lo tanto, la ecuación de regresión ajustada es:
+
+\[
+\begin{equation}
+\hat{Y} = 8.0153 + 1.1078x_{1} - 1.2258x_{2}
+\end{equation}
+\]
+
+Como se puede observar de ambas maneras se llega al mismo resultado (ya que internamente la función \texttt{lm()} realiza eso). Finalmente, esta ecuación puede emplearse para predecir el numero de pasajeros para pares de valores de las variables de regresion, publicidad e ingreso nacional.
+
+Otra forma de obtener las ecuacion del modelo de regresion múltiple en formato latex y html es utilizando el paquete \texttt{equationmatic}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(equatiomatic)}
+
+\CommentTok{\#Devuelve la ecuación del modelo ajustada}
+\FunctionTok{extract\_eq}\NormalTok{(modelo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{equation}
+\operatorname{pasajeros} = \alpha + \beta_{1}(\operatorname{publicidad}) + \beta_{2}(\operatorname{ingreso\_nacional}) + \epsilon
+\end{equation}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Devolver coeficientes numéricos reales en lugar de letras griegas con:use\_coefs = TRUE}
+\FunctionTok{extract\_eq}\NormalTok{(modelo, }\AttributeTok{use\_coefs =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{equation}
+\operatorname{\widehat{pasajeros}} = 8.02 + 1.11(\operatorname{publicidad}) - 1.23(\operatorname{ingreso\_nacional})
+\end{equation}
+
+\hypertarget{Enfoque-matricial}{%
+\section{Enfoque matricial para un modelo de regresión lineal múltiple}\label{Enfoque-matricial}}
+
+Al ajustar un modelo de regresión lineal múltiple es mucho mas conveniente expresar las operaciones matemáticas en forma matricial, ya que simplifica en gran medida la presentación.
+
+Dada una muestra aleatoria de observaciones \(Y_{1},Y_{2},...,Y_{n}\) en los puntos de observación \(x_{11},x_{12},...,x_{1k},x_{21},x_{22},...,x_{2k},...,x_{n1},x_{n2},...,x_{nk}\), respectivamente, con base en el modelo lineal general, se tienen las n ecuaciones siguientes:
+
+\[ \begin{equation}
+Y_{1}=\beta _{0} + \beta _{1}X _{11} + \beta _{2}X _{12} + ... + + \beta _{k}X _{1k} + \varepsilon_{1} \\
+Y_{2}=\beta _{0} + \beta _{1}X _{21} + \beta _{2}X _{22} + ... + + \beta _{k}X _{2k} + \varepsilon_{2} \\
+\vdots \\
+Y_{n}=\beta _{0} + \beta _{1}X _{n1} + \beta _{2}X _{n2} + ... + + \beta _{k}X _{nk} + \varepsilon_{n}
+\end{equation} 
+\]
+
+Como resultado, el modelo lineal múltiple también puede expresarse en forma matricial como:
+
+\[
+\begin{equation}
+Y = \boldsymbol{X\beta+\varepsilon}
+\end{equation}
+\label{eq:mrlmm}
+\]
+
+donde:
+
+\[
+\begin{equation}
+\mathbf{Y} = \begin{bmatrix}
+Y_{1}\\ 
+Y_{2}\\ 
+\vdots \\
+Y_{n}
+\end{bmatrix}_{nx1}
+\mathbf{X} =\begin{bmatrix}
+ 1&  X_{11}&  X_{12}&  \cdots & X_{1k}\\ 
+ 1&  X_{12}&  X_{22}&  \cdots& X_{2k}\\ 
+ \vdots &  \vdots&  \vdots&  \ddots & \vdots\\ 
+ 1&  X_{n1}&  X_{n2}&  \cdots&  X_{nk}
+\end{bmatrix}_{nxp}
+\boldsymbol{\beta } = \begin{bmatrix}
+\beta_{1}\\ 
+\beta_{2}\\ 
+\vdots \\
+\beta_{n}
+\end{bmatrix}_{px1}
+\boldsymbol{\varepsilon } = \begin{bmatrix}
+\varepsilon_{1}\\ 
+\varepsilon_{2}\\ 
+\vdots \\
+\varepsilon_{n}
+\end{bmatrix}_{nx1}
+\end{equation}
+\]
+
+En general, \textbf{Y} es un vector de observaciones de orden n x 1, \(\mathbf{X}\) es una matriz (n x p) de los niveles de las variables independientes, \(\boldsymbol{\beta }\) es un vector de orden p x 1, formado por los coeficientes de regresion y \(\boldsymbol{\varepsilon}\) es un vector de orden n x 1 de errores aleatorios.
+
+\hypertarget{supuestos-buxe1sicos-del-modelo-de-regresiuxf3n-utilizando-notaciuxf3n-matricial}{%
+\section{Supuestos básicos del modelo de regresión utilizando notación matricial}\label{supuestos-buxe1sicos-del-modelo-de-regresiuxf3n-utilizando-notaciuxf3n-matricial}}
+
+a.- Los errores están distribuidos normalmente con media cero y varianza constante. \(\boldsymbol{\varepsilon}\sim N(0,\sigma^2I)\).
+
+\(E(\boldsymbol{\varepsilon})=0\), donde el valor de cada uno de sus elementos es cero, el cual se demuestra de la siguiente manera:
+
+\[
+\begin{equation}
+\varepsilon = \begin{bmatrix}
+\varepsilon_{1}\\ 
+\varepsilon_{2}\\ 
+\vdots \\
+\varepsilon_{n}
+\end{bmatrix}
+= \begin{bmatrix}
+E(\varepsilon_{1})\\ 
+E(\varepsilon_{2})\\ 
+\vdots \\
+E(\varepsilon_{n})
+\end{bmatrix}
+= \begin{bmatrix}
+0\\ 
+0\\ 
+\vdots \\
+0 
+\end{bmatrix}
+\label{eq:definicion-y-suposiciones-errores}
+\end{equation}
+\]
+
+la varianza se expresa como : \(E(\boldsymbol{\varepsilon\varepsilon'})=\sigma^2\boldsymbol{I}\) es decir, es una forma concreta de expresar que los errores están correlacionados y que tienen varianza constante. Por lo tanto, su expresión matricial viene dada por:
+
+\[
+E(\boldsymbol{\varepsilon\varepsilon'})=E\begin{bmatrix}
+\begin{bmatrix}
+\varepsilon_{1}\\ 
+\varepsilon_{2}\\ 
+\vdots \\
+\varepsilon_{n}
+\end{bmatrix}_{nx1}
+\begin{bmatrix}
+ \varepsilon_{1}&  \varepsilon_{2}&  \cdots & \varepsilon_{n}
+\end{bmatrix}_{1xn}
+\end{bmatrix}
+\]
+
+Efectuando la multiplicación se obtiene:
+
+\[
+E(\boldsymbol{\varepsilon\varepsilon'})=E\begin{bmatrix}
+ \varepsilon_{1}^2&  \varepsilon_{1}\varepsilon_{2}&  \cdots & \varepsilon_{1}\varepsilon_{n}\\ 
+ \varepsilon_{2}\varepsilon_{1}&  \varepsilon_{2}^2&  \cdots& \varepsilon_{2}\varepsilon_{n}\\ 
+ \vdots &  \vdots &  \ddots & \vdots\\ 
+ \varepsilon_{n}\varepsilon_{1}&  \varepsilon_{n}\varepsilon_{2}&  \cdots& \varepsilon_{n}^2
+\end{bmatrix}_{nxn}
+\]
+
+Aplicando el operador del valor esperado(E), se tiene:
+
+\[
+E(\boldsymbol{\varepsilon\varepsilon'})=E\begin{bmatrix}
+ E(\varepsilon_{1}^2)&  E(\varepsilon_{1}\varepsilon_{2})&  \cdots & E(\varepsilon_{1}\varepsilon_{n})\\ 
+ E(\varepsilon_{2}\varepsilon_{1})&  E(\varepsilon_{2}^2)&  \cdots& E(\varepsilon_{2}\varepsilon_{n})\\ 
+ \vdots &  \vdots &  \ddots & \vdots\\ 
+ E(\varepsilon_{n}\varepsilon_{1})&  E(\varepsilon_{n}\varepsilon_{2})&  \cdots& E(\varepsilon_{n}^2)
+\end{bmatrix}_{nxn}
+\]
+
+Debido a los supuestos de homocedasticidad y no correlación, la matriz se reduce a:
+
+\[
+E(\boldsymbol{\varepsilon\varepsilon'})=\begin{bmatrix}
+ \sigma^2&  0&  \cdots & 0\\ 
+ 0&  \sigma^2&  \cdots& 0\\ 
+ \vdots &  \vdots &  \ddots & \vdots\\ 
+ 0&  0&  \cdots& \sigma^2 
+\end{bmatrix}_{nxn}
+\]
+
+\[
+E(\boldsymbol{\varepsilon\varepsilon'})=\begin{bmatrix}
+ 1&  0&  \cdots & 0\\ 
+ 0&  1&  \cdots& 0\\ 
+ \vdots &  \vdots &  \ddots & \vdots\\ 
+ 0&  0&  \cdots& 1 
+\end{bmatrix}_{nxn}
+\]
+
+\[
+\begin{equation}
+E(\boldsymbol{\varepsilon\varepsilon'})=\sigma^2\boldsymbol{I}
+\label{eq:covarianza-errores-regresion-lineal}
+\end{equation}
+\]
+
+b.- La matriz \(\mathbf{X}\) de orden n x p no es aleatoria, lo cual implica que está formada por números fijos, es decir, el análisis de regresión es un análisis condicional, por lo cual los valores de y dependen de los valores fijos de las variables x.
+
+c.- \(\mathbf{Y} \sim N(\mathbf{X \boldsymbol{\beta}}, \sigma^2\mathbf{I)}\)
+
+\hypertarget{estimaciuxf3n-de-los-paruxe1metros-del-modelo-por-el-muxe9todo-m.c.o.-utilizando-la-notaciuxf3n-matricial.}{%
+\section{Estimación de los parámetros del modelo por el método M.C.O., utilizando la notación matricial.}\label{estimaciuxf3n-de-los-paruxe1metros-del-modelo-por-el-muxe9todo-m.c.o.-utilizando-la-notaciuxf3n-matricial.}}
+
+Se desea encontrar el vector de estimadores de mínimos cuadrados, \(\hat{\beta}\) que minimiza la expresión:
+
+\[
+\begin{equation}
+\boldsymbol{\varepsilon=Y-X\beta}
+\label{eq:relacion-errores-y-x-beta}
+\end{equation}
+\] Premultiplicando ambos lados por \(\beta'\)
+
+\[
+\begin{equation}
+\boldsymbol{\varepsilon'\varepsilon=(Y-X\beta)'(Y-X\beta)}
+\end{equation}
+\]
+
+\[
+\sum_{i=1}^n\varepsilon_{i}^2=\boldsymbol{(Y-X\beta)'(Y-X\beta)}
+\] \[
+\sum_{i=1}^n\varepsilon_{i}^2=\boldsymbol{(Y'-X'\beta')(Y-X\beta)=Y'Y-Y'X\beta-\beta'X'Y+\beta'X'X\beta}
+\]
+
+\[
+\begin{equation}
+\frac{
+\partial \sum_{i=1}^n\varepsilon_{i}^2}{\partial x} \Bigg|_{\hat{\beta}}= \boldsymbol{X'Y+X'X\hat{\beta}+\hat{\beta}'X'X=-2X'Y+2X'X\hat{\beta}=0}
+\end{equation} 
+\] Simplificando, se tiene:
+
+\[
+\begin{equation}
+\boldsymbol{X'X\hat{\beta}=X'Y}
+\end{equation}
+\] Estas ecuaciones son llamadas \textbf{ecuaciones normales mínimos cuadrados}. Para resolver dichas ecuaciones se premultiplicando ambos lados por la inversa de la matriz \(\boldsymbol{X'X}\) por lo tanto la expresión matricial para obtener los estimadores mínimos cuadrados \(\hat{\beta_{0}}\) y \(\hat{\beta_{1}}\), viene dada por:
+
+\[
+\begin{equation}
+\boldsymbol{(X'X)^{-1}(X'X)\hat{\beta}=(X'X)^{-1}X'Y}
+\end{equation}
+\] \[
+\begin{equation}
+\boldsymbol{\hat{\beta}=(X'X)^{-1}X'Y}
+\end{equation}
+\] La forma matricial de este modelo es: \(\boldsymbol{\hat{Y}=X\hat{\beta}}\)
+
+Este vector de valores estimados se puede escribir así: \[
+\begin{equation}
+\boldsymbol{\hat{Y}=X(X'X)^{-1}X'Y}
+\end{equation}
+\]
+
+\[
+\begin{equation}
+\boldsymbol{\hat{Y}=HY}
+\label{eq:predicciones-matriz-proyeccion}
+\end{equation}
+\] La matriz \(\boldsymbol{H=X(X'X)^{-1}X'}\) es llamada usualmente matriz ``sombrero'' de orden n x n
+
+Las diferencias entre los valores observados \(y_{i}\) y los valores estimados \(\hat{y_{i}}\) son los residuales \(e_{i}=y_{i}-\hat{y_{i}}\). Los residuales pueden escribirse matricialmente así:
+
+\[
+\begin{equation}
+\boldsymbol{e=Y-\hat{Y}}
+\label{eq:vector-residuos-regresion-lineal}
+\end{equation}
+\]
+
+\[
+\begin{equation}
+\boldsymbol{=Y-HY}
+\end{equation}
+\]
+
+\[
+\boldsymbol{(I-H)Y}
+\]
+
+En el ejemplo anterior se ilustro el ajuste del modelo de regresión múltiple. \[
+\begin{equation}
+y=\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+\varepsilon
+\end{equation}
+\] Donde \(y\) es el numero de pasajeros observado que escogen viajar por Hop Scotch, \(x_{1}\) es el gasto en publicidad y \(x_{2}\) es el ingreso nacional. Ahora se utilizara el enfoque matricial para ajustar el modelo de regresión anterior a este conjunto de datos. La matriz \(\boldsymbol{X}\) y el vector \(\boldsymbol{Y}\) para este modelo son:
+
+\[
+\begin{equation}
+\boldsymbol{X} = \begin{bmatrix}
+ 1&  10& 2.40\\ 
+ 1&  12& 2.72\\ 
+ 1&  8& 2.08\\ 
+ \vdots &  \vdots& \vdots\\ 
+ 1&  12& 2.17
+\end{bmatrix}_{15x3}
+\boldsymbol{Y} = \begin{bmatrix}
+15\\ 
+17\\ 
+13\\ 
+\vdots \\ 
+16
+\end{bmatrix}_{15x1}
+\label{eq:matrices-regresion-multiple}
+\end{equation}
+\] La matriz \(\boldsymbol{X'X}\) es
+
+\[
+\begin{equation}
+\boldsymbol{X'X}=\begin{bmatrix}
+ 1&  1&  \cdots& 1\\ 
+ 10&  12&  \cdots& 12\\ 
+ 2.40&  2.72&  \cdots&  2.17
+\end{bmatrix}_{3x15}
+\begin{bmatrix}
+ 1&  10& 2.40\\ 
+ 1&  12& 2.72\\ 
+ \vdots &  \vdots& \vdots\\ 
+ 1&  12& 2.17
+\end{bmatrix}_{15x3} \\
+= \begin{bmatrix}
+ 15&   187 & 40.29\\ 
+ 187&   2469& 525.38\\ 
+ 40.29  &  525.38 & 113.3387
+\end{bmatrix}
+\end{equation}
+\] En R se hace de la siguiente manera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{identidad }\OtherTok{\textless{}{-}}  \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{15}\NormalTok{)}
+\NormalTok{publicidad }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{17}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{15}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{16}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{12}\NormalTok{)}
+\NormalTok{ingreso\_nacional }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{2.4}\NormalTok{,}\FloatTok{2.72}\NormalTok{,}\FloatTok{2.08}\NormalTok{,}\FloatTok{3.68}\NormalTok{,}\FloatTok{2.56}\NormalTok{,}\FloatTok{3.36}\NormalTok{,}\FloatTok{2.24}\NormalTok{,}\FloatTok{3.2}\NormalTok{,}\FloatTok{3.84}\NormalTok{,}\FloatTok{2.72}\NormalTok{,}\FloatTok{2.07}\NormalTok{,}\FloatTok{2.33}\NormalTok{,}\FloatTok{2.98}\NormalTok{,}\FloatTok{1.94}\NormalTok{,}\FloatTok{2.17}\NormalTok{)}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(identidad,publicidad, ingreso\_nacional)}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       identidad publicidad ingreso_nacional
+##  [1,]         1         10             2.40
+##  [2,]         1         12             2.72
+##  [3,]         1          8             2.08
+##  [4,]         1         17             3.68
+##  [5,]         1         10             2.56
+##  [6,]         1         15             3.36
+##  [7,]         1         10             2.24
+##  [8,]         1         14             3.20
+##  [9,]         1         19             3.84
+## [10,]         1         10             2.72
+## [11,]         1         11             2.07
+## [12,]         1         13             2.33
+## [13,]         1         16             2.98
+## [14,]         1         10             1.94
+## [15,]         1         12             2.17
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_transpuesta\_x }\OtherTok{\textless{}{-}} \FunctionTok{t}\NormalTok{(x) }\SpecialCharTok{\%*\%}\NormalTok{ x}
+\NormalTok{x\_transpuesta\_x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                  identidad publicidad ingreso_nacional
+## identidad            15.00     187.00          40.2900
+## publicidad          187.00    2469.00         525.3800
+## ingreso_nacional     40.29     525.38         113.3387
+\end{verbatim}
+
+y el vector \(\boldsymbol{X'Y}\) es:
+
+\[
+\begin{equation}
+\boldsymbol{X'Y}=\begin{bmatrix}
+ 1&  1&  \cdots& 1\\ 
+ 10&  12&  \cdots& 12\\ 
+ 2.40&  2.72&  \cdots&  2.17
+\end{bmatrix}_{3x15}
+\begin{bmatrix}
+15\\ 
+17\\ 
+\vdots \\ 
+16
+\end{bmatrix}_{15x1} = \begin{bmatrix}
+278.00\\ 
+3590\\ 
+766.02
+\end{bmatrix}
+\end{equation}
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_transpuesta\_y }\OtherTok{\textless{}{-}} \FunctionTok{t}\NormalTok{(x) }\SpecialCharTok{\%*\%}\NormalTok{ pasajeros}
+\NormalTok{x\_transpuesta\_y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                     [,1]
+## identidad         278.00
+## publicidad       3590.00
+## ingreso_nacional  766.02
+\end{verbatim}
+
+Los estimadores mínimos cuadrados se obtienen a partir de la ecuación:
+
+\[
+\begin{equation}
+\boldsymbol{\hat{\beta}=(X'X)^{-1}X'Y}
+\label{eq:estimacion-coeficientes-ecuaciones-normales}
+\end{equation}
+\]
+Entonces,
+\[
+\begin{equation}
+\begin{bmatrix}
+\hat{\beta_{0}}\\ 
+\hat{\beta_{1}}\\ 
+\hat{\beta_{2}}
+\end{bmatrix} = \begin{bmatrix}
+ 15&   187 & 40.29\\ 
+ 187&   2469& 525.38\\ 
+ 40.29  &  525.38 & 113.3387
+\end{bmatrix}^{-1}
+\end{equation} \begin{bmatrix}
+278.00\\ 
+3590\\ 
+766.02
+\end{bmatrix} \\
+= \begin{bmatrix}
+ 1.47945972&   -0.01040009 & -0.4777135\\ 
+ -0.01040009&   0.02982778& -0.1345692\\ 
+ -0.47771354  &  -0.13456922  & 0.8024360
+\end{bmatrix} \begin{bmatrix}
+278.00\\ 
+3590\\ 
+766.02
+\end{bmatrix} \\
+= \begin{bmatrix}
+8.015345\\ 
+1.107798\\ 
+-1.225824
+\end{bmatrix}
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{inv\_x\_transpuesta\_x }\OtherTok{\textless{}{-}} \FunctionTok{solve}\NormalTok{(x\_transpuesta\_x)}
+\NormalTok{inv\_x\_transpuesta\_x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                    identidad  publicidad ingreso_nacional
+## identidad         1.47945972 -0.01040009       -0.4777135
+## publicidad       -0.01040009  0.02982778       -0.1345692
+## ingreso_nacional -0.47771354 -0.13456922        0.8024360
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{matriz\_estimaciones\_beta }\OtherTok{\textless{}{-}} \FunctionTok{solve}\NormalTok{(x\_transpuesta\_x) }\SpecialCharTok{\%*\%}\NormalTok{ x\_transpuesta\_y}
+\NormalTok{matriz\_estimaciones\_beta}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                       [,1]
+## identidad         8.015345
+## publicidad        1.107798
+## ingreso_nacional -1.225824
+\end{verbatim}
+
+Por consiguiente, el modelo de regresión ajustado con los coeficientes de
+regresión:
+
+\[
+\begin{equation}
+\hat{Y} = 8.0153 + 1.1078x_{1} - 1.2258x_{2}
+\end{equation}
+\]
+
+La siguiente tabla \ref{tab:res} muestra las observaciones de la variable dependiente y con sus correspondientes valores estimados y residuales para este modelo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(kableExtra)}
+\NormalTok{residuos }\OtherTok{\textless{}{-}} \FunctionTok{rstandard}\NormalTok{(modelo)}
+\NormalTok{valor\_ajustado }\OtherTok{\textless{}{-}} \FunctionTok{fitted}\NormalTok{(modelo)}
+\NormalTok{datos\_t }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(observaciones,pasajeros,valor\_ajustado,residuos)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(datos\_t,}\AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{align =} \StringTok{"c"}\NormalTok{, }\AttributeTok{caption =} \StringTok{"Tabla de Residuos y Ajustes"}\NormalTok{ ) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:res}Tabla de Residuos y Ajustes}
+\centering
+\begin{tabular}[t]{cccc}
+\toprule
+observaciones & pasajeros & valor\_ajustado & residuos\\
+\midrule
+1 & 15 & 16.15135 & -0.4401029\\
+2 & 17 & 17.97468 & -0.3632466\\
+3 & 13 & 14.32802 & -0.5407517\\
+4 & 23 & 22.33688 & 0.2757475\\
+5 & 16 & 15.95522 & 0.0176639\\
+\addlinespace
+6 & 21 & 20.51355 & 0.1902454\\
+7 & 14 & 16.34748 & -0.8911209\\
+8 & 20 & 19.60188 & 0.1533001\\
+9 & 24 & 24.35635 & -0.1618281\\
+10 & 17 & 15.75909 & 0.5202244\\
+\addlinespace
+11 & 16 & 17.66367 & -0.6622525\\
+12 & 18 & 19.56055 & -0.6354394\\
+13 & 23 & 22.08716 & 0.3719094\\
+14 & 25 & 16.71523 & 3.3129165\\
+15 & 16 & 18.64889 & -1.0744700\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A continuación se muestra el gráfico de los residuos vs los valores ajustados, el cual es ideal para observar si a simple vista se cumple o no el principio de homocedasticidad
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(}\FunctionTok{augment}\NormalTok{(modelo), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ .fitted, }\AttributeTok{y =}\NormalTok{ .resid)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Residuos vs. Valores Ajustados"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Valores Ajustados"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Residuos"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+El gráfico de Probabilidad Normal nos permite ver a simple vista si se cumple el supuesto de normalidad.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(}\FunctionTok{augment}\NormalTok{(modelo), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{sample =}\NormalTok{ .resid)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_qq}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{intercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{slope =} \DecValTok{1}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Grafico Q{-}Q de Residuos"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+El gráfico de los valores observados vs.~los valores estimados nos permite realizar la diagnosis del modelo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{\# Supongamos que la variable ajustada se llama "ajustados"}
+\NormalTok{datos}\SpecialCharTok{$}\NormalTok{ajustados }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(modelo)}
+
+\CommentTok{\# Gráfico de observados vs ajustados}
+\FunctionTok{ggplot}\NormalTok{(datos, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ pasajeros, }\AttributeTok{y =}\NormalTok{ ajustados)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{color =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Valores Observados vs Ajustados"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Valores Observados"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Valores Ajustados"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~
+## x'
+\end{verbatim}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+Una forma de evaluar si el modelo creado es un buen modelo es utilizando el paquete \texttt{performance}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(performance)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'performance' was built under R version 4.3.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{model\_performance}\NormalTok{(modelo),}\AttributeTok{caption =} \StringTok{"Tabla de Desempeño del Modelo"}\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:performance}Tabla de Desempeño del Modelo}
+\centering
+\begin{tabular}[t]{r|r|r|r|r|r|r}
+\hline
+AIC & AICc & BIC & R2 & R2\_adjusted & RMSE & Sigma\\
+\hline
+78.05593 & 82.05593 & 80.88813 & 0.5487289 & 0.4735171 & 2.499921 & 2.794996\\
+\hline
+\end{tabular}
+\end{table}
+
+\hypertarget{propiedades-de-los-estimadores-muxednimos-cuadrados}{%
+\section{Propiedades de los estimadores mínimos cuadrados}\label{propiedades-de-los-estimadores-muxednimos-cuadrados}}
+
+Las propiedades estadísticas de los estimadores mínimos cuadrados \(\hat{\beta_{o}},\hat{\beta_{1}},...,\hat{\beta_{k}}\) pueden determinarse con facilidad, bajo ciertas condiciones sobre los términos del error \(\varepsilon_{1},\varepsilon_{2},...,\varepsilon_{n}\) del modelo de regresión. Paralelamente con las suposiciones hechas en el modelo de regresión lineal simple, aquí se supondrá que los errores \(\varepsilon_{i}\) son estadisticamente independientes con media cero y varianza \(\sigma_{2}\). Bajo estas suposiciones, los estimadores mínimos cuadrados ordinarios \(\hat{\beta_{o}},\hat{\beta_{1}},...,\hat{\beta_{k}}\) son estimadores insesgados de los coeficientes de regresión \(\beta_{o},\beta_{1},...,\beta_{k}\). Esta propiedad puede demostrarse de la siguiente manera:
+
+\[
+\begin{equation}
+E(\boldsymbol{\hat{\beta}}) = E\boldsymbol{[(X'X)^{-1}X'Y]} \\
+= E\boldsymbol{[(X'X)^{-1}X'(X\beta + \varepsilon)]} \\
+= E\boldsymbol{[(X'X)^{-1}X'X\beta + (X'X)^{-1}X' + \varepsilon)]} \\
+= E\boldsymbol{[I\beta + (X'X)^{-1}X'\varepsilon)]} \\
+= E\boldsymbol{[I\beta] + E[(X'X)^{-1}X'\varepsilon)]} \\
+= E\boldsymbol{[\beta] + (X'X)^{-1}X'E[\varepsilon]} \\
+E(\boldsymbol{\hat{\beta}})= \boldsymbol{\beta}
+\end{equation}
+\]
+
+Puesto que \(E[\boldsymbol{\varepsilon]}=0\). Por lo tanto \(\boldsymbol{\hat{\beta}}\) se expresan en términos de los elementos de la inversa de la matriz X'X. La inversa de X´X multiplicada por la constante \(\sigma^{2}\) representa la matriz de varianza-covarianza de los coeficientes de regresión \(\boldsymbol{\hat{\beta}}\). Los elementos de la diagonal principal de \(\sigma^{2}(X'X)^{-1}\) son las varianzas de \(\hat{\beta_{o}},\hat{\beta_{1}},...,\hat{\beta_{k}}\) mientras que los elementos que están fuera de la diagonal principal son las covarianzas.
+
+Entonces \(\sum=Var(\boldsymbol{\hat{\beta}})=\sigma^{2}(X'X)^{-1}\) si llamamos \(C=(X'X)^{-1}\), entonces la varianza de \(\hat{\beta_{j}}\) es \(\sigma^{2}C_{jj}\) y la covarianza entre \(\hat{\beta_{i}}\) y \(\hat{\beta_{j}}\) es \(\sigma^{2}C_{jj}\).
+
+La matriz C es una matriz simétrica que tiene la siguiente estructura:
+
+\[
+\begin{equation}
+C=\begin{bmatrix}
+ C_{00}&  C_{01}&  \cdots& C_{0K}\\ 
+ C_{10}&  C_{11}^2&  \cdots& C_{1K}\\ 
+ \vdots &  \vdots &  \ddots & \vdots\\ 
+ C_{K0}&  C_{1k}&  \cdots& C_{kk}
+\end{bmatrix}_{pxp}
+j = 0,1,2,...,k
+p=k+1
+\end{equation}
+\]
+
+En general: \[Var(\hat{\beta})= \sigma^{2}C_{jj}\] para j = 0, 1, 2, \ldots, k \[Cov(\hat{\beta_{j}},\hat{\beta_{j}})=\sigma^{2}C_{jj}\] para i≠j.
+
+La matriz de varianza-covarianza de \(\boldsymbol{\hat{\beta}}\), viene dada por:
+
+\[
+\begin{equation}
+\sum = Var(\boldsymbol{\hat{\beta}})=E[(\boldsymbol{\hat{\beta}}-E(\boldsymbol{\hat{\beta}})(\boldsymbol{\hat{\beta}}-E(\boldsymbol{\hat{\beta}}))']
+\end{equation}
+\]
+
+\[
+=E[(\boldsymbol{\hat{\beta}}-\boldsymbol{\beta})(\boldsymbol{\hat{\beta}}-\boldsymbol{\beta})']
+\] donde: \[
+\boldsymbol{\hat{\beta}-\beta=(X'X)^{-1}X'Y-\beta}
+\] \[\boldsymbol{=(X'X)^{-1}X'(X\beta+\varepsilon)-\beta}\] \[\boldsymbol{=(X'X)^{-1}X'X\beta + (X'X)^{-1}X'                   \varepsilon-\beta}\] \[\boldsymbol{=I\beta+(X'X)^{-1}X'\varepsilon-\beta}\] \[=\boldsymbol{(X'X)^{-1}X'\varepsilon}\] Por lo tanto:
+
+\[\sum=Var(\boldsymbol{\hat{\beta}})= E[[\boldsymbol{(X'X)^{-1}X'\varepsilon}][\boldsymbol{(X'X)^{-1}X'\varepsilon}]']\] \[\boldsymbol{(X'X)^{-1}X'E[\varepsilon\varepsilon']X(X'X)^{-1}}\] \[=\boldsymbol{(X'X)^{-1}X'\sigma^{2}IX(X'X)^{-1}}\] \[\sigma^{2}\boldsymbol{(X'X)^{-1}X'X(X'X)^{-1}}\] \[=\sigma^{2}\boldsymbol{(X'X)^{-1}}\]
+
+\hypertarget{estimaciuxf3n-de-sigma2}{%
+\section{\texorpdfstring{Estimación de \(\sigma^{2}\)}{Estimación de \textbackslash sigma\^{}\{2\}}}\label{estimaciuxf3n-de-sigma2}}
+
+Al igual que en el caso de la regresión lineal simple, la estimación de \(\sigma^2\) está definida en términos de la suma de cuadrados de los residuos.
+
+\[
+\begin{equation}
+SCE = \sum_{i=1}^{n}(y_{i}-\hat{y_{i}})^{2} = \sum_{i=1}^{n}e_{i}^{2} = \boldsymbol{\varepsilon'\varepsilon}
+\label{eq:suma-error-cuadratico-regresion-lineal}
+\end{equation}
+\] Sustituyendo \(\boldsymbol{\varepsilon=Y-X\hat{\beta}}\), se tiene: \[
+\begin{equation}
+SCE = \boldsymbol{(Y-X\hat{\beta})'(Y-X\hat{\beta})}
+\end{equation}
+\] \[
+\begin{equation}
+=\boldsymbol{Y'Y - \hat{\beta}X'Y-Y'X\hat{\beta}+\hat{\beta} 'X\hat{\beta}} \\
+= \boldsymbol{Y'Y-2\hat{\beta}'X'Y+\beta'X'X\hat{\beta}}
+\end{equation}
+\]
+
+Puesto que: \(\boldsymbol{X'X\hat{\beta}=X'Y}\)
+
+La suma de cuadrados de residuales tiene n - p grados de libertad. Entonces:
+
+\[
+\begin{equation}
+CME= \frac{SCE}{n-p}
+\label{eq:error-cuadratico-medio-regresion-lineal}
+\end{equation}
+\] Pero el valor esperado de CME es \(\sigma^{2}\) y un estimador insesgado de \(\sigma^{2}\) es:
+
+\[
+\begin{equation}
+\hat{\sigma}^{2}=CME=\frac{SCE}{n-p}=\frac{\boldsymbol{Y'Y-\hat{\beta}'X'Y}}{n-p}
+\label{eq:estimacion-error-cuadratico-medio-regresion-lineal}
+\end{equation}
+\] Ejemplo: Para el ejercicio planteado anteriormente: \[
+\begin{equation}
+C = \begin{bmatrix}
+ 1.47945972&   -0.01040009 & -0.4777135\\ 
+ -0.01040009&   0.02982778& -0.1345692\\ 
+ -0.47771354  &  -0.13456922  & 0.8024360
+\end{bmatrix}
+\end{equation}
+\]
+
+Las varianzas y covarianzas de los estimadores vienen dadas por:
+
+\[
+\begin{equation}
+Var(\hat{\beta_{0}})=\sigma^{2}C_{00}=1.47945972\\
+Var(\hat{\beta_{1}})=\sigma^{2}C_{11}=0.02982778 \\
+Var(\hat{\beta_{2}})=\sigma^{2}C_{22}= 0.8024360\\
+Cov(\hat{\beta_{0}},\hat{\beta_{1}})=\sigma^{2}C_{01}= -0.01040009\\
+Cov(\hat{\beta_{0}},\hat{\beta_{2}})=\sigma^{2}C_{02}= -0.4777135\\
+Cov(\hat{\beta_{1}},\hat{\beta_{2}})=\sigma^{2}C_{12}= -0.13456922\\
+\end{equation}
+\]
+La estimación de \(\sigma^{2}\) \[
+\boldsymbol{Y'Y}= \sum_{i=1}^{15}y_{i}^{2}=5360 
+\] \$\$
+\boldsymbol{\hat{\beta}'X'Y} =
+
+\begin{bmatrix}
+ 8.0153&  1.1078& -1.2258
+\end{bmatrix}
+\begin{bmatrix}
+ 1&  1&  \cdots& 1\\ 
+ 10&  12&  \cdots& 12\\ 
+ 2.40&  2.72&  \cdots&  2.17
+\end{bmatrix}
+
+\textbackslash{}
+
+\$\$
+
+Por lo tanto, la suma de cuadrados del error es:
+
+\[
+SCE = \boldsymbol{Y'Y - \hat{\beta}'X'Y}=
+\] Por consiguiente, la estimación de \(\sigma^{2}\) es:
+
+\[
+\hat{\sigma}^{2}=CME=\frac{SCE}{n-p}=
+\]
+
+\hypertarget{prueba-de-hipuxf3tesis-en-la-regresiuxf3n-muxfaltiple}{%
+\section{Prueba de hipótesis en la regresión múltiple}\label{prueba-de-hipuxf3tesis-en-la-regresiuxf3n-muxfaltiple}}
+
+En problemas de regresión lineal múltiple, existen ciertas pruebas de hipótesis sobre los parámetros del modelo que son útiles para medir la adecuación del mismo. Al igual que en el caso de la regresión lineal simple, la prueba de hipótesis requiere que los términos error \(e_{i}\) del modelo de regresión tengan distribuciones normales e independientes con media cero y varianza constante \(\sigma^{2}\).
+
+\hypertarget{prueba-para-la-significancia-de-la-regresiuxf3n.}{%
+\subsection{Prueba para la significancia de la regresión.}\label{prueba-para-la-significancia-de-la-regresiuxf3n.}}
+
+La prueba para la significancia de la regresión es una prueba para determinar si existe una relación lineal entre las variables respuesta y y un conjunto de las variables independientes \(x_{1},x_{2},...,x_{k}\). Las hipótesis apropiados son:
+
+\[
+\begin{equation}
+H_{0}:\beta_{1}=\beta_{2}=...=\beta_{k}=0
+\end{equation}
+\label{eq:hipotesis-nula}
+\] \[
+\begin{equation}
+H_{1}:\beta_{1}≠0
+\label{eq:hipotesis-alternativa}
+\end{equation}
+\] Al menos para una j, siendo j = 1,2,\ldots,k.
+
+El rechazo de \(H_{0}:\beta_{1}=\beta_{2}=...=\beta_{k}=0\) implica que al menos una de las variables de regresión \(x_{1},x_{2},...,x_{k}\) tiene una contribución significativa en el modelo.
+
+La prueba de significancia de la regresión es una generalización del procedimiento utilizando en la regresión lineal simple. La suma de cuadrado total SCT se divide en una suma de cuadrados debida a la regresión y una suma de cuadrados debida al error,
+
+\[
+\begin{equation}
+SCT=SCR+SCE
+\label{eq:identidad-total} 
+\end{equation}
+\] \(SCR/\sigma^{2} \sim X_{K}^2\) con k grados de libertad igual al número de variables regresoras y \(SCR/\sigma^{2} \sim X_{n-K-1}^2\) 1 k n − − χ con n -- k -- 1 grados de libertad. Por lo tanto el estadístico de prueba viene dada por:
+
+\[
+\begin{equation}
+F_{0}= \frac{SCR/k}{SCE/n-k-1}=\frac{CMR}{CME}
+\label{eq:estadistico-F}
+\end{equation}
+\] Decisión: Se rechaza \(H_{0}\) si \(F_{0}>f_{\alpha;k,n-k-1}\)
+
+En general, el procedimiento se resume en una tabla de análisis de varianza, tal como se muestra en la siguiente tabla:
+
+Siendo: \[
+\begin{equation}
+SCE = \boldsymbol{Y'Y - \hat{\beta}'X'Y}
+\label{eq:sce-formula}
+\end{equation}
+\] \[
+\begin{equation}
+SCT=S_{yy}= \boldsymbol{Y'Y}-\frac{\bigg(\sum_{i=1}^{2}Y_{i}\bigg)^{2}}{n} = \sum_{i=1}^{2}Y_{i}^{2}- \frac{\bigg(\sum_{i=1}^{2}Y_{i}\bigg)^{2}}{n}
+\end{equation}
+\]
+
+Entonces,
+\[
+\begin{equation}
+SCR=S_{yy}-SCE
+\label{eq:scr-formula}
+\end{equation}
+\]
+\[
+\begin{equation}
+SCR= \boldsymbol{Y'Y}-\frac{\bigg(\sum_{i=1}^{2}Y_{i}\bigg)^{2}}{n}-[\boldsymbol{Y'Y-\hat{\beta}'X'Y}]
+\end{equation}
+\]
+Por consiguiente, la suma de cuadrados debida a la regresión, es:
+
+\[
+\begin{equation}
+SCR= \boldsymbol{\hat{\beta}X'Y}-\frac{\bigg(\sum_{i=1}^{2}Y_{i}\bigg)^{2}}{n}
+\end{equation}
+\]
+
+\hypertarget{prueba-para-los-coeficientes-de-regresiuxf3n.}{%
+\subsection{Prueba para los coeficientes de regresión.}\label{prueba-para-los-coeficientes-de-regresiuxf3n.}}
+
+A menudo se tiene interés en hacer pruebas de hipótesis sobre los coeficientes de regresión. Tales pruebas son útiles para determinar el valor potencial de cada una de las variables de regresión del modelo de regresión. Por ejemplo, el modelo puede ser más eficaz con la inclusión de variables adicionales, o quizás con la eliminación de uno o más de las regresoras presentes en el modelo.
+
+Las hipótesis para la prueba de la significancia de cualquier coeficiente de regresión individual, por ejemplo, \(\beta_{j}\), son:
+\[
+\begin{equation}
+H_{0}:\beta_{j}=0
+\label{eq:hipotesis-nula-coeficiente} 
+\end{equation}
+\]
+
+\[
+\begin{equation}
+H_{0}:\beta_{j}≠0
+\label{eq:hipotesis-alternativa-coeficiente} 
+\end{equation}
+\] Si no se rechaza \(H_{0}:\beta_{j}=0\),entonces esto indica que la variable regresora \(x_{j}\) puede eliminarse del modelo. El estadístico de prueba para esta hipótesis es:
+
+\[
+\begin{equation}
+t_{0}=\frac{\hat{\beta_{j}}}{\sqrt{\hat{\sigma}^{2}C_{jj}}}
+\label{eq:estadistico-t}
+\end{equation}
+\] donde \(C_{jj}\) es el elemento de la diagonal principal de \(\boldsymbol{(X'X)^{-1}}\) que corresponde a \(\hat{\beta_{j}}\)
+
+Decisión: Se rechaza \(H_{0}\) si \(|t_{0}|>t_{1-\alpha/2;n-p}\)
+
+La siguiente tabla muestra los coeficientes de regresión con sus respectivos valores de t.
+
+También puede emplearse el valor P para obtener conclusiones. Puesto que los valores de P menores que \(\alpha=5\)\%, conducen al rechazo las hipótesis nulas, lo que indica que las dos variables regresoras tienen contribución en el modelo.
+
+Nótese que esta prueba mide la contribución parcial de \(x_{2}\), dado que \(x_{1}\) aparece en el modelo esto es, la prueba t mide la contribución que tiene la adición de la variable
+
+Existe otra manera de probar la contribución al modelo de cada variable de regresión. Este enfoque determina el aumento de la suma de los cuadrados de la regresión obtenida al agregar una variable \(x_{j}\) al modelo, dado que las demás variables x\_\{i\} (i ≠ j) ya están incluidas en la ecuación de regresión.
+
+\hypertarget{estimaciuxf3n-de-los-intervalos-de-confianza-en-la-regresiuxf3n-lineal-muxfaltiple}{%
+\section{Estimación de los intervalos de confianza en la regresión lineal múltiple}\label{estimaciuxf3n-de-los-intervalos-de-confianza-en-la-regresiuxf3n-lineal-muxfaltiple}}
+
+\hypertarget{intervalos-de-confianza-para-los-paruxe1metros.}{%
+\subsection{Intervalos de confianza para los parámetros.}\label{intervalos-de-confianza-para-los-paruxe1metros.}}
+
+En los modelos de regresión múltiple, a menudo es útil construir estimaciones de intervalos de confianza para los coeficientes de regresión \(\beta_{j}\). El desarrollo de un procedimiento para obtener estos intervalos de confianza requiere que los errores \(\varepsilon_{i}\), estén distribuidos de manera normal e independientemente, con media cero y varianza constante \(\sigma_{2}\). Ésta es la misma suposición que se requiere para la prueba de hipótesis. Por consiguiente, las observaciones \(y_{i}\) están normal e independientemente distribuidas con media y varianza. Puesto que el estimador de M.C.O. \(\boldsymbol{\hat{\beta}}\) es una combinación lineal de las observaciones, se desprende entonces que \(\boldsymbol{\hat{\beta}}\) tiene una distribución normal con un vector promedio \(\beta_{0}+\sum_{j=1}^{n}\beta_{j}x_{ij}\) y matriz de varianza-covarianza \(\sigma^{2}\boldsymbol{(X'X)^{-1}}\). Entonces, cada uno de los estadísticos
+
+\[
+\frac{\hat{\beta_{j}}}{\sqrt{\hat{\sigma}^{2}C_{jj}}}
+\hspace{3.0cm}j = 0,1,...,k
+\] tienen distribución t con n -- p grados de libertad, donde \(C_{jj}\) es el j-ésimo elemento de la matriz \(\boldsymbol{(X'X)^{-1}}\) y \(\hat{\sigma}^{2}\) es la estimación de la varianza del error.
+
+Un intervalo de confianza del \((1-\alpha)100\)\% para el coeficiente de regresión \(\beta_{j}\), j = 0,1,\ldots,k está dado por:
+
+\[
+\begin{equation}
+\hat{\beta}-t_{\alpha/2;n-p}\sqrt{\hat{\sigma}^{2}C_{jj}}\leq \beta_{j}\leq\hat{\beta}+t_{\alpha/2;n-p}\sqrt{\hat{\sigma}^{2}C_{jj}}
+\end{equation}
+\]
+
+\hypertarget{intervalo-de-confianza-para-la-respuesta-media-eyx0.}{%
+\subsection{Intervalo de confianza para la respuesta media e(y/x0).}\label{intervalo-de-confianza-para-la-respuesta-media-eyx0.}}
+
+También puede obtenerse un intervalo de confianza para la respuesta promedio en un punto en particular, por ejemplo, \(x_{01},x_{02},...,x_{0k}\). Para estimar la respuesta promedio en este punto, se define el vector:
+
+\[
+\begin{equation}
+\boldsymbol{x_{0}}=\begin{bmatrix}
+1\\ 
+x_{01}\\ 
+x_{02}\\ 
+\vdots \\ 
+x_{0k}
+\end{bmatrix}
+\end{equation}
+\] El valor estimado para este punto es: \(\hat{\mu}_{y/x_{0}}=\boldsymbol{x'_{0}\hat{\beta}}\).
+
+Este es un estimador insesgado de \(\mu_{y/x_{0}}\), siendo \(E(\hat{\mu}_{y/x_{0}})=\boldsymbol{x'_{0}\hat{\beta}}=\mu_{y/x_{0}}\) y la varianza \(V(\hat{\mu}_{y/x_{0}})=\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}.\)
+
+Entonces, un intervalo de confianza del \((1-\alpha)100\)\% para la respuesta media en el punto \(x_{01},x_{02},...,x_{0k};\) está dado por:
+
+\[
+\begin{equation}
+\hat{\mu}_{y/x_{0}}-t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}}\leq\mu_{y/x_{0}}\leq\hat{\mu}_{y/x_{0}}+t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}}
+\end{equation}
+\]
+
+\hypertarget{intervalo-de-confianza-para-haty_0-observaciuxf3n-futura.}{%
+\subsection{\texorpdfstring{Intervalo de confianza para \(\hat{y}_{0}\) (observación futura).}{Intervalo de confianza para \textbackslash hat\{y\}\_\{0\} (observación futura).}}\label{intervalo-de-confianza-para-haty_0-observaciuxf3n-futura.}}
+
+El modelo de regresión puede ser usado para predecir las observaciones futuras para un y correspondiente a un valor particular de las variables independientes, por ejemplo, \(x_{01},x_{02},...,x_{0k}.\)
+
+\[
+\boldsymbol{x_{0}}=\begin{bmatrix}
+ 1&  x_{01}&  x_{02}&  \cdots& x_{0k} 
+\end{bmatrix}
+\] entonces una estimación de la observación futura y0 en el punto \(x_{01},x_{02},...,x_{0k}\) es: \(\hat{y}_{0}=\boldsymbol{x'_{0}\hat{\beta}}.\)
+
+Un intervalo de confianza del \((1-\alpha)\)\% para una observación futura \(y_{0}\) en el valor \(x_{0}\), está dado por:
+
+\[
+\begin{equation}
+\hat{y_{0}}-t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}}\leq y_{0}\leq\hat{y_{0}}+t_{\alpha/2;n-p}\sqrt{\sigma^{2}\boldsymbol{x'_{0}(X'X)^{-1}x_{0}}}
+\end{equation}
+\]
+
+Todas las demostraciones matemáticas utilizadas en el libro son profundizadas en el capitulo 13 del libro de \citet{wackerly2002estadistica} .
+
+ee Figure \ref{fig:cars-plot}.
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/cars-plot-1.pdf}
+\caption{\label{fig:cars-plot}The cars data.}
+\end{figure}
+
+Also see Equation \eqref{eq:mean}.
+
+\begin{equation}
+\bar{X} = \frac{\sum_{i=1}^n X_i}{n} \label{eq:mean}
+\end{equation}
+
+And see Table \ref{tab:mtcars}.
+
+\begin{table}
+
+\caption{\label{tab:mtcars}The mtcars data.}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|r}
+\hline
+  & mpg & cyl & disp & hp & drat\\
+\hline
+Mazda RX4 & 21.0 & 6 & 160 & 110 & 3.90\\
+\hline
+Mazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90\\
+\hline
+Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85\\
+\hline
+Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08\\
+\hline
+Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15\\
+\hline
+\end{tabular}
+\end{table}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}
