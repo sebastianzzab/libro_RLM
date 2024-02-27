@@ -1,0 +1,7 @@
+Package: placeholder
+Type: Book
+Title: Regresión Lineal múltiple
+Version: 0.0.1
+Imports: bookdown, ggplot2
+Remotes: rstudio/bookdown
+Corro la construcción
